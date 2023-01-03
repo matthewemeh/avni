@@ -5,6 +5,7 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
     <div className='relative h-4/5'>
       {slidesData.map((slideData, index) => (
         <div
+          key={index}
           className={`absolute w-full h-full top-0 left-0 transition-all duration-500 ${
             slideIndex === index ? 'opacity-100' : 'opacity-0'
           }`}
