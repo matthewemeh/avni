@@ -56,7 +56,7 @@ const ArticlePreview = ({ articles }) => {
 
         <button
           className={`w-[50px] h-[50px] bg-white bg-[url(/assets/svgs/pause2.svg)] bg-center bg-no-repeat absolute bottom-4 right-4 grid place-items-center rounded-full transition-all duration-500 ${
-            currentArticle || 'opacity-0'
+            currentArticle || 'opacity-0 invisible'
           }`}
         />
       </div>
