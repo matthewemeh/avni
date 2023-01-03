@@ -28,7 +28,12 @@ const Slider = ({ slidesData }) => {
 
   return (
     <section className='w-full h-[690px] relative'>
-      <SliderMedia onEnded={onEnded} slideData={slidesData[slideIndex]} videoRef={videoRef} />
+      <SliderMedia
+        onEnded={onEnded}
+        videoRef={videoRef}
+        slidesData={slidesData}
+        slideIndex={slideIndex}
+      />
 
       <div className='controls h-1/5 flex items-center justify-end relative tracking-[0.36px] text-[14px] leading-4'>
         <SliderControls

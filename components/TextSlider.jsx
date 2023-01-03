@@ -1,6 +1,11 @@
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const TextSlider = ({ pretext }) => {
+import ArrowRight from './icons/ArrowRight';
+
+import { getMonthName } from '../public/utils';
+
+const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [pretexts, setPretexts] = useState([]);
 
@@ -20,6 +25,7 @@ const TextSlider = ({ pretext }) => {
       }
     }
     setPretexts(tempPretexts);
+    setSlideIndex(0);
   };
 
   const moveLeft = element => {
@@ -55,8 +61,7 @@ const TextSlider = ({ pretext }) => {
     });
   };
 
-  // componentDidMount
-  useEffect(getPretexts, []);
+  useEffect(getPretexts, [pretext]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,13 +69,22 @@ const TextSlider = ({ pretext }) => {
       setSlideIndex((slideIndex + 1) % pretexts.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [slideIndex, pretexts]);
+  }, [slideIndex, pretexts, pretext]);
 
   return (
-    <div className='font-medium text-[20px] leading-[45px] tracking-[0.36px] my-[125px]'>
-      <small className='block text-dove-gray text-[14px] leading-4'>Avni campaign articles</small>
+    <div
+      style={extraStyles}
+      className='font-medium text-[20px] leading-[45px] tracking-[0.36px] my-[125px] transition-all duration-500'
+    >
+      {date && (
+        <small className='block text-dove-gray text-[14px] leading-4'>
+          {`${date.getDate()}`.padStart(2, '0')} {getMonthName(date.getMonth())}{' '}
+          {date?.getFullYear()} |{' '}
+          <span className='text-outer-space dark:text-alto-light'>{title}</span>
+        </small>
+      )}
 
-      <div className='my-[50px] h-[60%] overflow-hidden relative grid grid-rows-3 grid-cols-1'>
+      <article className='my-[50px] h-[60%] overflow-hidden relative grid grid-rows-3 grid-cols-1'>
         {pretexts.map((pretext, index) => (
           <p
             key={index}
@@ -82,9 +96,15 @@ const TextSlider = ({ pretext }) => {
             {pretext}
           </p>
         ))}
-      </div>
+      </article>
 
-      <button className='underline w-max h-max text-[14px] leading-4'>Skip to begin</button>
+      <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 text-[14px] leading-4'>
+        Read the article <ArrowRight />
+      </Link>
+
+      <button onClick={reset} className='underline w-max h-max text-[14px] leading-4'>
+        Skip to begin
+      </button>
     </div>
   );
 };

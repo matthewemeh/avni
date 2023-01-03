@@ -3,23 +3,21 @@ import Image from 'next/image';
 
 import Slider from '../components/Slider';
 import Footer from '../components/Footer';
-import TextSlider from '../components/TextSlider';
 import LinkBubble from '../components/LinkBubble';
+import SpaceSlider from '../components/SpaceSlider';
 import HistorySlider from '../components/HistorySlider';
+import ArticlePreview from '../components/ArticlePreview';
 import CurlyArrow from '../components/icons/CurlyArrow';
 import CaretUpFilled from '../components/icons/CaretUpFilled';
 
-import pause from '../public/assets/svgs/pause2.svg';
 import slide1 from '../public/assets/pngs/slide1.png';
 import slide2 from '../public/assets/pngs/slide2.png';
 import slide3 from '../public/assets/pngs/slide3.png';
 import testVideo from '../public/assets/test-video.mp4';
 import furniture1 from '../public/assets/pngs/furniture1.png';
 import furniture2 from '../public/assets/pngs/furniture2.png';
-import furniture3 from '../public/assets/pngs/furniture3.png';
-import furniture4 from '../public/assets/pngs/furniture4.png';
 import newsHeadMedia from '../public/assets/pngs/news-head.png';
-import newsBodyMedia from '../public/assets/pngs/news-body.png';
+import articleImage from '../public/assets/pngs/news-body.png';
 
 import { scrollTop } from '../public/utils';
 
@@ -56,6 +54,36 @@ const slidesData = [
       { x: 85, y: 47 },
     ],
     themeColor: '#187789',
+  },
+];
+
+const articles = [
+  {
+    _id: 1,
+    createdAt: new Date('December 30, 2022 11:13:00'),
+    updatedAt: new Date('December 30, 2022 11:13:00'),
+    title: 'Deforestation',
+    image: articleImage,
+    article:
+      'The production of wood-based furniture can contribute to deforestation, particularly if the wood is sourced from clearcut forests',
+  },
+  {
+    _id: 2,
+    createdAt: new Date('November 30, 2022 11:13:00'),
+    updatedAt: new Date('December 10, 2022 11:13:00'),
+    title: 'Eco-friendly furniture',
+    image: articleImage,
+    article:
+      'We are conscious of the impact of furniture making on our environment. From Global warming, to Deforestation, to',
+  },
+  {
+    _id: 3,
+    createdAt: new Date('January 15, 2022 11:13:00'),
+    updatedAt: new Date('January 16, 2022 11:13:00'),
+    title: 'Global warming',
+    image: articleImage,
+    article:
+      'We are conscious of the impact of furniture making on our environment. From Global warming, to Deforestation, to',
   },
 ];
 
@@ -135,18 +163,9 @@ export default function Home() {
             </div>
           </section>
 
-          <section className='mt-52 tracking-[0.36px] font-medium'>
-            <h3 className='text-[30px] leading-[45px] text-center'>Space Ideas</h3>
-            <div className='grid grid-cols-[77%_23%] mt-20 h-[560px]'>
-              <div className='relative'>
-                <Image src={furniture3} className='w-full h-full' alt='furniture3' />
-                <button className='absolute right-0 top-0 w-[6%] h-full bg-[url(/assets/svgs/double-caret-right.svg)] bg-no-repeat bg-center bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px]' />
-              </div>
-              <div className='bg-[url(/assets/pngs/furniture4.png)] bg-no-repeat bg-cover bg-center transition-all duration-500' />
-            </div>
-          </section>
+          <SpaceSlider />
 
-          <section className='mt-52 font-medium tracking-[0.36px]'>
+          <section className='mt-52 tracking-[0.36px] font-medium'>
             <h3 className='text-[30px] leading-[45px] text-center'>Our environment and Us</h3>
             <p className='text-[14px] leading-5 text-center max-w-[632px] mx-auto mt-[18px] mb-[30px]'>
               We are conscious of the impact of furniture making on our environment. At Avni, our
@@ -163,23 +182,14 @@ export default function Home() {
             <CurlyArrow extraStyles={{ marginLeft: 'auto', marginRight: '15%' }} />
           </section>
 
-          <section className='mt-[26px] mb-8 h-[734px] grid grid-cols-2'>
-            <TextSlider pretext='We are conscious of the impact of furniture making on our environment. From Global warming, to Deforestation, to' />
+          <ArticlePreview articles={articles} />
 
-            <div className='relative h-max'>
-              <Image src={newsBodyMedia} className='w-[498px] h-[560px]' alt='avni news body' />
-              <button className='w-[50px] h-[50px] bg-white absolute bottom-4 right-4 grid place-items-center rounded-full'>
-                <Image src={pause} alt='pause' />
-              </button>
-            </div>
-
-            <button
-              onClick={scrollTop}
-              className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-[120%] rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space'
-            >
-              <CaretUpFilled />
-            </button>
-          </section>
+          <button
+            onClick={scrollTop}
+            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space'
+          >
+            <CaretUpFilled />
+          </button>
 
           <Footer />
         </div>

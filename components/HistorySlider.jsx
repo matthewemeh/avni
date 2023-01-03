@@ -62,7 +62,7 @@ const HistorySlider = () => {
             style={{ width: slideIndex === index ? '50%' : `${50 / furnitures.length}%` }}
           >
             <p
-              className={`sideways-lr -rotate-180 capitalize w-full h-full transition-all duration-500 ${
+              className={`sideways-lr text-white -rotate-180 capitalize w-full h-full transition-all duration-500 ${
                 slideIndex === index ? 'text-center pt-0 px-[5%]' : 'text-left pt-8 px-[25%]'
               }`}
             >
