@@ -1,0 +1,12 @@
+const CaretUpFilled = () => (
+  <svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      fillRule='evenodd'
+      clipRule='evenodd'
+      fill='currentColor'
+      d='M8.00028 0.938948L16.001 8.94015L14.5868 10.3542L8.00018 3.76725L1.41328 10.3532L-0.000821944 8.93895L8.00028 0.938948Z'
+    />
+  </svg>
+);
+
+export default CaretUpFilled;
