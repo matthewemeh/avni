@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AppContext } from '../pages/_app';
 
 import Logo from './Logo';
 
 const Navigation = () => {
   const [transparent, setTransparent] = useState(true);
 
+  const { menuOpened, setMenuOpened } = useContext(AppContext);
+
+  // componentDidMount
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const scrollYPos = window.scrollY || document.documentElement.scrollTop;
@@ -21,7 +25,7 @@ const Navigation = () => {
       }`}
     >
       <Logo />
-      <button onClick={null} className='block border-y-2 w-5 h-3' />
+      <button onClick={() => setMenuOpened(!menuOpened)} className='block border-y-2 w-5 h-3' />
     </nav>
   );
 };
