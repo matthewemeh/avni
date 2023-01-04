@@ -9,6 +9,8 @@ import ArticlePoint from './ArticlePoint';
 const ArticlePreview = ({ articles }) => {
   const [currentArticle, setCurrentArticle] = useState(null);
 
+  const reset = () => setCurrentArticle(null);
+
   return (
     <section className='mt-[26px] mb-8 w-full h-[734px] grid grid-cols-2'>
       <TextSlider
@@ -18,11 +20,11 @@ const ArticlePreview = ({ articles }) => {
           opacity: currentArticle ? '1' : '0',
           visibility: currentArticle ? 'visible' : 'hidden',
         }}
+        reset={reset}
         _id={currentArticle?._id || ''}
         title={currentArticle?.title || ''}
-        reset={() => setCurrentArticle(null)}
-        date={currentArticle?.createdAt || ''}
         pretext={currentArticle?.article || ''}
+        date={new Date(currentArticle?.createdAt)}
       />
 
       <div
