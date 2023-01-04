@@ -7,6 +7,7 @@ import LinkBubble from '../components/LinkBubble';
 import SpaceSlider from '../components/SpaceSlider';
 import HistorySlider from '../components/HistorySlider';
 import ArticlePreview from '../components/ArticlePreview';
+
 import CurlyArrow from '../components/icons/CurlyArrow';
 import CaretUpFilled from '../components/icons/CaretUpFilled';
 
@@ -16,12 +17,12 @@ import slide3 from '../public/assets/pngs/slide3.png';
 import testVideo from '../public/assets/test-video.mp4';
 import furniture1 from '../public/assets/pngs/furniture1.png';
 import furniture2 from '../public/assets/pngs/furniture2.png';
-import newsHeadMedia from '../public/assets/pngs/news-head.png';
 import articleImage from '../public/assets/pngs/news-body.png';
+import newsHeadMedia from '../public/assets/pngs/news-head.png';
 
 import { scrollTop } from '../public/utils';
 
-const slidesData = [
+const SLIDES_DATA = [
   {
     _id: 1,
     image: slide1,
@@ -57,7 +58,7 @@ const slidesData = [
   },
 ];
 
-const articles = [
+const ARTICLES = [
   {
     _id: 1,
     createdAt: new Date('December 30, 2022 11:13:00'),
@@ -87,7 +88,7 @@ const articles = [
   },
 ];
 
-export default function Home() {
+export default function Home({ slidesData, articles }) {
   return (
     <>
       <Head>
@@ -122,11 +123,11 @@ export default function Home() {
             <h2 className='text-[30px] leading-[45px] max-w-[80%]'>
               What others are saying about us
             </h2>
-            <p className='text-[14px] leading-5 max-w-[70%] ml-auto'>
+            <div className='text-[14px] leading-5 max-w-[70%] ml-auto'>
               We are not your regular retail store. Behind every piece is a promise kept.
               That&apos;s why people can&apos;t stop talking about us
               <hr className='border-alto-light w-[35%] mt-[30px]' />
-            </p>
+            </div>
             <div className='h-[560px] bg-[url(/assets/pngs/customers.png)] bg-cover bg-center bg-no-repeat col-start-1 col-end-3 flex items-end'>
               <p className='w-full h-[18%] py-7 pl-7 text-white text-[14px] leading-[17px] bg-[rgba(35,43,43,0.1)] backdrop-blur-[2px]'>
                 <span className='block font-bold'>Testimonials</span>
@@ -196,4 +197,21 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  // fetch data from API
+  return {
+    props: {
+      slidesData: SLIDES_DATA,
+      articles: ARTICLES.map(article => ({
+        _id: article._id,
+        title: article.title,
+        image: article.image,
+        article: article.article,
+        createdAt: article.createdAt.toString(),
+      })),
+    },
+    revalidate: 1,
+  };
 }
