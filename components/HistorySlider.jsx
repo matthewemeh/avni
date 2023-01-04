@@ -42,9 +42,7 @@ const HistorySlider = () => {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSlideIndex((slideIndex + 1) % furnitures.length);
-    }, 4000);
+    const timer = setInterval(() => setSlideIndex((slideIndex + 1) % furnitures.length), 4000);
     return () => clearInterval(timer);
   }, [slideIndex]);
 
