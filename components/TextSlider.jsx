@@ -76,7 +76,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
       style={extraStyles}
       className='font-medium text-[20px] leading-[45px] tracking-[0.36px] my-[125px] transition-all duration-500'
     >
-      {date && (
+      {date && !isNaN(date) && (
         <small className='block text-dove-gray text-[14px] leading-4'>
           {`${date.getDate()}`.padStart(2, '0')} {getMonthName(date.getMonth())}{' '}
           {date?.getFullYear()} |{' '}
