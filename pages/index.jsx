@@ -50,9 +50,9 @@ const SLIDES_DATA = [
     video: null,
     title: 'Getting real with us',
     focalPoints: [
-      { x: 12, y: 73 },
-      { x: 48, y: 21 },
-      { x: 85, y: 47 },
+      { x: 12, y: 63 },
+      { x: 50, y: 5 },
+      { x: 85, y: 33 },
     ],
     themeColor: '#187789',
   },
@@ -107,29 +107,29 @@ export default function Home({ slidesData, articles }) {
         <meta name='theme-color' content='#ffffff' />
       </Head>
 
-      <main>
-        <header className='mt-20 font-medium'>
-          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto'>
+      <main className='font-medium tracking-[0.36px]'>
+        <header className='mt-20 '>
+          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px]'>
             A mission to get your perfect piece
           </h1>
 
           <LinkBubble text='Go Shopping' href='/home' />
         </header>
 
-        <div className='mx-[14%] mt-[5%]'>
+        <div className='mx-[14%] mt-[5%] laptops:mx-[12%]'>
           <Slider slidesData={slidesData} />
 
-          <section className='grid grid-rows-[repeat(2,auto)] grid-cols-2 gap-y-[87px] mt-52 tracking-[0.36px] font-medium'>
-            <h2 className='text-[30px] leading-[45px] max-w-[80%]'>
+          <section className='grid grid-rows-[repeat(2,auto)] grid-cols-2 gap-y-[87px] mt-52'>
+            <h2 className='text-[30px] leading-[45px] max-w-[80%] laptops:text-[25px]'>
               What others are saying about us
             </h2>
-            <div className='text-[14px] leading-5 max-w-[70%] ml-auto'>
+            <div className='text-[14px] leading-[21px] max-w-[70%] ml-auto'>
               We are not your regular retail store. Behind every piece is a promise kept.
               That&apos;s why people can&apos;t stop talking about us
               <hr className='border-alto-light w-[35%] mt-[30px]' />
             </div>
             <div className='h-[560px] bg-[url(/assets/pngs/customers.png)] bg-cover bg-center bg-no-repeat col-start-1 col-end-3 flex items-end'>
-              <p className='w-full h-[18%] py-7 pl-7 text-white text-[14px] leading-[17px] bg-[rgba(35,43,43,0.1)] backdrop-blur-[2px]'>
+              <p className='w-full h-[18%] py-7 pl-7 text-white text-[14px] leading-[17px] bg-[rgba(35,43,43,0.1)] backdrop-blur-[2px] laptops:text-[12px] laptops:leading-[15px]'>
                 <span className='block font-bold'>Testimonials</span>
                 <span className='block mt-[10px]'>
                   Client stories / experience, social media reviews, ...
@@ -142,19 +142,19 @@ export default function Home({ slidesData, articles }) {
 
           <HistorySlider />
 
-          <section className='mt-52 tracking-[0.36px] font-medium'>
-            <h3 className='text-[30px] leading-[45px] text-center'>
+          <section className='mt-52'>
+            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
               Furniture solution on a budget
             </h3>
             <Image src={furniture1} className='mt-20' alt='furniture1' />
-            <p className='relative left-[5%] bottom-12 font-semibold text-[16px] leading-[100%] text-white'>
+            <p className='relative left-[5%] bottom-12 font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px]'>
               A budget furniture requirement of a new couple
             </p>
 
             <div className='relative mt-52'>
               <Image src={furniture2} alt='furniture2' />
-              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full absolute bottom-0 py-14 px-[60px]'>
-                <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white'>
+              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full absolute bottom-0 py-14 px-[60px] laptops:py-8 laptops:px-10'>
+                <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px]'>
                   Ideas for a cool living space
                 </p>
                 <button className='bg-white rounded-full text-cod-gray font-medium text-[12px] leading-4 py-[15px] px-[30px]'>
@@ -166,9 +166,11 @@ export default function Home({ slidesData, articles }) {
 
           <SpaceSlider />
 
-          <section className='mt-52 tracking-[0.36px] font-medium'>
-            <h3 className='text-[30px] leading-[45px] text-center'>Our environment and Us</h3>
-            <p className='text-[14px] leading-5 text-center max-w-[632px] mx-auto mt-[18px] mb-[30px]'>
+          <section className='mt-52'>
+            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
+              Our environment and Us
+            </h3>
+            <p className='text-[14px] leading-[21px] text-center max-w-[632px] mx-auto mt-[18px] mb-[30px]'>
               We are conscious of the impact of furniture making on our environment. At Avni, our
               goal is to promote eco-friendly furniture for you, for us and for our environment.
             </p>
@@ -180,7 +182,7 @@ export default function Home({ slidesData, articles }) {
               alt='avni news header'
               className='w-full h-full mt-[84px] mb-[26px]'
             />
-            <CurlyArrow extraStyles={{ marginLeft: 'auto', marginRight: '15%' }} />
+            <CurlyArrow extraStyles={{ marginLeft: 'auto', marginRight: '5%' }} />
           </section>
 
           <ArticlePreview articles={articles} />

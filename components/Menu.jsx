@@ -11,7 +11,7 @@ const Menu = () => {
 
   return (
     <div
-      className={`w-[40vw] h-[100vh] bg-white tracking-[0.36px] pb-[20%] pt-[4%] px-10 transition-all duration-500 fixed z-20 top-0 dark:bg-shark ${
+      className={`w-[40vw] h-[100vh] bg-white pb-[20%] pt-[4%] px-10 transition-all duration-500 fixed z-20 top-0 dark:bg-shark ${
         menuOpened ? 'shadow-[-2px_0_15px_black] left-[60vw]' : 'left-full'
       }`}
     >
