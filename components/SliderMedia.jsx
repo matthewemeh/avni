@@ -7,7 +7,7 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
         <div
           key={index}
           className={`absolute w-full h-full top-0 left-0 transition-all duration-500 ${
-            slideIndex === index ? 'opacity-100' : 'opacity-0'
+            slideIndex === index ? 'opacity-100' : 'opacity-0 invisible'
           }`}
         >
           {slideData?.image ? (
@@ -26,7 +26,7 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
               key={index}
               ref={videoRef}
               onEnded={onEnded}
-              className='w-full h-full'
+              className='w-full h-full object-fill'
               poster={slideData?.thumbnail?.src}
             >
               <source src={slideData?.video} type='video/mp4' />

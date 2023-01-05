@@ -9,8 +9,8 @@ const SpaceSlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-52 tracking-[0.36px] font-medium'>
-      <h3 className='text-[30px] leading-[45px] text-center'>Space Ideas</h3>
+    <section className='mt-52'>
+      <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>Space Ideas</h3>
 
       <div className='grid grid-cols-[77%_23%] mt-20 h-[560px]'>
         <div
@@ -22,7 +22,7 @@ const SpaceSlider = () => {
         >
           <button
             onClick={() => setSlideIndex((slideIndex + 1) % 2)}
-            className='block ml-auto w-[6%] h-full bg-[url(/assets/svgs/double-caret-right.svg)] bg-no-repeat bg-center bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px]'
+            className='block ml-auto w-[6%] h-full bg-[url(/assets/svgs/double-caret-right.svg)] bg-no-repeat bg-center bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] border-r-4 border-white'
           />
         </div>
 
