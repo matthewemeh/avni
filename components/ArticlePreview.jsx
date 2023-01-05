@@ -12,7 +12,7 @@ const ArticlePreview = ({ articles }) => {
   const reset = () => setCurrentArticle(null);
 
   return (
-    <section className='mt-[26px] mb-8 w-full h-[734px] grid grid-cols-2'>
+    <section className='mt-[26px] mb-36 w-full h-max grid grid-cols-2 laptops:mt-16'>
       <TextSlider
         extraStyles={{
           gridRowStart: '1',
@@ -32,7 +32,7 @@ const ArticlePreview = ({ articles }) => {
           currentArticle && 'opacity-0 invisible'
         }`}
       >
-        <div className='w-full px-3 flex items-center justify-between gap-x-[5%]'>
+        <div className='w-full px-3 flex items-center justify-between gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0'>
           {articles.map(({ title, _id }) => (
             <ArticlePoint
               key={_id}
@@ -44,7 +44,7 @@ const ArticlePreview = ({ articles }) => {
           ))}
         </div>
 
-        <p className='font-medium text-[14px] leading-4 tracking-[0.36px] text-dove-gray text-center'>
+        <p className='font-medium text-[14px] leading-[17px] text-dove-gray text-center'>
           Click a campaign topic to begin with
         </p>
       </div>
@@ -52,7 +52,7 @@ const ArticlePreview = ({ articles }) => {
       <div className='relative h-max col-start-2 row-start-1'>
         <Image
           alt='avni news article'
-          className='w-[498px] h-[560px]'
+          className='w-[498px] h-[560px] laptops:w-[365px] laptops:h-[410px] ml-auto'
           src={currentArticle?.image || AvniImage}
         />
 

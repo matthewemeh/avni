@@ -74,10 +74,10 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   return (
     <div
       style={extraStyles}
-      className='font-medium text-[20px] leading-[45px] tracking-[0.36px] my-[125px] transition-all duration-500'
+      className='text-[20px] leading-[45px] my-[125px] transition-all duration-500'
     >
       {date && !isNaN(date) && (
-        <small className='block text-dove-gray text-[14px] leading-4'>
+        <small className='block text-dove-gray text-[14px] leading-[17px]'>
           {`${date.getDate()}`.padStart(2, '0')} {getMonthName(date.getMonth())}{' '}
           {date?.getFullYear()} |{' '}
           <span className='text-outer-space dark:text-alto-light'>{title}</span>
@@ -89,7 +89,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
           <p
             key={index}
             style={{ left: 0, top: `${(index / pretexts.length) * 100}%` }}
-            className={`pretext absolute text-[20px] leading-[45px] transition-all duration-500 ${
+            className={`pretext absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
               index === (slideIndex + 1) % 3 ? 'opacity-100' : 'opacity-30'
             }`}
           >
@@ -98,11 +98,14 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
         ))}
       </article>
 
-      <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 text-[14px] leading-4'>
+      <Link
+        href={`/articles/${_id}`}
+        className='flex items-center gap-x-2 text-[14px] leading-[17px]'
+      >
         Read the article <ArrowRight />
       </Link>
 
-      <button onClick={reset} className='underline w-max h-max text-[14px] leading-4'>
+      <button onClick={reset} className='underline w-max h-max text-[14px] leading-[17px]'>
         Skip to begin
       </button>
     </div>

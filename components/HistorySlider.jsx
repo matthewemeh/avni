@@ -47,8 +47,8 @@ const HistorySlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-52 tracking-[0.36px] font-medium'>
-      <h3 className='text-[30px] leading-[45px] text-center'>
+    <section className='mt-52'>
+      <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
         A run through the furniture history
       </h3>
 
@@ -57,7 +57,7 @@ const HistorySlider = () => {
           <div
             key={className}
             className={className}
-            style={{ width: slideIndex === index ? '50%' : `${50 / furnitures.length}%` }}
+            style={{ width: slideIndex === index ? '50%' : `${50 / (furnitures.length - 1)}%` }}
           >
             <p
               className={`sideways-lr text-white -rotate-180 capitalize w-full h-full transition-all duration-500 ${

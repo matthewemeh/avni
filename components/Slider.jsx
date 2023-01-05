@@ -35,7 +35,7 @@ const Slider = ({ slidesData }) => {
         slideIndex={slideIndex}
       />
 
-      <div className='controls h-1/5 flex items-center justify-end relative tracking-[0.36px] text-[14px] leading-4'>
+      <div className='controls h-1/5 flex items-center justify-end relative tracking-[0.36px] text-[14px] leading-[17px] laptops:text-[12px] laptops:leading-[15px]'>
         <SliderControls
           slideIndex={slideIndex}
           changeSlide={changeSlide}
