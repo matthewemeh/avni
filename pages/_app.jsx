@@ -1,7 +1,7 @@
 import { useState, createContext } from 'react';
 
-// import '../styles/globals.css'; // for development
-import '../styles/main.css'; // for production
+import '../styles/globals.css'; // for development
+// import '../styles/main.css'; // for production
 
 // import { Montserrat } from '@next/font/google';
 
@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
     <AppContext.Provider value={{ menuOpened, setMenuOpened }}>
       <main
         className={`transition-all w-full duration-500 absolute top-0 ${
-          menuOpened ? 'right-[40vw]' : 'right-0 overflow-x-hidden'
+          menuOpened ? 'right-[35vw]' : 'right-0'
         }`}
       >
         <Overlay
