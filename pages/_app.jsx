@@ -1,7 +1,7 @@
 import { useState, createContext } from 'react';
 
-import '../styles/globals.css'; // for development
-// import '../styles/main.css'; // for production
+// import '../styles/globals.css'; // for development
+import '../styles/main.css'; // for production
 
 // import { Montserrat } from '@next/font/google';
 
