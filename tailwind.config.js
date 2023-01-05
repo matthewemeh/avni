@@ -8,6 +8,7 @@ module.exports = {
         shark: '#1b1c1e',
         firefly: '#172c34',
         romance: '#fffefd',
+        woodsmoke: '#161718',
         'cod-gray': '#111111',
         'wild-sand': '#f5f5f5',
         'dove-gray': '#717171',
@@ -18,8 +19,15 @@ module.exports = {
       },
     },
     fontFamily: {
+      arial: ['Arial', 'sans-serif'],
       montserrat: ['Montserrat', 'sans-serif'],
     },
-    screens: { '1150px': { max: '1150px' } },
+    screens: {
+      'x-large': { max: '1440px' },
+      large: { max: '1200px' },
+      laptops: { max: '1024px' },
+      tablets: { max: '768px' },
+      phones: { max: '600px' },
+    },
   },
 };
