@@ -44,36 +44,72 @@ const Footer = () => {
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>
             Things we care about
           </p>
-          <Link href='/'>Ecofriendly furnitures</Link>
-          <Link href='/'>Creative verse</Link>
-          <Link href='/'>Discovery cards/shorts</Link>
-          <Link href='/'>AR & AI for seamless experience</Link>
+          <Link href='/' className='w-max'>
+            Ecofriendly furnitures
+          </Link>
+          <Link href='/' className='w-max'>
+            Creative verse
+          </Link>
+          <Link href='/' className='w-max'>
+            Discovery cards/shorts
+          </Link>
+          <Link href='/' className='w-max'>
+            AR & AI for seamless experience
+          </Link>
         </div>
 
         <div className='grid grid-rows-[auto] phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Company</p>
-          <Link href='/'>About Avni.furniture</Link>
-          <Link href='/'>Join our team</Link>
-          <Link href='/'>Ethics and Integrity</Link>
-          <Link href='/'>Collaborators login</Link>
+          <Link href='/' className='w-max'>
+            About Avni.furniture
+          </Link>
+          <Link href='/' className='w-max'>
+            Join our team
+          </Link>
+          <Link href='/' className='w-max'>
+            Ethics and Integrity
+          </Link>
+          <Link href='/' className='w-max'>
+            Collaborators login
+          </Link>
         </div>
 
         <div className='grid grid-rows-[auto] laptops:col-start-2 phones:col-start-auto phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Social</p>
-          <Link href='/'>Pinterest</Link>
-          <Link href='/'>Facebook</Link>
-          <Link href='/'>Twitter</Link>
-          <Link href='/'>Medium</Link>
-          <Link href='/'>Snapchat</Link>
+          <Link href='/' className='w-max'>
+            Pinterest
+          </Link>
+          <Link href='/' className='w-max'>
+            Facebook
+          </Link>
+          <Link href='/' className='w-max'>
+            Twitter
+          </Link>
+          <Link href='/' className='w-max'>
+            Medium
+          </Link>
+          <Link href='/' className='w-max'>
+            Snapchat
+          </Link>
         </div>
 
         <div className='grid grid-rows-[auto] laptops:col-start-3 phones:col-start-auto phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Avni.Furniture</p>
-          <Link href='/'>For users</Link>
-          <Link href='/'>For furniture designers</Link>
-          <Link href='/'>For furniture manufacturers</Link>
-          <Link href='/'>For interior designers</Link>
-          <Link href='/'>For institutions, companies, etc</Link>
+          <Link href='/' className='w-max'>
+            For users
+          </Link>
+          <Link href='/' className='w-max'>
+            For furniture designers
+          </Link>
+          <Link href='/' className='w-max'>
+            For furniture manufacturers
+          </Link>
+          <Link href='/' className='w-max'>
+            For interior designers
+          </Link>
+          <Link href='/' className='w-max'>
+            For institutions, companies, etc
+          </Link>
         </div>
       </div>
 
