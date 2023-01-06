@@ -106,7 +106,7 @@ export default function Home({ slidesData, articles }) {
         <meta name='theme-color' content='#ffffff' />
       </Head>
 
-      <main className='font-medium tracking-[0.36px]'>
+      <main className='font-medium tracking-[0.36px] overflow-hidden'>
         <header className='mt-20'>
           <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px] phones:text-[32px] phones:leading-[50px]'>
             A mission to get your perfect piece
@@ -133,7 +133,7 @@ export default function Home({ slidesData, articles }) {
             </div>
 
             <div className='mt-52 bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end'>
-              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] laptops:py-8 laptops:px-10'>
+              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] laptops:py-8 laptops:px-5'>
                 <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px]'>
                   Ideas for a cool living space
                 </p>
@@ -169,7 +169,7 @@ export default function Home({ slidesData, articles }) {
 
           <button
             onClick={scrollTop}
-            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10'
+            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10 phones:left-[90%]'
           >
             <CaretUpFilled />
           </button>
