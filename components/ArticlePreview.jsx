@@ -2,9 +2,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import TextSlider from './TextSlider';
+import ArticlePoint from './ArticlePoint';
 
 import AvniImage from '../public/assets/pngs/avni-white-bg-blue.png';
-import ArticlePoint from './ArticlePoint';
 
 const ArticlePreview = ({ articles }) => {
   const [currentArticle, setCurrentArticle] = useState(null);
@@ -12,7 +12,7 @@ const ArticlePreview = ({ articles }) => {
   const reset = () => setCurrentArticle(null);
 
   return (
-    <section className='mt-[26px] mb-36 w-full h-max grid grid-cols-2 laptops:mt-16'>
+    <section className='mt-[26px] mb-36 w-full h-max grid grid-cols-2 laptops:mt-16 phones:grid-cols-1 phones:grid-rows-[repeat(2,auto)]'>
       <TextSlider
         extraStyles={{
           gridRowStart: '1',
@@ -32,14 +32,12 @@ const ArticlePreview = ({ articles }) => {
           currentArticle && 'opacity-0 invisible'
         }`}
       >
-        <div className='w-full px-3 flex items-center justify-between gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0'>
+        <div className='w-full px-3 flex items-center justify-between gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0 phones:grid-cols-1'>
           {articles.map(({ title, _id }) => (
             <ArticlePoint
               key={_id}
               text={title}
-              onClick={() =>
-                setCurrentArticle(articles.find(({ _id: articleID }) => articleID === _id))
-              }
+              onClick={() => setCurrentArticle(articles.find(article => article._id === _id))}
             />
           ))}
         </div>
@@ -49,11 +47,11 @@ const ArticlePreview = ({ articles }) => {
         </p>
       </div>
 
-      <div className='relative h-max col-start-2 row-start-1'>
+      <div className='relative h-max col-start-2 row-start-1 phones:row-start-2 phones:col-start-1'>
         <Image
           alt='avni news article'
-          className='w-[498px] h-[560px] laptops:w-[365px] laptops:h-[410px] ml-auto'
           src={currentArticle?.image || AvniImage}
+          className='w-[498px] h-[560px] ml-auto laptops:w-[365px] laptops:h-[410px] phones:w-full phones:h-full'
         />
 
         <button

@@ -1,45 +1,42 @@
 import { useState, useEffect } from 'react';
 
 const HistorySlider = () => {
+  const [screenWidth, setScreenWidth] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
   const furnitures = [
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room1.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room1.png)]',
     },
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room2.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room2.png)]',
     },
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room3.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room3.png)]',
     },
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room4.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room4.png)]',
     },
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room5.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room5.png)]',
     },
     {
       text: 'living room',
-      className:
-        'bg-[url(/assets/pngs/room6.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room6.png)]',
     },
     {
       text: 'avni',
-      className:
-        'bg-[url(/assets/pngs/room7.png)] bg-cover bg-no-repeat bg-center h-full transition-all duration-500',
+      bgImage: 'bg-[url(/assets/pngs/room7.png)]',
     },
   ];
+  const inactiveDivWidth = `${50 / (furnitures.length - 1)}%`;
 
   useEffect(() => {
     const timer = setInterval(() => setSlideIndex((slideIndex + 1) % furnitures.length), 4000);
@@ -52,12 +49,16 @@ const HistorySlider = () => {
         A run through the furniture history
       </h3>
 
-      <div className='mt-20 w-full h-[331px] flex font-bold text-[18px] leading-[100%]'>
-        {furnitures.map(({ text, className }, index) => (
+      <div className='mt-20 w-full h-[331px] flex font-bold text-[18px] leading-[100%] phones:relative'>
+        {furnitures.map(({ text, bgImage }, index) => (
           <div
-            key={className}
-            className={className}
-            style={{ width: slideIndex === index ? '50%' : `${50 / (furnitures.length - 1)}%` }}
+            key={index}
+            style={{
+              width: screenWidth > 600 ? (slideIndex === index ? '50%' : inactiveDivWidth) : '100%',
+            }}
+            className={`${bgImage} bg-cover bg-no-repeat bg-center h-full transition-all duration-500 phones:absolute phones:top-0 phones:left-0 ${
+              slideIndex === index ? 'phones:opacity-100' : 'phones:opacity-0'
+            }`}
           >
             <p
               className={`sideways-lr text-white -rotate-180 capitalize w-full h-full transition-all duration-500 ${

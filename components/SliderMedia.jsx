@@ -16,7 +16,7 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
               key={index}
               src={slideData?.image}
               alt={slideData?.title}
-              className='w-full h-full'
+              className='w-full h-full mt-5'
             />
           ) : (
             <video
@@ -26,7 +26,7 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
               key={index}
               ref={videoRef}
               onEnded={onEnded}
-              className='w-full h-full object-fill'
+              className='w-full h-full mt-5 object-fill'
               poster={slideData?.thumbnail?.src}
             >
               <source src={slideData?.video} type='video/mp4' />

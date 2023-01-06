@@ -5,6 +5,7 @@ import Slider from '../components/Slider';
 import Footer from '../components/Footer';
 import LinkBubble from '../components/LinkBubble';
 import SpaceSlider from '../components/SpaceSlider';
+import Testimonial from '../components/Testimonial';
 import HistorySlider from '../components/HistorySlider';
 import ArticlePreview from '../components/ArticlePreview';
 
@@ -15,8 +16,6 @@ import slide1 from '../public/assets/pngs/slide1.png';
 import slide2 from '../public/assets/pngs/slide2.png';
 import slide3 from '../public/assets/pngs/slide3.png';
 import testVideo from '../public/assets/test-video.mp4';
-import furniture1 from '../public/assets/pngs/furniture1.png';
-import furniture2 from '../public/assets/pngs/furniture2.png';
 import articleImage from '../public/assets/pngs/news-body.png';
 import newsHeadMedia from '../public/assets/pngs/news-head.png';
 
@@ -108,52 +107,33 @@ export default function Home({ slidesData, articles }) {
       </Head>
 
       <main className='font-medium tracking-[0.36px]'>
-        <header className='mt-20 '>
-          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px]'>
+        <header className='mt-20'>
+          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px] phones:text-[32px] phones:leading-[50px]'>
             A mission to get your perfect piece
           </h1>
 
           <LinkBubble text='Go Shopping' href='/home' />
         </header>
 
-        <div className='mx-[14%] mt-[5%] laptops:mx-[12%]'>
+        <div className='mx-[14%] mt-[5%] laptops:mx-[12%] phones:mx-[5%]'>
           <Slider slidesData={slidesData} />
 
-          <section className='grid grid-rows-[repeat(2,auto)] grid-cols-2 gap-y-[87px] mt-52'>
-            <h2 className='text-[30px] leading-[45px] max-w-[80%] laptops:text-[25px]'>
-              What others are saying about us
-            </h2>
-            <div className='text-[14px] leading-[21px] max-w-[70%] ml-auto'>
-              We are not your regular retail store. Behind every piece is a promise kept.
-              That&apos;s why people can&apos;t stop talking about us
-              <hr className='border-alto-light w-[35%] mt-[30px]' />
-            </div>
-            <div className='h-[560px] bg-[url(/assets/pngs/customers.png)] bg-cover bg-center bg-no-repeat col-start-1 col-end-3 flex items-end'>
-              <p className='w-full h-[18%] py-7 pl-7 text-white text-[14px] leading-[17px] bg-[rgba(35,43,43,0.1)] backdrop-blur-[2px] laptops:text-[12px] laptops:leading-[15px]'>
-                <span className='block font-bold'>Testimonials</span>
-                <span className='block mt-[10px]'>
-                  Client stories / experience, social media reviews, ...
-                </span>
-              </p>
-
-              <button className='bg-[url(/assets/svgs/play.svg)] h-[18%] aspect-square py-7 bg-white bg-no-repeat bg-center' />
-            </div>
-          </section>
+          <Testimonial />
 
           <HistorySlider />
 
           <section className='mt-52'>
-            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
+            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[60%]'>
               Furniture solution on a budget
             </h3>
-            <Image src={furniture1} className='mt-20' alt='furniture1' />
-            <p className='relative left-[5%] bottom-12 font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px]'>
-              A budget furniture requirement of a new couple
-            </p>
+            <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-20 h-[560px] w-full bg-no-repeat bg-center flex items-end p-10 phones:p-5'>
+              <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px]'>
+                A budget furniture requirement of a new couple
+              </p>
+            </div>
 
-            <div className='relative mt-52'>
-              <Image src={furniture2} alt='furniture2' />
-              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full absolute bottom-0 py-14 px-[60px] laptops:py-8 laptops:px-10'>
+            <div className='mt-52 bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end'>
+              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] laptops:py-8 laptops:px-10'>
                 <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px]'>
                   Ideas for a cool living space
                 </p>
@@ -189,7 +169,7 @@ export default function Home({ slidesData, articles }) {
 
           <button
             onClick={scrollTop}
-            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space'
+            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10'
           >
             <CaretUpFilled />
           </button>
