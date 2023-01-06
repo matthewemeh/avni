@@ -3,14 +3,14 @@ import CaretRight from './icons/CaretRight';
 const SliderControls = ({ slideIndex, slidesLength, changeSlide }) => {
   return (
     <>
-      <p className='font-bold mt-20 phones:relative phones:right-[5%]'>01</p>
-      <div className='mt-20 bg-alto-light h-1 w-1/5 mx-3 rounded phones:w-2/5 phones:mx-0'>
+      <p className='font-bold mt-20 phones:relative phones:right-[10vw]'>01</p>
+      <div className='mt-20 bg-alto-light h-1 w-1/5 mx-3 rounded phones:w-44 phones:mx-0 phones:relative phones:right-[7vw]'>
         <div
-          className='bg-azure-radiance w-1/3 h-full rounded-sm transition-all duration-500 ease-in-out'
           style={{ marginLeft: `${(slideIndex * 100) / slidesLength}%` }}
+          className='bg-azure-radiance w-1/3 h-full rounded-sm transition-all duration-500 ease-in-out'
         />
       </div>
-      <p className='font-bold mt-20 phones:relative phones:left-[5%]'>
+      <p className='font-bold mt-20 phones:relative phones:right-[5vw]'>
         {`${slidesLength}`.padStart(2, '0')}
       </p>
 
