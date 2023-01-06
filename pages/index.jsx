@@ -122,11 +122,11 @@ export default function Home({ slidesData, articles }) {
             </div>
 
             <div className='mt-52 bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end'>
-              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] laptops:py-8 laptops:px-5'>
-                <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px]'>
+              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] gap-y-5 laptops:py-8 laptops:px-5 phones:flex-col'>
+                <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px] phones:max-w-none'>
                   Ideas for a cool living space
                 </p>
-                <button className='bg-white rounded-full text-cod-gray font-medium text-[12px] leading-4 py-[15px] px-[30px]'>
+                <button className='bg-white rounded-full text-cod-gray font-medium text-[12px] leading-4 py-[15px] px-[30px] phones:py-[11px] phones:px-[25px]'>
                   Visit
                 </button>
               </div>

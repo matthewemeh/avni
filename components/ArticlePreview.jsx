@@ -28,7 +28,7 @@ const ArticlePreview = ({ articles }) => {
       />
 
       <div
-        className={`col-start-1 row-start-1 flex flex-col gap-y-[50px] items-center justify-center transition-all duration-500 ${
+        className={`col-start-1 row-start-1 flex flex-col gap-y-[50px] items-center justify-center transition-all duration-500 phones:h-max ${
           currentArticle && 'opacity-0 invisible'
         }`}
       >
