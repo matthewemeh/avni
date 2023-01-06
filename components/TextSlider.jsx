@@ -1,19 +1,21 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import ArrowRight from './icons/ArrowRight';
 
 import { getMonthName } from '../public/utils';
 
 const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
+  const [maxTextLength, setMaxTextLength] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [pretexts, setPretexts] = useState([]);
+  const articleRef = useRef();
+  const MAX_PRETEXTS = 3;
 
   const getPretexts = () => {
     let tempPretext = '';
     let tempPretexts = [];
     const pretextLength = pretext.length;
-    const maxTextLength = parseInt(window.screen.availWidth / 32);
 
     for (let i = 0; i < pretextLength; i++) {
       const isLastChar = i === pretextLength - 1;
@@ -61,15 +63,20 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
     });
   };
 
-  useEffect(getPretexts, [pretext]);
+  useEffect(getPretexts, [pretext, maxTextLength]);
 
   useEffect(() => {
+    if (pretexts.length < MAX_PRETEXTS) return;
+
     const timer = setInterval(() => {
       moveText();
-      setSlideIndex((slideIndex + 1) % pretexts.length);
+      setSlideIndex((slideIndex + 1) % MAX_PRETEXTS);
     }, 4000);
     return () => clearInterval(timer);
   }, [slideIndex, pretexts, pretext]);
+
+  // componentDidMount
+  useEffect(() => setMaxTextLength(Number(articleRef.current.clientWidth / 11.5)), []);
 
   return (
     <div
@@ -84,13 +91,16 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
         </small>
       )}
 
-      <article className='my-[50px] h-[60%] overflow-hidden relative grid grid-rows-3 grid-cols-1'>
-        {pretexts.map((pretext, index) => (
+      <article
+        ref={articleRef}
+        className='my-[50px] h-[60%] min-h-[182px] overflow-hidden relative grid grid-rows-3 grid-cols-1'
+      >
+        {pretexts.slice(0, MAX_PRETEXTS).map((pretext, index) => (
           <p
             key={index}
-            style={{ left: 0, top: `${(index / pretexts.length) * 100}%` }}
-            className={`pretext absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
-              index === (slideIndex + 1) % 3 ? 'opacity-100' : 'opacity-30'
+            style={{ left: 0, top: `${(index / MAX_PRETEXTS) * 100}%` }}
+            className={`pretext w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
+              index === (slideIndex + 1) % MAX_PRETEXTS ? 'opacity-100' : 'opacity-30'
             }`}
           >
             {pretext}

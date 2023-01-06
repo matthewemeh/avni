@@ -12,7 +12,7 @@ const SpaceSlider = () => {
     <section className='mt-52'>
       <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>Space Ideas</h3>
 
-      <div className='grid grid-cols-[77%_23%] mt-20 h-[560px]'>
+      <div className='grid grid-cols-[77%_23%] mt-20 h-[560px] phones:grid-cols-1'>
         <div
           className={`bg-no-repeat bg-cover bg-center transition-all duration-500 ${
             slideIndex === 0
@@ -22,12 +22,12 @@ const SpaceSlider = () => {
         >
           <button
             onClick={() => setSlideIndex((slideIndex + 1) % 2)}
-            className='block ml-auto w-[6%] h-full bg-[url(/assets/svgs/double-caret-right.svg)] bg-no-repeat bg-center bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] border-r-4 border-white'
+            className='block ml-auto w-[6%] min-w-[45px] h-full bg-[url(/assets/svgs/double-caret-right.svg)] bg-no-repeat bg-center bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] border-r-4 border-white phones:border-0'
           />
         </div>
 
         <div
-          className={`bg-no-repeat bg-cover bg-center transition-all duration-500 ${
+          className={`bg-no-repeat bg-cover bg-center transition-all duration-500 phones:hidden ${
             slideIndex === 0
               ? 'bg-[url(/assets/pngs/furniture4.png)]'
               : 'bg-[url(/assets/pngs/furniture3.png)]'
