@@ -20,6 +20,7 @@ module.exports = {
     },
     fontFamily: {
       arial: ['Arial', 'sans-serif'],
+      montserrat: ['Poppins', 'sans-serif'],
       montserrat: ['Montserrat', 'sans-serif'],
     },
     screens: {
