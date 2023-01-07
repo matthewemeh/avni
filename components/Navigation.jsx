@@ -20,7 +20,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`py-7 px-10 w-full flex items-center justify-between sticky top-0 bg-white dark:bg-shark z-10 transition-shadow duration-500 ${
+      className={`py-7 px-10 w-full flex items-center justify-between sticky top-0 bg-white outline-0 dark:bg-shark z-10 transition-shadow duration-500 ${
         transparent || 'shadow-[0_1px_5px_black] dark:shadow-[0_2px_5px_black]'
       }`}
     >
