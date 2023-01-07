@@ -54,12 +54,11 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
     const firstTag = pretextTags[slideIndex];
 
     pretextTags.forEach((pretextTag, index) => {
-      if (slideIndex === index) {
-        moveLeft(pretextTag);
-        moveDown(pretextTag);
-      } else moveUp(pretextTag);
+      if (slideIndex === index) moveLeft(pretextTag);
+      else moveUp(pretextTag);
 
-      setTimeout(() => moveRight(firstTag), 1000);
+      setTimeout(() => moveDown(firstTag), 1000);
+      setTimeout(() => moveRight(firstTag), 1500);
     });
   };
 
