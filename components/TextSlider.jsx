@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import ArrowRight from './icons/ArrowRight';
 
-import { getMonthName } from '../public/utils';
+import { getMonthName, toggleClass } from '../public/utils';
 
 const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   const [maxTextLength, setMaxTextLength] = useState(0);
@@ -58,7 +58,9 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
       else moveUp(pretextTag);
 
       setTimeout(() => moveDown(firstTag), 1000);
-      setTimeout(() => moveRight(firstTag), 1500);
+      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 1500);
+      setTimeout(() => moveRight(firstTag), 2000);
+      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 2500);
     });
   };
 
@@ -98,7 +100,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
           <p
             key={index}
             style={{ left: 0, top: `${(index / MAX_PRETEXTS) * 100}%` }}
-            className={`pretext w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
+            className={`pretext overflow-hidden whitespace-nowrap w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
               index === (slideIndex + 1) % MAX_PRETEXTS ? 'opacity-100' : 'opacity-30'
             }`}
           >

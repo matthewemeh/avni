@@ -12,8 +12,8 @@ const Footer = () => {
   const EMAIL = 'furniture@avniverse.com';
 
   return (
-    <footer className='bg-wild-sand pt-[100px] -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke'>
-      <div className='w-full text-[12px] leading-[30px] grid grid-cols-5 gap-x-[5%] pb-[100px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
+    <footer className='bg-wild-sand pt-[100px] font-normal -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke'>
+      <div className='w-full text-[12px] leading-[30px] grid grid-cols-[repeat(5,20%)] pb-[30px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
         <div>
           <Logo />
           <p className='mt-[50px] text-[12px] leading-[18px]'>Follow Us</p>
@@ -26,13 +26,15 @@ const Footer = () => {
               <Email />
             </Link>
             <Link
-              href='/tiktoklink.com'
+              target='_blank'
+              href='https://tiktoklink.com'
               className='w-8 h-8 grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
             >
               <Instagram />
             </Link>
             <Link
-              href='/youtubelink.com'
+              target='_blank'
+              href='https://youtubelink.com'
               className='w-8 h-8 grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
             >
               <Youtube />
@@ -40,12 +42,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='grid grid-rows-[auto] phones:gap-y-[15px]'>
+        <div className='grid grid-rows-[24px_repeat(4,30px)] phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>
             Things we care about
           </p>
           <Link href='/' className='w-max'>
-            Ecofriendly furnitures
+            Ecofriendly furniture
           </Link>
           <Link href='/' className='w-max'>
             Creative verse
@@ -58,7 +60,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[auto] phones:gap-y-[15px]'>
+        <div className='grid grid-rows-[24px_repeat(4,30px)] pl-[30%] laptops:pl-0 phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Company</p>
           <Link href='/' className='w-max'>
             About Avni.furniture
@@ -74,7 +76,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[auto] laptops:col-start-2 phones:col-start-auto phones:gap-y-[15px]'>
+        <div className='grid grid-rows-[24px_repeat(5,30px)] pl-[30%] laptops:pl-0 laptops:col-start-2 phones:col-start-auto phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Social</p>
           <Link href='/' className='w-max'>
             Pinterest
@@ -93,7 +95,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[auto] laptops:col-start-3 phones:col-start-auto phones:gap-y-[15px]'>
+        <div className='grid grid-rows-[24px_repeat(5,30px)] laptops:col-start-3 phones:col-start-auto phones:gap-y-[15px]'>
           <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Avni.Furniture</p>
           <Link href='/' className='w-max'>
             For users
@@ -113,7 +115,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='relative mt-14 mb-14 flex items-center gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
+      <div className='relative mt-14 mb-7 flex items-center gap-x-5 gap-y-[25px] font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
         <span>&copy; Avni {currentDate.getFullYear()}</span>
         <Link href={`mailto:${EMAIL}`} target='_blank' className='w-max'>
           {EMAIL}

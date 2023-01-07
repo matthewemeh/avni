@@ -4,7 +4,7 @@ const SliderControls = ({ slideIndex, slidesLength, changeSlide }) => {
   return (
     <>
       <p className='font-bold mt-20 phones:relative phones:right-[10vw]'>01</p>
-      <div className='mt-20 bg-alto-light h-1 w-1/5 mx-3 rounded phones:w-44 phones:mx-0 phones:relative phones:right-[7vw]'>
+      <div className='mt-20 bg-alto-light h-[2px] w-1/5 mx-3 rounded phones:w-44 phones:mx-0 phones:relative phones:right-[7vw]'>
         <div
           style={{ marginLeft: `${(slideIndex * 100) / slidesLength}%` }}
           className='bg-azure-radiance w-1/3 h-full rounded-sm transition-all duration-500 ease-in-out'

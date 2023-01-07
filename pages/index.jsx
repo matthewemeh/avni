@@ -158,7 +158,7 @@ export default function Home({ slidesData, articles }) {
 
           <button
             onClick={scrollTop}
-            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-4 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10 phones:left-[90%]'
+            className='bg-outer-space w-8 h-8 col-start-2 relative left-full top-[17px] rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10 phones:left-[90%]'
           >
             <CaretUpFilled />
           </button>

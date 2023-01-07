@@ -34,7 +34,9 @@ const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) 
 
       <p
         style={{ backgroundColor: screenWidth > 600 ? slidesData[slideIndex]?.themeColor : 'none' }}
-        className='font-medium flex items-center pl-5 transition-all duration-500 phones:relative phones:w-[100vw] phones:mt-10 phones:right-[370%] phones:justify-center phones:!bg-none phones:pl-0 phones:text-[16px] phones:leading-5 phones:top-8'
+        className={`font-medium flex items-center pl-5 transition-all duration-500 phones:relative phones:w-[100vw] phones:mt-10 phones:right-[370%] phones:justify-center phones:!bg-none phones:pl-0 phones:text-[16px] phones:leading-5 phones:top-8 ${
+          screenWidth > 600 ? 'text-white' : 'text-outer-space'
+        }`}
       >
         <span className='font-bold mr-2'>{`${slideIndex + 1}`.padStart(2, '0')}</span>
         {slidesData[slideIndex]?.title}
