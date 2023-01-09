@@ -24,11 +24,7 @@ export default function App({ Component, pageProps }) {
           menuOpened ? 'right-[400px]' : 'right-0'
         }`}
       >
-        <Overlay
-          visible={menuOpened}
-          extraStyles={{ width: '60vw' }}
-          onClick={() => setMenuOpened(false)}
-        />
+        <Overlay />
         <Navigation />
         <Menu />
         <Component {...pageProps} />
