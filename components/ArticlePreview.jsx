@@ -3,13 +3,17 @@ import Image from 'next/image';
 
 import TextSlider from './TextSlider';
 import ArticlePoint from './ArticlePoint';
+import CampaignPreview from './CampaignPreview';
 
 import AvniImage from '../public/assets/pngs/avni-white-bg-blue.png';
 
 const ArticlePreview = ({ articles }) => {
   const [currentArticle, setCurrentArticle] = useState(null);
+  const [campaignVisible, setCampaignVisible] = useState(true);
 
   const reset = () => setCurrentArticle(null);
+
+  setTimeout(() => setCampaignVisible(false), 12000);
 
   return (
     <section className='mt-[26px] mb-36 w-full h-max grid grid-cols-2 laptops:mt-16 phones:grid-cols-1 phones:grid-rows-[repeat(2,auto)]'>
@@ -21,18 +25,21 @@ const ArticlePreview = ({ articles }) => {
           visibility: currentArticle ? 'visible' : 'hidden',
         }}
         reset={reset}
+        slideClass='pretext'
         _id={currentArticle?._id || ''}
         title={currentArticle?.title || ''}
         pretext={currentArticle?.article || ''}
         date={new Date(currentArticle?.createdAt)}
       />
 
+      <CampaignPreview visible={campaignVisible} />
+
       <div
         className={`col-start-1 row-start-1 flex flex-col gap-y-[50px] items-center justify-center transition-all duration-500 phones:h-max ${
-          currentArticle && 'opacity-0 invisible'
+          (currentArticle || campaignVisible) && 'opacity-0 invisible'
         }`}
       >
-        <div className='w-full px-3 flex items-center justify-between gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0 phones:grid-cols-1'>
+        <div className='w-full pr-3 flex items-center justify-between gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0 phones:grid-cols-1'>
           {articles.map(({ title, _id }) => (
             <ArticlePoint
               key={_id}
