@@ -5,7 +5,7 @@ import ArrowRight from './icons/ArrowRight';
 
 import { getMonthName, toggleClass } from '../public/utils';
 
-const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
+const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset, slideClass }) => {
   const [maxTextLength, setMaxTextLength] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [pretexts, setPretexts] = useState([]);
@@ -50,7 +50,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   };
 
   const moveText = () => {
-    const pretextTags = document.querySelectorAll('.pretext');
+    const pretextTags = document.querySelectorAll(`.${slideClass}`);
     const firstTag = pretextTags[slideIndex];
 
     pretextTags.forEach((pretextTag, index) => {
@@ -74,7 +74,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
       setSlideIndex((slideIndex + 1) % MAX_PRETEXTS);
     }, 4000);
     return () => clearInterval(timer);
-  }, [slideIndex, pretexts, pretext]);
+  }, [slideIndex, pretexts]);
 
   // componentDidMount
   useEffect(() => setMaxTextLength(Number(articleRef.current.clientWidth / 11.5)), []);
@@ -92,6 +92,10 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
         </small>
       )}
 
+      {isCampaigns && (
+        <small className='block text-dove-gray text-[14px] leading-[17px]'>{title}</small>
+      )}
+
       <article
         ref={articleRef}
         className='my-[50px] h-[60%] min-h-[182px] overflow-hidden relative grid grid-rows-3 grid-cols-1'
@@ -100,7 +104,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
           <p
             key={index}
             style={{ left: 0, top: `${(index / MAX_PRETEXTS) * 100}%` }}
-            className={`pretext overflow-hidden whitespace-nowrap w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
+            className={`${slideClass} overflow-hidden whitespace-nowrap w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
               index === (slideIndex + 1) % MAX_PRETEXTS ? 'opacity-100' : 'opacity-30'
             }`}
           >
@@ -109,16 +113,17 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
         ))}
       </article>
 
-      <Link
-        href={`/articles/${_id}`}
-        className='flex items-center gap-x-2 text-[14px] leading-[17px]'
-      >
-        Read the article <ArrowRight />
-      </Link>
+      {isCampaigns || (
+        <div className='text-[14px] leading-[17px] flex flex-col gap-y-4'>
+          <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 w-max'>
+            Read the article <ArrowRight />
+          </Link>
 
-      <button onClick={reset} className='underline w-max h-max text-[14px] leading-[17px]'>
-        Skip to begin
-      </button>
+          <button onClick={reset} className='underline w-max h-max'>
+            Skip to begin
+          </button>
+        </div>
+      )}
     </div>
   );
 };
