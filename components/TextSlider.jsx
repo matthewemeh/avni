@@ -3,9 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 
 import ArrowRight from './icons/ArrowRight';
 
-import { getMonthName } from '../public/utils';
+import { getMonthName, toggleClass } from '../public/utils';
 
-const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
+const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset, slideClass }) => {
   const [maxTextLength, setMaxTextLength] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const [pretexts, setPretexts] = useState([]);
@@ -50,16 +50,17 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   };
 
   const moveText = () => {
-    const pretextTags = document.querySelectorAll('.pretext');
+    const pretextTags = document.querySelectorAll(`.${slideClass}`);
     const firstTag = pretextTags[slideIndex];
 
     pretextTags.forEach((pretextTag, index) => {
-      if (slideIndex === index) {
-        moveLeft(pretextTag);
-        moveDown(pretextTag);
-      } else moveUp(pretextTag);
+      if (slideIndex === index) moveLeft(pretextTag);
+      else moveUp(pretextTag);
 
-      setTimeout(() => moveRight(firstTag), 1000);
+      setTimeout(() => moveDown(firstTag), 1000);
+      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 1500);
+      setTimeout(() => moveRight(firstTag), 2000);
+      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 2500);
     });
   };
 
@@ -73,7 +74,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
       setSlideIndex((slideIndex + 1) % MAX_PRETEXTS);
     }, 4000);
     return () => clearInterval(timer);
-  }, [slideIndex, pretexts, pretext]);
+  }, [slideIndex, pretexts]);
 
   // componentDidMount
   useEffect(() => setMaxTextLength(Number(articleRef.current.clientWidth / 11.5)), []);
@@ -81,7 +82,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
   return (
     <div
       style={extraStyles}
-      className='text-[20px] leading-[45px] my-[125px] transition-all duration-500'
+      className='text-[20px] leading-[45px] my-[125px] laptops:my-0 transition-all duration-500'
     >
       {date && !isNaN(date) && (
         <small className='block text-dove-gray text-[14px] leading-[17px]'>
@@ -89,6 +90,10 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
           {date?.getFullYear()} |{' '}
           <span className='text-outer-space dark:text-alto-light'>{title}</span>
         </small>
+      )}
+
+      {isCampaigns && (
+        <small className='block text-dove-gray text-[14px] leading-[17px]'>{title}</small>
       )}
 
       <article
@@ -99,7 +104,7 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
           <p
             key={index}
             style={{ left: 0, top: `${(index / MAX_PRETEXTS) * 100}%` }}
-            className={`pretext w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
+            className={`${slideClass} overflow-hidden whitespace-nowrap w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
               index === (slideIndex + 1) % MAX_PRETEXTS ? 'opacity-100' : 'opacity-30'
             }`}
           >
@@ -108,16 +113,17 @@ const TextSlider = ({ pretext, title, date, _id, extraStyles, reset }) => {
         ))}
       </article>
 
-      <Link
-        href={`/articles/${_id}`}
-        className='flex items-center gap-x-2 text-[14px] leading-[17px]'
-      >
-        Read the article <ArrowRight />
-      </Link>
+      {isCampaigns || (
+        <div className='text-[14px] leading-[17px] flex flex-col gap-y-4'>
+          <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 w-max'>
+            Read the article <ArrowRight />
+          </Link>
 
-      <button onClick={reset} className='underline w-max h-max text-[14px] leading-[17px]'>
-        Skip to begin
-      </button>
+          <button onClick={reset} className='underline w-max h-max'>
+            Skip to begin
+          </button>
+        </div>
+      )}
     </div>
   );
 };

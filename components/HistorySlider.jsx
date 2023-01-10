@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { AppContext } from '../pages/_app';
 
 const HistorySlider = () => {
+  const { MOBILE_BREAKPOINT } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -44,8 +47,8 @@ const HistorySlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-52'>
-      <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
+    <section className='mt-40 phones:mt-28'>
+      <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:max-w-[90%] phones:mx-auto'>
         A run through the furniture history
       </h3>
 
@@ -54,7 +57,12 @@ const HistorySlider = () => {
           <div
             key={index}
             style={{
-              width: screenWidth > 600 ? (slideIndex === index ? '50%' : inactiveDivWidth) : '100%',
+              width:
+                screenWidth > MOBILE_BREAKPOINT
+                  ? slideIndex === index
+                    ? '50%'
+                    : inactiveDivWidth
+                  : '100%',
             }}
             className={`${bgImage} bg-cover bg-no-repeat bg-center h-full transition-all duration-500 phones:absolute phones:top-0 phones:left-0 ${
               slideIndex === index ? 'phones:opacity-100' : 'phones:opacity-0'

@@ -20,14 +20,17 @@ module.exports = {
     },
     fontFamily: {
       arial: ['Arial', 'sans-serif'],
+      montserrat: ['Poppins', 'sans-serif'],
       montserrat: ['Montserrat', 'sans-serif'],
     },
     screens: {
       'x-large': { max: '1440px' },
       large: { max: '1200px' },
+      '1105px': { max: '1105px' },
       laptops: { max: '1024px' },
       tablets: { max: '768px' },
       phones: { max: '600px' },
+      'small-phones': { max: '400px' },
     },
   },
 };

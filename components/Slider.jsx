@@ -8,7 +8,7 @@ const Slider = ({ slidesData }) => {
   const videoRef = useRef();
   const slidesLength = slidesData.length;
   const [slideIndex, setSlideIndex] = useState(0);
-  const [nextSlideIndex, setNextSlideIndex] = useState(1);
+  const nextSlideIndex = (slideIndex + 1) % slidesLength;
 
   const changeSlide = n => setSlideIndex(slideIndex + n);
 
@@ -19,15 +19,13 @@ const Slider = ({ slidesData }) => {
 
   const pause = () => videoRef.current?.pause();
 
-  useEffect(() => setNextSlideIndex((slideIndex + 1) % slidesLength), [slideIndex]);
-
   useEffect(() => {
     const timer = setInterval(() => setSlideIndex((slideIndex + 1) % slidesLength), 4000);
     return () => clearInterval(timer);
   }, [slideIndex]);
 
   return (
-    <section className='w-full h-[690px] relative phones:h-[517px]'>
+    <section className='w-full relative h-[590px] phones:h-[517px]'>
       <SliderMedia
         onEnded={onEnded}
         videoRef={videoRef}

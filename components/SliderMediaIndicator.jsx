@@ -1,14 +1,17 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+
+import { AppContext } from '../pages/_app';
 
 const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) => {
+  const { MOBILE_BREAKPOINT } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(0);
 
   // componentDidMount
   useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
   return (
-    <div className='absolute bottom-[78px] grid grid-rows-2 grid-cols-2 w-[45%] h-[120px] grid-flow-row'>
+    <div className='absolute bottom-[60px] grid grid-rows-2 grid-cols-2 w-[498px] h-[120px] grid-flow-row phones:w-full'>
       <div className='w-full h-full relative row-start-1 row-end-3 overflow-hidden phones:invisible phones:opacity-0'>
         {slidesData.map((slideData, index) => (
           <Image
@@ -25,7 +28,7 @@ const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) 
 
       <button
         onClick={pause}
-        className={`bg-[rgba(255,255,255,0.2)] w-1/4 h-full bg-center bg-no-repeat phones:invisible phones:opacity-0 ${
+        className={`bg-[rgba(255,255,255,0.2)] w-[60px] h-[60px] bg-center bg-no-repeat transition-all duration-500 phones:invisible phones:opacity-0 ${
           slidesData[slideIndex]?.image
             ? 'bg-[url(/assets/svgs/capture.svg)]'
             : 'bg-[url(/assets/svgs/pause1.svg)]'
@@ -33,8 +36,13 @@ const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) 
       />
 
       <p
-        style={{ backgroundColor: screenWidth > 600 ? slidesData[slideIndex]?.themeColor : 'none' }}
-        className='font-medium flex items-center pl-5 transition-all duration-500 phones:relative phones:w-[100vw] phones:mt-10 phones:right-[370%] phones:justify-center phones:!bg-none phones:pl-0 phones:text-[16px] phones:leading-5 phones:top-8'
+        style={{
+          backgroundColor:
+            screenWidth > MOBILE_BREAKPOINT ? slidesData[slideIndex]?.themeColor : 'none',
+        }}
+        className={`font-normal h-[60px] flex items-center pl-5 transition-all duration-500 phones:absolute phones:top-24 phones:w-full phones:mt-10 phones:justify-center phones:pl-0 phones:text-[16px] phones:leading-5 ${
+          screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-white'
+        }`}
       >
         <span className='font-bold mr-2'>{`${slideIndex + 1}`.padStart(2, '0')}</span>
         {slidesData[slideIndex]?.title}

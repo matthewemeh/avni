@@ -1,5 +1,8 @@
 const CurlyArrow = ({ extraStyles }) => (
-  <div style={extraStyles} className='w-max'>
+  <div
+    style={extraStyles}
+    className='w-max ml-auto mr-[5%] phones:scale-x-[0.35] phones:scale-y-[0.42] phones:mr-0'
+  >
     <svg
       width='155'
       height='149'
