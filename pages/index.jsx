@@ -115,11 +115,11 @@ export default function Home({ slidesData, articles }) {
           <HistorySlider />
 
           <section className='mt-52 phones:mt-28'>
-            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[60%]'>
+            <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[70%]'>
               Furniture solution on a budget
             </h3>
             <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-12 h-[460px] w-full bg-no-repeat bg-center flex items-end p-10 phones:p-5'>
-              <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px]'>
+              <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px] phones:font-normal'>
                 A budget furniture requirement of a new couple
               </p>
             </div>
