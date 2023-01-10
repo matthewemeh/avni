@@ -82,7 +82,7 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
   return (
     <div
       style={extraStyles}
-      className='text-[20px] leading-[45px] my-[125px] transition-all duration-500'
+      className='text-[20px] leading-[45px] my-[125px] laptops:my-0 transition-all duration-500'
     >
       {date && !isNaN(date) && (
         <small className='block text-dove-gray text-[14px] leading-[17px]'>

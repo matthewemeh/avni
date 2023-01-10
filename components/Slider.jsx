@@ -25,7 +25,7 @@ const Slider = ({ slidesData }) => {
   }, [slideIndex]);
 
   return (
-    <section className='w-full h-[690px] relative phones:h-[517px]'>
+    <section className='w-full relative h-[590px] phones:h-[517px]'>
       <SliderMedia
         onEnded={onEnded}
         videoRef={videoRef}

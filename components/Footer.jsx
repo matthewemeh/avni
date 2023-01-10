@@ -115,22 +115,24 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='relative mt-14 mb-7 flex items-center gap-x-5 gap-y-[25px] font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
-        <span>&copy; Avni {currentDate.getFullYear()}</span>
-        <Link href={`mailto:${EMAIL}`} target='_blank' className='w-max'>
+      <div className='relative mt-14 mb-7 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
+        <span className='whitespace-nowrap'>
+          &copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.
+        </span>
+        <Link href={`mailto:${EMAIL}`} target='_blank' className='w-max whitespace-nowrap'>
           {EMAIL}
         </Link>
-        <Link href='/' className='w-max'>
+        <Link href='/' className='w-max whitespace-nowrap'>
           Privacy Policy
         </Link>
-        <Link href='/' className='w-max'>
+        <Link href='/' className='w-max whitespace-nowrap'>
           Terms
         </Link>
-        <Link href='/' className='w-max'>
+        <Link href='/' className='w-max whitespace-nowrap'>
           Cookie Policy
         </Link>
 
-        <button className='flex items-center justify-center gap-x-[10px] font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand phones:ml-0 phones:py-[14px]'>
+        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand 1105px:ml-0 phones:py-[14px]'>
           <Globe /> Change country
         </button>
       </div>
