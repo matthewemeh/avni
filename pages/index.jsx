@@ -20,6 +20,7 @@ import articleImage from '../public/assets/pngs/news-body.png';
 import newsHeadMedia from '../public/assets/pngs/news-head.png';
 
 import { scrollTop } from '../public/utils';
+import Preloader from '../components/Preloader';
 
 const SLIDES_DATA = [
   {
@@ -96,8 +97,10 @@ export default function Home({ slidesData, articles }) {
       </Head>
 
       <main className='font-medium tracking-[0.36px] overflow-hidden'>
+        <Preloader />
+
         <header className='mt-20'>
-          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px] phones:text-[32px] phones:leading-[50px]'>
+          <h1 className='text-[42px] leading-[60px] text-center max-w-[387px] mx-auto laptops:text-[36px] laptops:max-w-[320px] phones:max-w-[290px] phones:text-[32px] phones:leading-[50px]'>
             A mission to get your perfect piece
           </h1>
 
@@ -111,18 +114,18 @@ export default function Home({ slidesData, articles }) {
 
           <HistorySlider />
 
-          <section className='mt-52'>
+          <section className='mt-52 phones:mt-28'>
             <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[60%]'>
               Furniture solution on a budget
             </h3>
-            <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-20 h-[560px] w-full bg-no-repeat bg-center flex items-end p-10 phones:p-5'>
+            <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-12 h-[460px] w-full bg-no-repeat bg-center flex items-end p-10 phones:p-5'>
               <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px]'>
                 A budget furniture requirement of a new couple
               </p>
             </div>
 
-            <div className='mt-52 bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end'>
-              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-14 px-[60px] gap-y-5 laptops:py-8 laptops:px-5 phones:flex-col'>
+            <div className='mt-52 bg-[url(/assets/pngs/furniture2.png)] w-full h-[460px] bg-cover bg-center bg-no-repeat flex items-end phones:mt-28'>
+              <div className='bg-[rgba(0,0,0,0.2)] backdrop-blur-[72px] flex items-center justify-between w-full py-8 px-[60px] gap-y-5 laptops:py-8 laptops:px-[45px] phones:flex-col phones:px-[5%]'>
                 <p className='font-semibold text-[32px] leading-10 max-w-[348px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px] phones:max-w-none'>
                   Ideas for a cool living space
                 </p>
@@ -135,23 +138,22 @@ export default function Home({ slidesData, articles }) {
 
           <SpaceSlider />
 
-          <section className='mt-52'>
+          <section className='mt-28'>
             <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
               Our environment and Us
             </h3>
-            <p className='text-[14px] leading-[21px] text-center max-w-[632px] mx-auto mt-[18px] mb-[30px]'>
+            <p className='text-[14px] leading-[21px] text-center max-w-[632px] mx-auto mt-[18px] mb-[30px] phones:font-normal'>
               We are conscious of the impact of furniture making on our environment. At Avni, our
               goal is to promote eco-friendly furniture for you, for us and for our environment.
             </p>
 
             <LinkBubble text="Here's how" href='/home' />
 
-            <Image
-              src={newsHeadMedia}
-              alt='avni news header'
-              className='w-full h-full mt-[84px] mb-[26px]'
-            />
-            <CurlyArrow extraStyles={{ marginLeft: 'auto', marginRight: '5%' }} />
+            <div className='w-full h-[460px] mt-10 mb-[26px] phones:h-[191px]'>
+              <Image src={newsHeadMedia} alt='avni news header' className='w-full h-full' />
+            </div>
+
+            <CurlyArrow />
           </section>
 
           <ArticlePreview articles={articles} />
