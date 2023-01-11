@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <main
-        className={`transition-all w-full duration-500 absolute top-0 ${
+        className={`font-montserrat transition-all w-full duration-500 absolute top-0 ${
           menuOpened ? 'right-[400px]' : 'right-0'
         }`}
       >
