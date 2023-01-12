@@ -25,7 +25,7 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
         />
       </Head>
-      <body className='text-outer-space bg-white dark:text-romance dark:bg-shark'>
+      <body className='text-outer-space bg-white dark:text-wild-sand dark:bg-shark'>
         <Main />
         <NextScript />
       </body>

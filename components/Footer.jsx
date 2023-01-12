@@ -132,7 +132,7 @@ const Footer = () => {
           Cookie Policy
         </Link>
 
-        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] text-outer-space font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand 1105px:ml-0 phones:py-[14px]'>
+        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] text-outer-space font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand dark:text-wild-sand 1105px:ml-0 phones:py-[14px]'>
           <Globe /> Change country
         </button>
       </div>

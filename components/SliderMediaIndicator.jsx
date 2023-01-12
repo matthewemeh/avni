@@ -52,7 +52,7 @@ const SlideMediaIndicator = ({
             screenWidth > MOBILE_BREAKPOINT ? slidesData[slideIndex]?.themeColor : 'none',
         }}
         className={`font-normal h-[60px] flex items-center pl-5 transition-all duration-500 phones:absolute phones:top-24 phones:w-full phones:mt-10 phones:justify-center phones:pl-0 phones:text-[16px] phones:leading-5 ${
-          screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-white'
+          screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-wild-sand'
         }`}
       >
         <span className='font-bold mr-2'>{`${slideIndex + 1}`.padStart(2, '0')}</span>
