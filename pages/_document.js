@@ -2,7 +2,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang='en' className='scroll-smooth m-0 outline-0 p-0 list-none no-underline box-border'>
+    <Html
+      lang='en'
+      className='scroll-smooth m-0 outline-0 p-0 list-none no-underline box-border cursor-default'
+    >
       <Head>
         <meta charSet='UTF-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
@@ -22,7 +25,7 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
         />
       </Head>
-      <body className='text-outer-space bg-white dark:text-romance dark:bg-shark'>
+      <body className='text-outer-space bg-white dark:text-wild-sand dark:bg-shark'>
         <Main />
         <NextScript />
       </body>

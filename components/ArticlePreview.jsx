@@ -58,7 +58,13 @@ const ArticlePreview = ({ articles }) => {
         <Image
           alt='avni news article'
           src={currentArticle?.image || AvniImage}
-          className='w-[498px] h-[460px] ml-auto laptops:w-[365px] laptops:h-[410px] phones:w-[339px] phones:mx-auto phones:h-[380px]'
+          className='w-[498px] h-[560px] ml-auto laptops:w-[365px] laptops:h-[410px] phones:w-[339px] phones:mx-auto phones:h-[380px]'
+        />
+
+        <div
+          className={`absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.2)] transition-all duration-500 ${
+            currentArticle && 'opacity-0 invisible'
+          }`}
         />
 
         <button

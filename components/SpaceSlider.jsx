@@ -9,10 +9,10 @@ const SpaceSlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-36 phones:mt-28'>
+    <section className='mt-[200px] phones:mt-28'>
       <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>Space Ideas</h3>
 
-      <div className='grid grid-cols-[77%_23%] mt-12 h-[400px] phones:grid-cols-1'>
+      <div className='grid grid-cols-[77%_23%] mt-12 h-[560px] phones:grid-cols-1'>
         <div
           className={`bg-no-repeat bg-cover bg-center transition-all duration-500 ${
             slideIndex === 0

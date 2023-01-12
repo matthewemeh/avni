@@ -3,7 +3,14 @@ import { useEffect, useState, useContext } from 'react';
 
 import { AppContext } from '../pages/_app';
 
-const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) => {
+const SlideMediaIndicator = ({
+  pause,
+  zoomImage,
+  slidesData,
+  slideIndex,
+  setSlideIndex,
+  nextSlideIndex,
+}) => {
   const { MOBILE_BREAKPOINT } = useContext(AppContext);
   const [screenWidth, setScreenWidth] = useState(0);
 
@@ -18,16 +25,20 @@ const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) 
             fill
             key={slideData?.title}
             alt={slideData?.title}
+            onClick={() => setSlideIndex(nextSlideIndex)}
             src={slideData?.image || slideData?.thumbnail?.src}
             className={`absolute top-0 left-0 transition-all duration-500 ${
               nextSlideIndex === index ? 'opacity-100' : 'opacity-0'
             }`}
           />
         ))}
+        <p className='absolute bottom-5 left-5 text-white font-bold text-[14px] leading-[17px] z-[1]'>
+          {(nextSlideIndex + 1).toString().padStart(2, '0')}
+        </p>
       </div>
 
       <button
-        onClick={pause}
+        onClick={slidesData[slideIndex]?.image ? zoomImage : pause}
         className={`bg-[rgba(255,255,255,0.2)] w-[60px] h-[60px] bg-center bg-no-repeat transition-all duration-500 phones:invisible phones:opacity-0 ${
           slidesData[slideIndex]?.image
             ? 'bg-[url(/assets/svgs/capture.svg)]'
@@ -41,7 +52,7 @@ const SlideMediaIndicator = ({ slidesData, slideIndex, nextSlideIndex, pause }) 
             screenWidth > MOBILE_BREAKPOINT ? slidesData[slideIndex]?.themeColor : 'none',
         }}
         className={`font-normal h-[60px] flex items-center pl-5 transition-all duration-500 phones:absolute phones:top-24 phones:w-full phones:mt-10 phones:justify-center phones:pl-0 phones:text-[16px] phones:leading-5 ${
-          screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-white'
+          screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-wild-sand'
         }`}
       >
         <span className='font-bold mr-2'>{`${slideIndex + 1}`.padStart(2, '0')}</span>

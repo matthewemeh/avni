@@ -47,12 +47,12 @@ const HistorySlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-40 phones:mt-28'>
+    <section className='mt-[200px] phones:mt-28'>
       <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:max-w-[90%] phones:mx-auto'>
         A run through the furniture history
       </h3>
 
-      <div className='mt-20 w-full h-[331px] flex font-bold text-[18px] leading-[100%] phones:relative'>
+      <div className='mt-[84px] w-full h-[331px] flex font-bold text-[18px] leading-[100%] phones:relative'>
         {furnitures.map(({ text, bgImage }, index) => (
           <div
             key={index}
