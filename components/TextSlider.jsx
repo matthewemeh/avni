@@ -98,7 +98,7 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
 
       <article
         ref={articleRef}
-        className='my-[50px] h-[60%] min-h-[182px] overflow-hidden relative grid grid-rows-3 grid-cols-1'
+        className='my-[50px] h-[60%] min-h-[182px] relative grid grid-rows-3 grid-cols-1'
       >
         {pretexts.slice(0, MAX_PRETEXTS).map((pretext, index) => (
           <p
@@ -114,15 +114,12 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
       </article>
 
       {isCampaigns || (
-        <div className='text-[14px] leading-[17px] flex flex-col gap-y-4'>
-          <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 w-max'>
-            Read the article <ArrowRight />
-          </Link>
-
-          <button onClick={reset} className='underline w-max h-max'>
-            Skip to begin
-          </button>
-        </div>
+        <Link
+          href={`/articles/${_id}`}
+          className='flex items-center text-[14px] leading-[17px] gap-x-[14px] w-max'
+        >
+          Read the article <ArrowRight />
+        </Link>
       )}
     </div>
   );

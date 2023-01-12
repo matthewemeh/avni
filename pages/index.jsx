@@ -99,7 +99,7 @@ export default function Home({ slidesData, articles }) {
       <main className='font-medium tracking-[0.36px] overflow-hidden'>
         <Preloader />
 
-        <header className='mt-20'>
+        <header className='mt-[89px]'>
           <h1 className='text-[42px] leading-[60px] text-center max-w-[400px] mx-auto laptops:text-[36px] laptops:max-w-[357px] phones:max-w-[330px] phones:text-[32px] phones:leading-[50px]'>
             A mission to get your perfect piece
           </h1>
@@ -107,7 +107,7 @@ export default function Home({ slidesData, articles }) {
           <LinkBubble text='Go Shopping' href='/home' />
         </header>
 
-        <div className='mx-[14%] mt-[84px] laptops:mx-[12%] phones:mx-[5%]'>
+        <div className='mx-[14%] mt-[84px] laptops:mt-[88px] laptops:mx-[12%] phones:mx-[5%]'>
           <Slider slidesData={slidesData} />
 
           <Testimonial />
@@ -118,15 +118,15 @@ export default function Home({ slidesData, articles }) {
             <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[70%]'>
               Furniture solution on a budget
             </h3>
-            <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-[84px] h-[560px] w-full bg-no-repeat bg-center flex items-end p-10 phones:p-5'>
+            <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-[84px] h-[560px] w-full bg-no-repeat bg-center flex items-end p-10 laptops:h-[410px] laptops:pb-[31px] phones:p-5'>
               <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px] phones:font-normal'>
                 A budget furniture requirement of a new couple
               </p>
             </div>
 
-            <div className='mt-[200px] bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end phones:mt-28'>
-              <div className='bg-[rgba(0,0,0,0.2)] h-[188px] backdrop-blur-[72px] flex items-center justify-between w-full py-[55px] px-[60px] gap-y-5 laptops:py-8 laptops:px-[45px] phones:flex-col phones:px-[5%]'>
-                <p className='font-semibold text-[32px] leading-[39px] max-w-[380px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[220px] phones:max-w-none'>
+            <div className='mt-[200px] bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end laptops:h-[410px] phones:mt-28'>
+              <div className='bg-[rgba(0,0,0,0.2)] h-[188px] backdrop-blur-[72px] flex items-center justify-between w-full py-[55px] px-[60px] gap-y-5 laptops:h-[108px] laptops:py-[30px] laptops:px-10 phones:flex-col phones:px-[5%]'>
+                <p className='font-semibold text-[32px] leading-[39px] max-w-[380px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[240px] phones:max-w-none'>
                   Ideas for a cool living space
                 </p>
                 <button className='bg-white rounded-full text-cod-gray font-medium text-[12px] leading-4 py-[15px] px-[30px] phones:py-[11px] phones:px-[25px]'>
@@ -149,7 +149,7 @@ export default function Home({ slidesData, articles }) {
 
             <LinkBubble text="Here's how" href='/home' />
 
-            <div className='w-full h-[560px] mt-[84px] mb-[26px] phones:h-[191px]'>
+            <div className='w-full h-[560px] mt-[84px] mb-[26px] laptops:h-[410px] phones:h-[191px]'>
               <Image src={newsHeadMedia} alt='avni news header' className='w-full h-full' />
             </div>
 

@@ -16,7 +16,7 @@ const ArticlePreview = ({ articles }) => {
   setTimeout(() => setCampaignVisible(false), 12000);
 
   return (
-    <section className='mt-[26px] mb-36 w-full h-max grid grid-cols-2 laptops:mt-16 phones:grid-cols-1 phones:grid-rows-[repeat(2,auto)] phones:mt-0 phones:mb-20'>
+    <section className='mt-[26px] mb-[180px] w-full h-max grid grid-cols-2 laptops:mt-0 phones:grid-cols-1 phones:grid-rows-[repeat(2,auto)] phones:mt-0 phones:mb-20'>
       <TextSlider
         extraStyles={{
           gridRowStart: '1',
@@ -35,11 +35,11 @@ const ArticlePreview = ({ articles }) => {
       <CampaignPreview visible={campaignVisible} />
 
       <div
-        className={`col-start-1 row-start-1 mr-10 flex flex-col gap-y-[50px] items-center justify-center laptops:relative laptops:top-[15%] transition-all duration-500 phones:mr-0 phones:top-0 phones:h-max ${
+        className={`col-start-1 row-start-1 mr-10 flex flex-col gap-y-[50px] items-center justify-center transition-all duration-500 phones:mr-0 phones:top-0 phones:h-max ${
           (currentArticle || campaignVisible) && 'opacity-0 invisible'
         }`}
       >
-        <div className='w-full flex items-center justify-around gap-x-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-y-6 laptops:gap-x-0 phones:bottom-0 phones:grid-cols-1'>
+        <div className='w-full flex items-center justify-around gap-x-[30px] gap-y-[30px] laptops:grid laptops:grid-rows-2 laptops:grid-cols-2 laptops:gap-x-0 phones:bottom-0 phones:grid-cols-1'>
           {articles.map(({ title, _id }) => (
             <ArticlePoint
               key={_id}
@@ -54,7 +54,7 @@ const ArticlePreview = ({ articles }) => {
         </p>
       </div>
 
-      <div className='relative h-max col-start-2 row-start-1 phones:mt-20 phones:row-start-2 phones:col-start-1'>
+      <div className='relative h-max col-start-2 row-start-1 phones:mt-20 phones:row-start-2 phones:col-start-1 phones:w-max phones:mx-auto'>
         <Image
           alt='avni news article'
           src={currentArticle?.image || AvniImage}
@@ -62,7 +62,7 @@ const ArticlePreview = ({ articles }) => {
         />
 
         <div
-          className={`absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.2)] transition-all duration-500 ${
+          className={`absolute top-0 right-0 w-full max-w-[498px] h-[560px] bg-[rgba(0,0,0,0.2)] transition-all duration-500 laptops:max-w-[365px] laptops:h-[410px] phones:max-w-[339px] phones:h-[380px] ${
             currentArticle && 'opacity-0 invisible'
           }`}
         />
