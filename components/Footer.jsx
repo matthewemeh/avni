@@ -12,8 +12,8 @@ const Footer = () => {
   const EMAIL = 'furniture@avniverse.com';
 
   return (
-    <footer className='bg-wild-sand pt-[100px] font-normal -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke'>
-      <div className='w-full text-[12px] leading-[30px] grid grid-cols-[repeat(5,20%)] pb-[30px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
+    <footer className='bg-wild-sand pt-[89px] -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke'>
+      <div className='w-full text-[12px] leading-[30px] grid grid-cols-[repeat(5,20%)] pb-[89px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
         <div>
           <Logo />
           <p className='mt-[50px] text-[12px] leading-[18px]'>Follow Us</p>
@@ -21,21 +21,21 @@ const Footer = () => {
             <Link
               target='_blank'
               href={`mailto:${EMAIL}`}
-              className='w-8 h-8 grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
+              className='w-[25px] h-[25px] grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
             >
               <Email />
             </Link>
             <Link
               target='_blank'
               href='https://tiktoklink.com'
-              className='w-8 h-8 grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
+              className='w-[25px] h-[25px] grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
             >
               <Instagram />
             </Link>
             <Link
               target='_blank'
               href='https://youtubelink.com'
-              className='w-8 h-8 grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
+              className='w-[25px] h-[25px] grid place-items-center rounded-full bg-outer-space text-white dark:bg-white dark:text-outer-space phones:w-[25px] phones:h-[25px]'
             >
               <Youtube />
             </Link>
@@ -115,7 +115,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='relative mt-14 mb-7 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
+      <div className='relative my-16 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
         <span className='whitespace-nowrap'>
           &copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.
         </span>
@@ -132,7 +132,7 @@ const Footer = () => {
           Cookie Policy
         </Link>
 
-        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand 1105px:ml-0 phones:py-[14px]'>
+        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] text-outer-space font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand 1105px:ml-0 phones:py-[14px]'>
           <Globe /> Change country
         </button>
       </div>
