@@ -2,7 +2,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang='en' className='scroll-smooth m-0 outline-0 p-0 list-none no-underline box-border'>
+    <Html
+      lang='en'
+      className='scroll-smooth m-0 outline-0 p-0 list-none no-underline box-border cursor-default'
+    >
       <Head>
         <meta charSet='UTF-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
