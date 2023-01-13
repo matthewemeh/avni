@@ -47,7 +47,7 @@ const HistorySlider = () => {
   }, [slideIndex]);
 
   return (
-    <section className='mt-[200px] phones:mt-28'>
+    <section className='mt-[200px] phones:mt-[103px]'>
       <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:max-w-[90%] phones:mx-auto'>
         A run through the furniture history
       </h3>

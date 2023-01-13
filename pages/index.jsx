@@ -99,7 +99,7 @@ export default function Home({ slidesData, articles }) {
       <main className='font-medium tracking-[0.36px] overflow-hidden'>
         <Preloader />
 
-        <header className='mt-[89px]'>
+        <header className='mt-[89px] phones:mt-[61px]'>
           <h1 className='text-[42px] leading-[60px] text-center max-w-[400px] mx-auto laptops:text-[36px] laptops:max-w-[357px] phones:max-w-[330px] phones:text-[32px] phones:leading-[50px]'>
             A mission to get your perfect piece
           </h1>
@@ -107,14 +107,14 @@ export default function Home({ slidesData, articles }) {
           <LinkBubble text='Go Shopping' href='/home' />
         </header>
 
-        <div className='mx-[14%] mt-[84px] laptops:mt-[88px] laptops:mx-[12%] phones:mx-[5%]'>
+        <div className='mx-[14%] mt-[84px] laptops:mt-[88px] laptops:mx-[12%] phones:mt-[60px] phones:mx-[5%]'>
           <Slider slidesData={slidesData} />
 
           <Testimonial />
 
           <HistorySlider />
 
-          <section className='mt-[200px] phones:mt-28'>
+          <section className='mt-[200px] phones:mt-[103px]'>
             <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px] phones:text-center phones:mx-auto phones:max-w-[70%]'>
               Furniture solution on a budget
             </h3>
@@ -124,8 +124,8 @@ export default function Home({ slidesData, articles }) {
               </p>
             </div>
 
-            <div className='mt-[200px] bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end laptops:h-[410px] phones:mt-28'>
-              <div className='bg-[rgba(0,0,0,0.2)] h-[188px] backdrop-blur-[72px] flex items-center justify-between w-full py-[55px] px-[60px] gap-y-5 laptops:h-[108px] laptops:py-[30px] laptops:px-10 phones:flex-col phones:px-[5%]'>
+            <div className='mt-[200px] bg-[url(/assets/pngs/furniture2.png)] w-full h-[560px] bg-cover bg-center bg-no-repeat flex items-end laptops:h-[410px] phones:mt-[103px]'>
+              <div className='bg-[rgba(0,0,0,0.2)] h-[188px] backdrop-blur-[72px] flex items-center justify-between w-full py-[55px] px-[60px] gap-y-5 laptops:h-[108px] laptops:py-[30px] laptops:px-10 phones:h-[142px] phones:flex-col phones:px-7'>
                 <p className='font-semibold text-[32px] leading-[39px] max-w-[380px] text-white laptops:text-[20px] laptops:leading-[24px] laptops:max-w-[240px] phones:max-w-none'>
                   Ideas for a cool living space
                 </p>
@@ -138,11 +138,11 @@ export default function Home({ slidesData, articles }) {
 
           <SpaceSlider />
 
-          <section className='mt-[200px]'>
+          <section className='mt-[200px] phones:mt-[103px]'>
             <h3 className='text-[30px] leading-[45px] text-center laptops:text-[25px]'>
               Our environment and Us
             </h3>
-            <p className='text-[14px] leading-[21px] text-center max-w-[632px] mx-auto mt-[18px] mb-[30px] phones:font-normal'>
+            <p className='text-[14px] leading-[21px] text-center max-w-[632px] mx-auto mt-[18px] mb-[30px] phones:mb-[35px] phones:font-normal'>
               We are conscious of the impact of furniture making on our environment. At Avni, our
               goal is to promote eco-friendly furniture for you, for us and for our environment.
             </p>
