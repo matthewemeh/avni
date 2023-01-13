@@ -40,7 +40,7 @@ const Slider = ({ slidesData }) => {
   }, [slideIndex, imageZoomed]);
 
   return (
-    <section className='w-full relative h-[690px] phones:h-[517px]'>
+    <section className='w-full relative h-[690px] laptops:h-[509px] phones:h-[517px]'>
       <Overlay
         visible={imageZoomed}
         onClick={() => setImageZoomed(false)}

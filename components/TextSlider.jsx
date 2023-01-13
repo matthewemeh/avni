@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 import ArrowRight from './icons/ArrowRight';
 
-import { getMonthName, toggleClass } from '../public/utils';
+import { getMonthName } from '../public/utils';
 
-const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset, slideClass }) => {
-  const [maxTextLength, setMaxTextLength] = useState(0);
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [pretexts, setPretexts] = useState([]);
+const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, next, slideClass }) => {
+  const MAX_PRETEXTS = 4;
   const articleRef = useRef();
-  const MAX_PRETEXTS = 3;
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [maxTextLength, setMaxTextLength] = useState(0);
 
   const getPretexts = () => {
     let tempPretext = '';
@@ -26,16 +25,19 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
         tempPretext = '';
       }
     }
-    setPretexts(tempPretexts);
     setSlideIndex(0);
+
+    return [...tempPretexts.slice(0, 3), tempPretexts[0]];
   };
+
+  const pretexts = useMemo(getPretexts, [pretext, maxTextLength]);
 
   const moveLeft = element => {
     element.style.left = '-100%';
   };
 
   const moveDown = element => {
-    element.style.top = '67%';
+    element.style.top = '100%';
   };
 
   const moveRight = element => {
@@ -52,19 +54,20 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
   const moveText = () => {
     const pretextTags = document.querySelectorAll(`.${slideClass}`);
     const firstTag = pretextTags[slideIndex];
+    const secondTag = pretextTags[(slideIndex + 1) % MAX_PRETEXTS];
+    const lastTag = pretextTags[(slideIndex + 4) % MAX_PRETEXTS];
 
     pretextTags.forEach((pretextTag, index) => {
-      if (slideIndex === index) moveLeft(pretextTag);
-      else moveUp(pretextTag);
+      moveUp(pretextTag);
 
+      setTimeout(() => {
+        if (slideIndex === index) moveLeft(pretextTag);
+      }, 500);
       setTimeout(() => moveDown(firstTag), 1000);
-      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 1500);
       setTimeout(() => moveRight(firstTag), 2000);
-      setTimeout(() => toggleClass(firstTag, 'w-full', 'w-0'), 2500);
+      setTimeout(() => (lastTag.innerText = secondTag.innerText), 2500);
     });
   };
-
-  useEffect(getPretexts, [pretext, maxTextLength]);
 
   useEffect(() => {
     if (pretexts.length < MAX_PRETEXTS) return;
@@ -98,13 +101,13 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
 
       <article
         ref={articleRef}
-        className='my-[50px] h-[60%] min-h-[182px] overflow-hidden relative grid grid-rows-3 grid-cols-1'
+        className='my-[50px] overflow-hidden h-2/5 min-h-[182px] relative grid grid-rows-3 grid-cols-1 laptops:text-[16px]'
       >
-        {pretexts.slice(0, MAX_PRETEXTS).map((pretext, index) => (
+        {pretexts.map((pretext, index) => (
           <p
             key={index}
-            style={{ left: 0, top: `${(index / MAX_PRETEXTS) * 100}%` }}
-            className={`${slideClass} overflow-hidden whitespace-nowrap w-full absolute text-[20px] leading-[45px] transition-all duration-500 laptops:text-[16px] ${
+            style={{ left: 0, top: `${(index / 3) * 100}%` }}
+            className={`${slideClass} overflow-hidden whitespace-nowrap w-full absolute transition-all duration-500 ${
               index === (slideIndex + 1) % MAX_PRETEXTS ? 'opacity-100' : 'opacity-30'
             }`}
           >
@@ -114,13 +117,17 @@ const TextSlider = ({ pretext, title, date, _id, isCampaigns, extraStyles, reset
       </article>
 
       {isCampaigns || (
-        <div className='text-[14px] leading-[17px] flex flex-col gap-y-4'>
+        <div className='text-[14px] leading-[17px] flex flex-col gap-y-4 phones:flex-row'>
           <Link href={`/articles/${_id}`} className='flex items-center gap-x-2 w-max'>
             Read the article <ArrowRight />
           </Link>
 
-          <button onClick={reset} className='underline w-max h-max'>
-            Skip to begin
+          <button
+            onClick={next}
+            className='flex items-center justify-center gap-x-3 w-[37px] h-[37px] bg-outer-space text-white rounded-full ml-auto mr-4 dark:bg-white dark:text-shark transition-all duration-200 hover:w-[88px] hover:pl-[43px] phones:w-[88px] phones:pl-0'
+          >
+            <p className='select-none -ml-[43px] phones:ml-0'>Next</p>
+            <ArrowRight />
           </button>
         </div>
       )}

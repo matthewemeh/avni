@@ -12,12 +12,12 @@ const Footer = () => {
   const EMAIL = 'furniture@avniverse.com';
 
   return (
-    <footer className='bg-wild-sand pt-[89px] -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke'>
-      <div className='w-full text-[12px] leading-[30px] grid grid-cols-[repeat(5,20%)] pb-[89px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
+    <footer className='bg-wild-sand pt-[89px] -mx-[19.4%] px-[20%] overflow-hidden dark:bg-woodsmoke phones:pt-[60px]'>
+      <div className='w-full text-[12px] leading-[30px] grid grid-cols-[repeat(5,20%)] pb-[89px] border-alto-light border-b-[1px] dark:border-wild-sand laptops:grid-rows-2 laptops:grid-cols-3 laptops:gap-y-16 phones:pb-[100px] phones:text-[14px] phones:grid-cols-1 phones:grid-rows-[auto] phones:gap-y-[70px]'>
         <div>
           <Logo />
           <p className='mt-[50px] text-[12px] leading-[18px]'>Follow Us</p>
-          <div className='mt-3 flex gap-x-[10px] phones:gap-x-5'>
+          <div className='mt-3 flex gap-x-[10px] phones:gap-x-5 laptops:mt-[10px]'>
             <Link
               target='_blank'
               href={`mailto:${EMAIL}`}
@@ -42,8 +42,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='grid grid-rows-[24px_repeat(4,30px)] phones:gap-y-[15px]'>
-          <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>
+        <div className='grid grid-rows-[24px_repeat(4,30px)] phones:gap-y-[10px]'>
+          <p className='font-semibold text-[16px] leading-6 laptops:mb-2 phones:mb-[5px] phones:text-[15px]'>
             Things we care about
           </p>
           <Link href='/' className='w-max'>
@@ -60,8 +60,10 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[24px_repeat(4,30px)] pl-[30%] laptops:pl-0 phones:gap-y-[15px]'>
-          <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Company</p>
+        <div className='grid grid-rows-[24px_repeat(4,30px)] pl-[30%] laptops:pl-0 phones:gap-y-[10px]'>
+          <p className='font-semibold text-[16px] leading-6 laptops:mb-2 phones:mb-[5px] phones:text-[15px]'>
+            Company
+          </p>
           <Link href='/' className='w-max'>
             About Avni.furniture
           </Link>
@@ -76,8 +78,10 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[24px_repeat(5,30px)] pl-[30%] laptops:pl-0 laptops:col-start-2 phones:col-start-auto phones:gap-y-[15px]'>
-          <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Social</p>
+        <div className='grid grid-rows-[24px_repeat(5,30px)] pl-[30%] laptops:pl-0 laptops:col-start-2 phones:col-start-auto phones:gap-y-[10px]'>
+          <p className='font-semibold text-[16px] leading-6 laptops:mb-2 phones:mb-[5px] phones:text-[15px]'>
+            Social
+          </p>
           <Link href='/' className='w-max'>
             Pinterest
           </Link>
@@ -95,8 +99,10 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className='grid grid-rows-[24px_repeat(5,30px)] laptops:col-start-3 phones:col-start-auto phones:gap-y-[15px]'>
-          <p className='font-semibold text-[16px] leading-6 phones:mb-[5px]'>Avni.Furniture</p>
+        <div className='grid grid-rows-[24px_repeat(5,30px)] laptops:col-start-3 phones:col-start-auto phones:gap-y-[10px]'>
+          <p className='font-semibold text-[16px] leading-6 laptops:mb-2 phones:mb-[5px] phones:text-[15px]'>
+            Avni.Furniture
+          </p>
           <Link href='/' className='w-max'>
             For users
           </Link>
@@ -115,7 +121,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='relative my-16 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand phones:flex-wrap phones:gap-x-[25px]'>
+      <div className='relative my-16 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand laptops:mb-[50px] laptops:mt-[30px] phones:mb-10 phones:flex-wrap phones:gap-x-[25px]'>
         <span className='whitespace-nowrap'>
           &copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.
         </span>
