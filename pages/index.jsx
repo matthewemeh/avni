@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Slider from '../components/Slider';
 import Footer from '../components/Footer';
+import Preloader from '../components/Preloader';
 import LinkBubble from '../components/LinkBubble';
 import SpaceSlider from '../components/SpaceSlider';
 import Testimonial from '../components/Testimonial';
@@ -20,7 +21,6 @@ import articleImage from '../public/assets/pngs/news-body.png';
 import newsHeadMedia from '../public/assets/pngs/news-head.png';
 
 import { scrollTop } from '../public/utils';
-import Preloader from '../components/Preloader';
 
 const SLIDES_DATA = [
   {

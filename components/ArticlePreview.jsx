@@ -8,10 +8,16 @@ import CampaignPreview from './CampaignPreview';
 import AvniImage from '../public/assets/pngs/avni-white-bg-blue.png';
 
 const ArticlePreview = ({ articles }) => {
+  const [articleIndex, setArticleIndex] = useState(0);
   const [currentArticle, setCurrentArticle] = useState(null);
   const [campaignVisible, setCampaignVisible] = useState(true);
 
-  const reset = () => setCurrentArticle(null);
+  const next = () => {
+    const nextArticleIndex = (articleIndex + 1) % articles.length;
+
+    setCurrentArticle(articles[nextArticleIndex]);
+    setArticleIndex(nextArticleIndex);
+  };
 
   setTimeout(() => setCampaignVisible(false), 12000);
 
@@ -24,7 +30,8 @@ const ArticlePreview = ({ articles }) => {
           opacity: currentArticle ? '1' : '0',
           visibility: currentArticle ? 'visible' : 'hidden',
         }}
-        reset={reset}
+        next={next}
+        key={articleIndex}
         slideClass='pretext'
         _id={currentArticle?._id || ''}
         title={currentArticle?.title || ''}

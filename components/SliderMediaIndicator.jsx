@@ -51,7 +51,7 @@ const SlideMediaIndicator = ({
           backgroundColor:
             screenWidth > MOBILE_BREAKPOINT ? slidesData[slideIndex]?.themeColor : 'none',
         }}
-        className={`font-normal h-[60px] flex items-center pl-5 transition-all duration-500 laptops:pl-2 laptops:h-[44px] phones:absolute phones:top-24 phones:w-full phones:mt-10 phones:justify-center phones:pl-0 phones:text-[16px] phones:leading-5 ${
+        className={`font-normal h-[60px] flex items-center pl-5 transition-all duration-500 laptops:pl-2 laptops:h-[44px] phones:absolute phones:top-[54px] phones:w-full phones:mt-10 phones:justify-center phones:pl-0 phones:text-[16px] phones:leading-5 ${
           screenWidth > MOBILE_BREAKPOINT ? 'text-white' : 'text-outer-space dark:text-wild-sand'
         }`}
       >
