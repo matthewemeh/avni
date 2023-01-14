@@ -6,36 +6,41 @@ import SliderMedia from './SliderMedia';
 import SliderControls from './SliderControls';
 import SlideMediaIndicator from './SliderMediaIndicator';
 
+import { mod } from '../public/utils';
+
 const Slider = ({ slidesData }) => {
   const videoRef = useRef();
   const slidesLength = slidesData.length;
+  const [paused, setPaused] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [imageZoomed, setImageZoomed] = useState(false);
   const nextSlideIndex = (slideIndex + 1) % slidesLength;
 
-  const changeSlide = n => setSlideIndex(slideIndex + n);
+  const changeSlide = n => setSlideIndex(mod(slideIndex + n, slidesLength));
 
-  const onEnded = () => {
-    if (slideIndex + 1 < slidesLength) changeSlide(1);
-    else setSlideIndex(0);
+  const onVideoEnded = () => changeSlide(1);
+
+  const togglePause = () => {
+    if (paused) videoRef.current.play();
+    else videoRef.current.pause();
+
+    setPaused(!paused);
   };
-
-  const pause = () => videoRef.current?.pause();
 
   const zoomImage = () => setImageZoomed(true);
 
-  const toMilliseconds = seconds => seconds * 1000;
-
   useEffect(() => {
-    if (imageZoomed) return; // pause slider if image is zoomed in
+    const isVideo = slidesData[slideIndex]?.video;
 
-    const timerDuration = slidesData[slideIndex]?.video
-      ? toMilliseconds(videoRef.current.duration)
-      : 4000;
+    if (isVideo) {
+      setPaused(false);
+      videoRef.current.load();
+    }
 
-    if (slidesData[slideIndex]?.video) videoRef.current.load(); // start video afresh
+    // pause slider if image is zoomed in or current slide is a video
+    if (imageZoomed || isVideo) return;
 
-    const timer = setInterval(() => setSlideIndex((slideIndex + 1) % slidesLength), timerDuration);
+    const timer = setInterval(() => changeSlide(1), 4000);
     return () => clearInterval(timer);
   }, [slideIndex, imageZoomed]);
 
@@ -58,10 +63,10 @@ const Slider = ({ slidesData }) => {
       )}
 
       <SliderMedia
-        onEnded={onEnded}
         videoRef={videoRef}
         slidesData={slidesData}
         slideIndex={slideIndex}
+        onVideoEnded={onVideoEnded}
       />
 
       <div className='controls h-1/5 flex items-center justify-end relative text-[14px] leading-[17px] laptops:text-[12px] laptops:leading-[15px]'>
@@ -72,7 +77,8 @@ const Slider = ({ slidesData }) => {
         />
 
         <SlideMediaIndicator
-          pause={pause}
+          paused={paused}
+          pause={togglePause}
           zoomImage={zoomImage}
           slideIndex={slideIndex}
           slidesData={slidesData}

@@ -5,6 +5,7 @@ import { AppContext } from '../pages/_app';
 
 const SlideMediaIndicator = ({
   pause,
+  paused,
   zoomImage,
   slidesData,
   slideIndex,
@@ -23,6 +24,7 @@ const SlideMediaIndicator = ({
         {slidesData.map((slideData, index) => (
           <Image
             fill
+            priority
             key={slideData?.title}
             alt={slideData?.title}
             onClick={() => setSlideIndex(nextSlideIndex)}
@@ -42,6 +44,8 @@ const SlideMediaIndicator = ({
         className={`bg-[rgba(255,255,255,0.2)] w-[60px] h-[60px] bg-center bg-no-repeat transition-all duration-500 laptops:w-[44px] laptops:h-[44px] phones:invisible phones:opacity-0 ${
           slidesData[slideIndex]?.image
             ? 'bg-[url(/assets/svgs/capture.svg)]'
+            : paused
+            ? 'bg-[url(/assets/svgs/play-light.svg)]'
             : 'bg-[url(/assets/svgs/pause1.svg)]'
         }`}
       />

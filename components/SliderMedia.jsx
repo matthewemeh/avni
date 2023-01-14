@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
+const SliderMedia = ({ slidesData, onVideoEnded, videoRef, slideIndex }) => {
   return (
     <div className='relative h-4/5'>
       {slidesData.map((slideData, index) => (
@@ -20,17 +20,16 @@ const SliderMedia = ({ slidesData, onEnded, videoRef, slideIndex }) => {
             />
           ) : (
             <video
-              loop
               muted
               autoPlay
               key={index}
               ref={videoRef}
-              onEnded={onEnded}
-              className='w-full h-full mt-5 object-fill'
+              onEnded={onVideoEnded}
               poster={slideData?.thumbnail?.src}
+              className='w-full h-full mt-5 object-fill'
             >
               <source src={slideData?.video} type='video/mp4' />
-              Your broswer doesn&apos;t support videos
+              Your broswer does not support videos
             </video>
           )}
         </div>
