@@ -1,6 +1,24 @@
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-const SliderMedia = ({ slidesData, onVideoEnded, videoRef, slideIndex }) => {
+import FocalPoint from './FocalPoint';
+
+const SliderMedia = ({
+  videoRef,
+  slidesData,
+  slideIndex,
+  onVideoEnded,
+  mobileBreakpoint,
+  laptopBreakpoint,
+}) => {
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  //componentDidMount
+  useEffect(() => {
+    const screenWidth = window.screen.availWidth;
+    setIsMobileView(screenWidth <= mobileBreakpoint);
+  }, []);
+
   return (
     <div className='relative h-4/5'>
       {slidesData.map((slideData, index) => (
@@ -11,13 +29,20 @@ const SliderMedia = ({ slidesData, onVideoEnded, videoRef, slideIndex }) => {
           }`}
         >
           {slideData?.image ? (
-            <Image
-              priority
-              key={index}
-              src={slideData?.image}
-              alt={slideData?.title}
-              className='w-full h-full mt-5'
-            />
+            isMobileView ? (
+              <div
+                style={{ backgroundImage: `url(${slideData?.image?.src})` }}
+                className='w-full h-full bg-[0%_0%] bg-cover bg-no-repeat animate-[image-motion_15s_linear_infinite]'
+              />
+            ) : (
+              <Image
+                priority
+                key={index}
+                src={slideData?.image}
+                alt={slideData?.title}
+                className='w-full h-full mt-5'
+              />
+            )
           ) : (
             <video
               muted
@@ -35,11 +60,15 @@ const SliderMedia = ({ slidesData, onVideoEnded, videoRef, slideIndex }) => {
         </div>
       ))}
 
-      {slidesData[slideIndex]?.focalPoints.map(({ x, y }, index) => (
-        <div
+      {slidesData[slideIndex]?.focalPoints.map(({ x, y, title, href }, index) => (
+        <FocalPoint
+          x={x}
+          y={y}
+          href={href}
           key={index}
-          style={{ top: `${y}%`, left: `${x}%` }}
-          className='absolute ripple transition-all duration-500'
+          title={title}
+          mobileBreakpoint={mobileBreakpoint}
+          laptopBreakpoint={laptopBreakpoint}
         />
       ))}
     </div>
