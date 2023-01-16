@@ -100,7 +100,7 @@ export default function Home({ slidesData, articles }) {
         <Preloader />
 
         <header className='mt-[89px] phones:mt-[61px]'>
-          <h1 className='text-[42px] leading-[60px] text-center max-w-[500px] mx-auto laptops:text-[36px] laptops:max-w-[450px] phones:max-w-[380px] phones:text-[32px] phones:leading-[50px]'>
+          <h1 className='text-[42px] leading-[60px] text-center max-w-[500px] mx-auto laptops:text-[36px] laptops:max-w-[450px] phones:max-w-[calc(380px-12%)] phones:text-[28px] phones:leading-[50px] x-small-phones:text-[24px]'>
             Inspiring creativity for your perfect space
           </h1>
 
@@ -119,7 +119,7 @@ export default function Home({ slidesData, articles }) {
               Furniture solution on a budget
             </h3>
             <div className='bg-[url(/assets/pngs/furniture1.png)] bg-cover mt-[84px] h-[560px] w-full bg-no-repeat bg-center flex items-end p-10 laptops:h-[410px] laptops:pb-[31px] phones:p-5'>
-              <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px] phones:font-normal'>
+              <p className='font-semibold text-[16px] leading-[100%] text-white laptops:text-[14px] phones:text-[16px] phones:leading-[25px]'>
                 A budget furniture requirement of a new couple
               </p>
             </div>
