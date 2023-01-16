@@ -1,41 +1,50 @@
 import Image from 'next/image';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 
 import Overlay from './Overlay';
+import FocalPoint from './FocalPoint';
 import SliderMedia from './SliderMedia';
 import SliderControls from './SliderControls';
 import SlideMediaIndicator from './SliderMediaIndicator';
 
+import { mod } from '../public/utils';
+
+import { AppContext } from '../pages/_app';
+
 const Slider = ({ slidesData }) => {
   const videoRef = useRef();
   const slidesLength = slidesData.length;
+  const [paused, setPaused] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [imageZoomed, setImageZoomed] = useState(false);
   const nextSlideIndex = (slideIndex + 1) % slidesLength;
+  const { LAPTOP_BREAKPOINT, MOBILE_BREAKPOINT } = useContext(AppContext);
 
-  const changeSlide = n => setSlideIndex(slideIndex + n);
+  const changeSlide = n => setSlideIndex(mod(slideIndex + n, slidesLength));
 
-  const onEnded = () => {
-    if (slideIndex + 1 < slidesLength) changeSlide(1);
-    else setSlideIndex(0);
+  const onVideoEnded = () => changeSlide(1);
+
+  const togglePause = () => {
+    if (paused) videoRef.current.play();
+    else videoRef.current.pause();
+
+    setPaused(!paused);
   };
-
-  const pause = () => videoRef.current?.pause();
 
   const zoomImage = () => setImageZoomed(true);
 
-  const toMilliseconds = seconds => seconds * 1000;
-
   useEffect(() => {
-    if (imageZoomed) return; // pause slider if image is zoomed in
+    const isVideo = slidesData[slideIndex]?.video;
 
-    const timerDuration = slidesData[slideIndex]?.video
-      ? toMilliseconds(videoRef.current.duration)
-      : 4000;
+    if (isVideo) {
+      setPaused(false);
+      videoRef.current.load();
+    }
 
-    if (slidesData[slideIndex]?.video) videoRef.current.load(); // start video afresh
+    // pause slider if image is zoomed in or current slide is a video
+    if (imageZoomed || isVideo) return;
 
-    const timer = setInterval(() => setSlideIndex((slideIndex + 1) % slidesLength), timerDuration);
+    const timer = setInterval(() => changeSlide(1), 4000);
     return () => clearInterval(timer);
   }, [slideIndex, imageZoomed]);
 
@@ -48,20 +57,38 @@ const Slider = ({ slidesData }) => {
       />
 
       {slidesData[slideIndex]?.image && (
-        <Image
-          alt={slidesData[slideIndex]?.title}
-          src={slidesData[slideIndex]?.image}
-          className={`fixed z-[60] max-w-[80vw] max-h-[80vh] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
+        <div
+          className={`fixed z-[60] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
             imageZoomed || 'opacity-0 invisible'
           }`}
-        />
+        >
+          <Image
+            alt={slidesData[slideIndex]?.title}
+            src={slidesData[slideIndex]?.image}
+            className='max-w-[80vw] max-h-[80vh]'
+          />
+
+          {slidesData[slideIndex]?.focalPoints.map(({ x, y, title, href }, index) => (
+            <FocalPoint
+              x={x}
+              y={y}
+              href={href}
+              key={index}
+              title={title}
+              mobileBreakpoint={MOBILE_BREAKPOINT}
+              laptopBreakpoint={LAPTOP_BREAKPOINT}
+            />
+          ))}
+        </div>
       )}
 
       <SliderMedia
-        onEnded={onEnded}
         videoRef={videoRef}
         slidesData={slidesData}
         slideIndex={slideIndex}
+        onVideoEnded={onVideoEnded}
+        mobileBreakpoint={MOBILE_BREAKPOINT}
+        laptopBreakpoint={LAPTOP_BREAKPOINT}
       />
 
       <div className='controls h-1/5 flex items-center justify-end relative text-[14px] leading-[17px] laptops:text-[12px] laptops:leading-[15px]'>
@@ -72,7 +99,8 @@ const Slider = ({ slidesData }) => {
         />
 
         <SlideMediaIndicator
-          pause={pause}
+          paused={paused}
+          pause={togglePause}
           zoomImage={zoomImage}
           slideIndex={slideIndex}
           slidesData={slidesData}

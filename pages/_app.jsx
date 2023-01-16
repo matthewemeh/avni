@@ -12,10 +12,13 @@ export const AppContext = createContext();
 
 export default function App({ Component, pageProps }) {
   const MOBILE_BREAKPOINT = 600;
+  const LAPTOP_BREAKPOINT = 1024;
   const [menuOpened, setMenuOpened] = useState(false);
 
   return (
-    <AppContext.Provider value={{ menuOpened, setMenuOpened, MOBILE_BREAKPOINT }}>
+    <AppContext.Provider
+      value={{ menuOpened, setMenuOpened, MOBILE_BREAKPOINT, LAPTOP_BREAKPOINT }}
+    >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>

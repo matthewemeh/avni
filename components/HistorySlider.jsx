@@ -65,7 +65,7 @@ const HistorySlider = () => {
                   : '100%',
             }}
             className={`${bgImage} bg-cover bg-no-repeat bg-center h-full transition-all duration-500 phones:absolute phones:top-0 phones:left-0 ${
-              slideIndex === index ? 'phones:opacity-100' : 'phones:opacity-0'
+              slideIndex === index ? 'phones:opacity-100' : 'blur-[1px] phones:opacity-0'
             }`}
           >
             <p
