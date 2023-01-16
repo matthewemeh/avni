@@ -17,6 +17,12 @@ module.exports = {
         'muddy-waters': '#b68e5c',
         'azure-radiance': '#0381f9',
       },
+      keyframes: {
+        'image-motion': {
+          '0%, 100%': { backgroundPosition: '0% 0%' },
+          '50%': { backgroundPosition: '100% 0%' },
+        },
+      },
     },
     fontFamily: {
       arial: ['Arial', 'sans-serif'],
