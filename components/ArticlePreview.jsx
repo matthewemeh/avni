@@ -82,11 +82,11 @@ const ArticlePreview = ({ articles }) => {
           priority
           alt='avni news article'
           src={currentArticle?.image || AvniImage}
-          className='w-[470px] h-[470px] ml-auto laptops:w-[380px] laptops:h-[380px] phones:w-[339px] phones:mx-auto phones:h-[380px]'
+          className='w-[470px] h-[470px] ml-auto laptops:w-[380px] laptops:h-[380px] phones:w-[339px] phones:mx-auto phones:h-[380px] small-phones:max-w-[90vw]'
         />
 
         <div
-          className={`absolute top-0 right-0 w-full max-w-[470px] h-[470px] bg-[rgba(0,0,0,0.2)] transition-all duration-500 laptops:max-w-[380px] laptops:h-[380px] phones:max-w-[339px] phones:h-[380px] ${
+          className={`absolute top-0 right-0 w-full max-w-[470px] h-[470px] bg-[rgba(0,0,0,0.2)] transition-all duration-500 laptops:max-w-[380px] laptops:h-[380px] phones:max-w-[339px] phones:h-[380px] small-phones:max-w-[90vw] ${
             currentArticle && 'opacity-0 invisible'
           }`}
         />
