@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 import TextSlider from './TextSlider';
 import ArticlePoint from './ArticlePoint';
 import CampaignPreview from './CampaignPreview';
 
+import { isInViewport } from '../public/utils';
+
 import AvniImage from '../public/assets/pngs/avni-white-bg-blue.png';
 
 const ArticlePreview = ({ articles }) => {
+  const previewRef = useRef();
   const [articleIndex, setArticleIndex] = useState(0);
   const [currentArticle, setCurrentArticle] = useState(null);
   const [campaignVisible, setCampaignVisible] = useState(true);
@@ -19,7 +22,19 @@ const ArticlePreview = ({ articles }) => {
     setArticleIndex(nextArticleIndex);
   };
 
-  setTimeout(() => setCampaignVisible(false), 12000);
+  const startCampaignTimeout = () => {
+    if (isInViewport(previewRef.current)) {
+      setTimeout(() => setCampaignVisible(false), 12000);
+    }
+  };
+
+  // componentDidMount
+  useEffect(() => window.addEventListener('scroll', startCampaignTimeout), []);
+
+  // remove scroll listener once preview has been shown
+  useEffect(() => {
+    if (!campaignVisible) window.removeEventListener('scroll', startCampaignTimeout);
+  }, [campaignVisible]);
 
   return (
     <section className='mt-[26px] mb-[180px] w-full h-max grid grid-cols-2 laptops:mt-0 phones:grid-cols-1 phones:grid-rows-[repeat(2,auto)] phones:mt-0 phones:mb-20'>
@@ -42,7 +57,8 @@ const ArticlePreview = ({ articles }) => {
       <CampaignPreview visible={campaignVisible} />
 
       <div
-        className={`col-start-1 row-start-1 mr-10 flex flex-col gap-y-[50px] items-center justify-center transition-all duration-500 phones:mr-0 phones:top-0 phones:h-max ${
+        ref={previewRef}
+        className={`col-start-1 row-start-1 mr-10 flex flex-col gap-y-[50px] items-center justify-center relative bottom-16 transition-all duration-500 phones:mr-0 laptops:-bottom-4 phones:bottom-0 phones:h-max ${
           (currentArticle || campaignVisible) && 'opacity-0 invisible'
         }`}
       >
@@ -63,13 +79,14 @@ const ArticlePreview = ({ articles }) => {
 
       <div className='relative h-max col-start-2 row-start-1 phones:mt-20 phones:row-start-2 phones:col-start-1 phones:w-max phones:mx-auto'>
         <Image
+          priority
           alt='avni news article'
           src={currentArticle?.image || AvniImage}
-          className='w-[498px] h-[560px] ml-auto laptops:w-[365px] laptops:h-[410px] phones:w-[339px] phones:mx-auto phones:h-[380px]'
+          className='w-[470px] h-[470px] ml-auto laptops:w-[380px] laptops:h-[380px] phones:w-[339px] phones:mx-auto phones:h-[380px]'
         />
 
         <div
-          className={`absolute top-0 right-0 w-full max-w-[498px] h-[560px] bg-[rgba(0,0,0,0.2)] transition-all duration-500 laptops:max-w-[365px] laptops:h-[410px] phones:max-w-[339px] phones:h-[380px] ${
+          className={`absolute top-0 right-0 w-full max-w-[470px] h-[470px] bg-[rgba(0,0,0,0.2)] transition-all duration-500 laptops:max-w-[380px] laptops:h-[380px] phones:max-w-[339px] phones:h-[380px] ${
             currentArticle && 'opacity-0 invisible'
           }`}
         />
