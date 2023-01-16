@@ -37,6 +37,7 @@ module.exports = {
       tablets: { max: '768px' },
       phones: { max: '600px' },
       'small-phones': { max: '400px' },
+      'x-small-phones': { max: '340px' },
     },
   },
 };
