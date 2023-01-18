@@ -32,7 +32,7 @@ const SliderMedia = ({
             isMobileView ? (
               <div
                 style={{ backgroundImage: `url(${slideData?.image?.src})` }}
-                className='w-full h-full bg-[0%_0%] bg-cover bg-no-repeat animate-[image-motion_15s_linear_infinite]'
+                className='w-full h-full bg-[0%_0%] bg-cover bg-no-repeat animate-[image-motion_25s_linear_infinite]'
               />
             ) : (
               <Image

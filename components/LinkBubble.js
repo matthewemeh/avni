@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ArrowRightCircled from '../components/icons/ArrowRightCircled';
+import ArrowRightCircled from './icons/ArrowRightCircled';
 
 const LinkBubble = ({ text, href }) => (
   <Link

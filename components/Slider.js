@@ -20,7 +20,10 @@ const Slider = ({ slidesData }) => {
   const nextSlideIndex = (slideIndex + 1) % slidesLength;
   const { LAPTOP_BREAKPOINT, MOBILE_BREAKPOINT } = useContext(AppContext);
 
-  const changeSlide = n => setSlideIndex(mod(slideIndex + n, slidesLength));
+  const changeSlide = n => {
+    const newSlideIndex = mod(slideIndex + n, slidesLength);
+    if (!imageZoomed) setSlideIndex(newSlideIndex);
+  };
 
   const onVideoEnded = () => changeSlide(1);
 
@@ -41,8 +44,8 @@ const Slider = ({ slidesData }) => {
       videoRef.current.load();
     }
 
-    // pause slider if image is zoomed in or current slide is a video
-    if (imageZoomed || isVideo) return;
+    // pause slider if current slide is a video
+    if (isVideo) return;
 
     const timer = setInterval(() => changeSlide(1), 4000);
     return () => clearInterval(timer);
