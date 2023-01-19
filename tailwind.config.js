@@ -13,20 +13,26 @@ module.exports = {
         'wild-sand': '#f5f5f5',
         'dove-gray': '#717171',
         'alto-light': '#cecece',
+        'red-orange': '#ff4136',
         'outer-space': '#232b2b',
         'muddy-waters': '#b68e5c',
         'azure-radiance': '#0381f9',
+        'light-dove-gray': '#676767',
       },
       keyframes: {
         'image-motion': {
           '0%, 100%': { backgroundPosition: '0% 0%' },
           '50%': { backgroundPosition: '100% 0%' },
         },
+        'pop-down': {
+          '0%': { top: '-200px' },
+          '100%': { top: '4px' },
+        },
       },
     },
     fontFamily: {
       arial: ['Arial', 'sans-serif'],
-      montserrat: ['Poppins', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif'],
       montserrat: ['Montserrat', 'sans-serif'],
     },
     screens: {
