@@ -15,6 +15,8 @@ const Slider = ({ slidesData }) => {
   const videoRef = useRef();
   const slidesLength = slidesData.length;
   const [paused, setPaused] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+
   const [slideIndex, setSlideIndex] = useState(0);
   const [imageZoomed, setImageZoomed] = useState(false);
   const nextSlideIndex = (slideIndex + 1) % slidesLength;
@@ -36,8 +38,15 @@ const Slider = ({ slidesData }) => {
 
   const zoomImage = () => setImageZoomed(true);
 
+  //componentDidMount
+  useEffect(() => {
+    const screenWidth = window.screen.availWidth;
+    setIsMobileView(screenWidth <= MOBILE_BREAKPOINT);
+  }, []);
+
   useEffect(() => {
     const isVideo = slidesData[slideIndex]?.video;
+    const timerDuration = isMobileView ? 30000 : 4000;
 
     if (isVideo) {
       setPaused(false);
@@ -47,9 +56,9 @@ const Slider = ({ slidesData }) => {
     // pause slider if current slide is a video
     if (isVideo) return;
 
-    const timer = setInterval(() => changeSlide(1), 4000);
+    const timer = setInterval(() => changeSlide(1), timerDuration);
     return () => clearInterval(timer);
-  }, [slideIndex, imageZoomed]);
+  }, [slideIndex, imageZoomed, isMobileView]);
 
   return (
     <section className='w-full relative h-[690px] laptops:h-[509px] phones:h-[517px]'>
@@ -66,6 +75,7 @@ const Slider = ({ slidesData }) => {
           }`}
         >
           <Image
+            priority={true}
             alt={slidesData[slideIndex]?.title}
             src={slidesData[slideIndex]?.image}
             className='max-w-[80vw] max-h-[80vh]'
@@ -89,6 +99,7 @@ const Slider = ({ slidesData }) => {
         videoRef={videoRef}
         slidesData={slidesData}
         slideIndex={slideIndex}
+        isMobileView={isMobileView}
         onVideoEnded={onVideoEnded}
         mobileBreakpoint={MOBILE_BREAKPOINT}
         laptopBreakpoint={LAPTOP_BREAKPOINT}

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 import FocalPoint from './FocalPoint';
 
@@ -8,17 +7,10 @@ const SliderMedia = ({
   slidesData,
   slideIndex,
   onVideoEnded,
+  isMobileView,
   mobileBreakpoint,
   laptopBreakpoint,
 }) => {
-  const [isMobileView, setIsMobileView] = useState(false);
-
-  //componentDidMount
-  useEffect(() => {
-    const screenWidth = window.screen.availWidth;
-    setIsMobileView(screenWidth <= mobileBreakpoint);
-  }, []);
-
   return (
     <div className='relative h-4/5'>
       {slidesData.map((slideData, index) => (
@@ -32,12 +24,14 @@ const SliderMedia = ({
             isMobileView ? (
               <div
                 style={{ backgroundImage: `url(${slideData?.image?.src})` }}
-                className='w-full h-full bg-[0%_0%] bg-cover bg-no-repeat animate-[image-motion_25s_linear_infinite]'
+                className={`w-full h-full bg-[0%_0%] bg-cover bg-no-repeat ${
+                  slideIndex === index && 'animate-[image-motion_30s_linear_infinite]'
+                }`}
               />
             ) : (
               <Image
-                priority
                 key={index}
+                priority={true}
                 src={slideData?.image}
                 alt={slideData?.title}
                 className='w-full h-full mt-5'

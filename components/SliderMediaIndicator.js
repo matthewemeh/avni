@@ -24,7 +24,9 @@ const SlideMediaIndicator = ({
         {slidesData.map((slideData, index) => (
           <Image
             fill
-            priority
+            quality={1}
+            priority={true}
+            sizes='183w 249w'
             key={slideData?.title}
             alt={slideData?.title}
             onClick={() => setSlideIndex(nextSlideIndex)}

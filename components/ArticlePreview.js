@@ -79,7 +79,8 @@ const ArticlePreview = ({ articles }) => {
 
       <div className='relative h-max col-start-2 row-start-1 phones:mt-20 phones:row-start-2 phones:col-start-1 phones:w-max phones:mx-auto'>
         <Image
-          priority
+          quality={40}
+          priority={true}
           alt='avni news article'
           src={currentArticle?.image || AvniImage}
           className='w-[470px] h-[470px] ml-auto laptops:w-[380px] laptops:h-[380px] phones:w-[339px] phones:mx-auto phones:h-[380px] small-phones:max-w-[90vw]'
