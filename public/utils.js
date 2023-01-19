@@ -32,6 +32,8 @@ export const getMonthName = monthIndex => month[monthIndex];
 export const mod = (number, modNumber) => number - modNumber * Math.floor(number / modNumber);
 
 export const isInViewport = element => {
+  if (!element) return;
+
   const { top, left, bottom, right } = element.getBoundingClientRect();
 
   return (
