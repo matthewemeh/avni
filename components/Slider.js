@@ -1,8 +1,5 @@
-import Image from 'next/image';
 import { useRef, useState, useEffect, useContext } from 'react';
 
-import Overlay from './Overlay';
-import FocalPoint from './FocalPoint';
 import SliderMedia from './SliderMedia';
 import SliderControls from './SliderControls';
 import SlideMediaIndicator from './SliderMediaIndicator';
@@ -20,11 +17,14 @@ const Slider = ({ slidesData }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [imageZoomed, setImageZoomed] = useState(false);
   const nextSlideIndex = (slideIndex + 1) % slidesLength;
-  const { LAPTOP_BREAKPOINT, MOBILE_BREAKPOINT } = useContext(AppContext);
+  const { MOBILE_BREAKPOINT } = useContext(AppContext);
+
+  const [detailsOpened, setDetailsOpened] = useState(false);
 
   const changeSlide = n => {
     const newSlideIndex = mod(slideIndex + n, slidesLength);
-    if (!imageZoomed) setSlideIndex(newSlideIndex);
+
+    if (!imageZoomed && !detailsOpened) setSlideIndex(newSlideIndex);
   };
 
   const onVideoEnded = () => changeSlide(1);
@@ -58,51 +58,20 @@ const Slider = ({ slidesData }) => {
 
     const timer = setInterval(() => changeSlide(1), timerDuration);
     return () => clearInterval(timer);
-  }, [slideIndex, imageZoomed, isMobileView]);
+  }, [slideIndex, imageZoomed, isMobileView, detailsOpened]);
 
   return (
     <section className='w-full relative h-[690px] laptops:h-[509px] phones:h-[517px]'>
-      <Overlay
-        visible={imageZoomed}
-        onClick={() => setImageZoomed(false)}
-        extraStyles={{ width: '100vw', backgroundColor: 'rgba(0,0,0,0.85)' }}
-      />
-
-      {slidesData[slideIndex]?.image && (
-        <div
-          className={`fixed z-[60] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
-            imageZoomed || 'opacity-0 invisible'
-          }`}
-        >
-          <Image
-            priority={true}
-            alt={slidesData[slideIndex]?.title}
-            src={slidesData[slideIndex]?.image}
-            className='max-w-[80vw] max-h-[80vh]'
-          />
-
-          {slidesData[slideIndex]?.focalPoints.map(({ x, y, title, href }, index) => (
-            <FocalPoint
-              x={x}
-              y={y}
-              href={href}
-              key={index}
-              title={title}
-              mobileBreakpoint={MOBILE_BREAKPOINT}
-              laptopBreakpoint={LAPTOP_BREAKPOINT}
-            />
-          ))}
-        </div>
-      )}
-
       <SliderMedia
         videoRef={videoRef}
         slidesData={slidesData}
         slideIndex={slideIndex}
+        imageZoomed={imageZoomed}
         isMobileView={isMobileView}
         onVideoEnded={onVideoEnded}
-        mobileBreakpoint={MOBILE_BREAKPOINT}
-        laptopBreakpoint={LAPTOP_BREAKPOINT}
+        detailsOpened={detailsOpened}
+        setImageZoomed={setImageZoomed}
+        setDetailsOpened={setDetailsOpened}
       />
 
       <div className='controls h-1/5 flex items-center justify-end relative text-[14px] leading-[17px] laptops:text-[12px] laptops:leading-[15px]'>
