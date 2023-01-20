@@ -28,11 +28,7 @@ const SLIDES_DATA = [
     image: slide1,
     video: null,
     title: 'Shop now',
-    focalPoints: [
-      { x: 20, y: 54, title: 'tables', href: '/' },
-      { x: 35, y: 60, title: 'chairs', href: '/' },
-      { x: 70, y: 48, title: 'dinning', href: '/' },
-    ],
+    focalPoints: [],
     themeColor: '#232b2b',
   },
   {
@@ -50,9 +46,9 @@ const SLIDES_DATA = [
     video: null,
     title: 'Getting real with us',
     focalPoints: [
-      { x: 12, y: 63, title: 'faq', href: '/' },
-      { x: 50, y: 5, title: 'reach out', href: '/' },
-      { x: 85, y: 33, title: 'social handles', href: '/' },
+      { x: 20, y: 75, title: 'faq', href: '/', aspect: 60 },
+      { x: 50, y: 17, title: 'reach out', href: '/', aspect: 85 },
+      { x: 75, y: 60, title: 'social handles', href: '/', aspect: 120 },
     ],
     themeColor: '#187789',
   },
@@ -88,7 +84,7 @@ const ARTICLES = [
   },
 ];
 
-export default function Home({ slidesData, articles }) {
+export default function Home({ articles }) {
   return (
     <>
       <Head>
@@ -108,7 +104,7 @@ export default function Home({ slidesData, articles }) {
         </header>
 
         <div className='mx-[14%] mt-[84px] laptops:mt-[88px] laptops:mx-[12%] phones:mt-[60px] phones:mx-[5%]'>
-          <Slider slidesData={slidesData} />
+          <Slider slidesData={SLIDES_DATA} />
 
           <Testimonial />
 
@@ -151,7 +147,8 @@ export default function Home({ slidesData, articles }) {
 
             <div className='w-full h-[560px] mt-[84px] mb-[26px] laptops:h-[410px] phones:h-[191px]'>
               <Image
-                priority
+                quality={60}
+                priority={true}
                 src={newsHeadMedia}
                 alt='avni news header'
                 className='w-full h-full'
@@ -181,7 +178,6 @@ export async function getStaticProps() {
   // fetch data from API
   return {
     props: {
-      slidesData: SLIDES_DATA,
       articles: ARTICLES.map(article => ({
         _id: article._id,
         title: article.title,

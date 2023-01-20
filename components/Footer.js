@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Logo from './Logo';
+import Logo from './icons/Logo';
 
 import Globe from './icons/Globe';
 import Email from './icons/Email';

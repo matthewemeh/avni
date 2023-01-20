@@ -22,7 +22,7 @@ export default function Document() {
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
         <link
           rel='stylesheet'
-          href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap'
         />
       </Head>
       <body className='text-outer-space bg-white dark:text-wild-sand dark:bg-shark'>
