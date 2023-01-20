@@ -18,10 +18,12 @@ export default function Document() {
         <link rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' />
 
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-        </style>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
+        <link
+          rel='stylesheet'
+          href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap'
+        />
       </Head>
       <body className='text-outer-space bg-white dark:text-wild-sand dark:bg-shark'>
         <Main />
