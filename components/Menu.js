@@ -1,14 +1,9 @@
 import Link from 'next/link';
-import { useContext } from 'react';
 
-import Logo from './Logo';
+import Logo from './icons/Logo';
 import ArrowRightCircled from './icons/ArrowRightCircled';
 
-import { AppContext } from '../pages/_app';
-
-const Menu = () => {
-  const { menuOpened, setMenuOpened } = useContext(AppContext);
-
+const Menu = ({ menuOpened, setMenuOpened }) => {
   return (
     <div
       className={`w-[400px] h-[100vh] font-medium text-[16px] leading-5 bg-white py-[30px] px-[25px] transition-all duration-500 fixed z-20 top-0 dark:bg-shark small-phones:max-w-[100vw] ${
