@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Slider from '../components/Slider';
 import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
+import Navigation from '../components/Navigation';
 import LinkBubble from '../components/LinkBubble';
 import SpaceSlider from '../components/SpaceSlider';
 import Testimonial from '../components/Testimonial';
@@ -94,8 +95,9 @@ export default function Home({ articles }) {
 
       <main className='font-medium tracking-[0.36px] overflow-hidden'>
         <Preloader />
+        <Navigation />
 
-        <header className='mt-[89px] phones:mt-[61px]'>
+        <header className='mt-[174px] phones:mt-[61px]'>
           <h1 className='text-[42px] leading-[60px] text-center max-w-[500px] mx-auto laptops:text-[36px] laptops:max-w-[450px] phones:max-w-[calc(380px-12%)] phones:text-[28px] phones:leading-[50px] x-small-phones:text-[24px]'>
             Inspiring creativity for your perfect space
           </h1>

@@ -30,7 +30,7 @@ const Navigation = () => {
   }, [menuOpened]);
 
   return (
-    <nav className='pt-[30px] pb-[35px] pl-10 pr-[30px] w-full flex items-center justify-between sticky top-0 bg-white outline-0 z-[65] dark:bg-shark phones:pl-[25px] phones:pb-[38px]'>
+    <nav className='pt-[30px] pb-[35px] pl-10 pr-[30px] w-full flex items-center justify-between fixed top-0 bg-white outline-0 z-[65] dark:bg-shark phones:pl-[25px] phones:pb-[38px]'>
       <Link onClick={scrollTop} href='/'>
         <Logo />
       </Link>

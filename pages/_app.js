@@ -5,8 +5,6 @@ import { createContext } from 'react';
 // import '../styles/globals.css'; // for development
 import '../styles/main.css'; // for production
 
-import Navigation from '../components/Navigation';
-
 export const AppContext = createContext();
 
 export default function App({ Component, pageProps }) {
@@ -22,7 +20,6 @@ export default function App({ Component, pageProps }) {
       <main className='root font-montserrat transition-all w-full duration-500 absolute top-0'>
         <Script id='unload-script'>{`window.onbeforeunload = () => window.scrollTo(0, 0);`}</Script>
 
-        <Navigation />
         <Component {...pageProps} />
       </main>
     </AppContext.Provider>
