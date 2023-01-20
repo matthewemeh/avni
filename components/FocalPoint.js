@@ -1,42 +1,40 @@
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import CaretRight from './icons/CaretRight';
-
-const FocalPoint = ({ x, y, title, href, mobileBreakpoint, laptopBreakpoint }) => {
-  const [offsetY, setOffsetY] = useState(0);
-  const [detailsOpened, setDetailsOpened] = useState(false);
-
-  // componentDidMount
-  useEffect(() => {
-    const screenWidth = window.screen.availWidth;
-
-    if (screenWidth <= mobileBreakpoint) setOffsetY(7);
-    else if (screenWidth <= laptopBreakpoint) setOffsetY(5);
-  }, []);
-
+const FocalPoint = ({
+  x,
+  y,
+  title,
+  href,
+  aspect,
+  imageZoomed,
+  detailsOpened,
+  setImageZoomed,
+  setDetailsOpened,
+}) => {
+  const router = useRouter();
   return (
-    <>
-      <div
-        style={{ top: `${y}%`, left: `${x}%` }}
-        onMouseEnter={() => setDetailsOpened(true)}
-        onMouseLeave={() => setDetailsOpened(false)}
-        className='absolute ripple transition-all duration-500'
-      />
+    <div
+      key={title}
+      onClick={() => {
+        setDetailsOpened(false);
 
-      <Link
-        href={href}
-        onMouseEnter={() => setDetailsOpened(true)}
-        onMouseLeave={() => setDetailsOpened(false)}
-        style={{ top: `${y + offsetY + 23}%`, left: `${x - 1}%` }}
-        className={`absolute z-[60] max-w-max overflow-hidden h-14 py-4 rounded-[34px] text-[14px] leading-[17px] flex items-center justify-center gap-x-[35px] backdrop-blur-2xl text-outer-space bg-wild-sand transition-all duration-500 ${
-          detailsOpened ? 'w-[300px] pr-[10px]' : 'w-0'
-        }`}
-      >
-        <p className='ml-[15px] whitespace-nowrap uppercase'>{title}</p>
-        <CaretRight />
-      </Link>
-    </>
+        if (imageZoomed) {
+          setImageZoomed(false);
+          setTimeout(() => router.push(href), 1000);
+        } else router.push(href);
+      }}
+      style={{
+        top: `${detailsOpened ? y : 50}%`,
+        left: `${detailsOpened ? x : 50}%`,
+        width: `${detailsOpened ? aspect : 0}px`,
+        height: `${detailsOpened ? aspect : 0}px`,
+      }}
+      className={`text-outer-space cursor-pointer shadow-[0_3px_5px,0_-3px_5px] shadow-white -translate-x-1/2 -translate-y-1/2 overflow-hidden font-semibold bg-wild-sand transition-all duration-500 origin-center uppercase rounded-full grid place-items-center text-center text-[14px] leading-[17px] ${
+        imageZoomed ? 'fixed z-[72]' : 'absolute z-[60]'
+      }`}
+    >
+      {title}
+    </div>
   );
 };
 
