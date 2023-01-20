@@ -46,9 +46,9 @@ const SLIDES_DATA = [
     video: null,
     title: 'Getting real with us',
     focalPoints: [
-      { x: 20, y: 75, title: 'faq', href: '/', aspect: 60 },
-      { x: 50, y: 17, title: 'reach out', href: '/', aspect: 85 },
-      { x: 75, y: 60, title: 'social handles', href: '/', aspect: 120 },
+      { title: 'faq', href: '/' },
+      { title: 'reach out', href: '/' },
+      { title: 'social handles', href: '/' },
     ],
     themeColor: '#187789',
   },
