@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <main className='root font-montserrat transition-all w-full duration-500 absolute top-0'>
-        <Script>window.onbeforeunload = () =&gt; window.scrollTo(0, 0);</Script>
+        <Script id='unload-script'>{`window.onbeforeunload = () => window.scrollTo(0, 0);`}</Script>
 
         <Navigation />
         <Component {...pageProps} />
