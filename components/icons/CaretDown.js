@@ -1,0 +1,14 @@
+const CaretDown = () => {
+  return (
+    <svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        fill='currentColor'
+        d='M7.99972 10.0608L-0.000976562 2.05961L1.41322 0.645508L7.99982 7.23251L14.5867 0.646508L16.0008 2.06081L7.99972 10.0608Z'
+      />
+    </svg>
+  );
+};
+
+export default CaretDown;
