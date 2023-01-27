@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import Slider from '../components/Slider';
-import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
 import Navigation from '../components/Navigation';
 import LinkBubble from '../components/LinkBubble';
@@ -10,6 +9,7 @@ import SpaceSlider from '../components/SpaceSlider';
 import Testimonial from '../components/Testimonial';
 import HistorySlider from '../components/HistorySlider';
 import ArticlePreview from '../components/ArticlePreview';
+import LandingFooter from '../components/footers/LandingFooter';
 
 import CurlyArrow from '../components/icons/CurlyArrow';
 import CaretUpFilled from '../components/icons/CaretUpFilled';
@@ -164,12 +164,12 @@ export default function Home({ articles }) {
 
           <button
             onClick={scrollTop}
-            className='bg-outer-space outline-0 w-8 h-8 col-start-2 relative left-full top-[17px] rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:w-10 phones:h-10 phones:left-[90%]'
+            className='bg-outer-space w-10 h-10 relative left-full top-5 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:left-[90%]'
           >
             <CaretUpFilled />
           </button>
 
-          <Footer />
+          <LandingFooter />
         </div>
       </main>
     </>
