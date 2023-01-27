@@ -81,7 +81,7 @@ const SliderMedia = ({
               ref={videoRef}
               onEnded={onVideoEnded}
               poster={slideData?.thumbnail?.src}
-              className='w-full h-full mt-5 object-fill'
+              className='w-full h-full object-fill'
             >
               <source src={slideData?.video} type='video/mp4' />
               Your broswer does not support videos
@@ -97,7 +97,7 @@ const SliderMedia = ({
           slideIndex === 0 || 'opacity-0 invisible'
         } ${imageZoomed ? 'fixed z-[72]' : 'absolute z-[60]'}`}
       >
-        <div className='ripple transition-all duration-500' />
+        <div className='ripple' />
         Begin exploring
       </div>
 
