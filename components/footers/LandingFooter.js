@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import Logo from './icons/Logo';
+import Logo from '../icons/Logo';
 
-import Globe from './icons/Globe';
-import Email from './icons/Email';
-import Youtube from './icons/Youtube';
-import Instagram from './icons/Instagram';
+import Globe from '../icons/Globe';
+import Email from '../icons/Email';
+import Youtube from '../icons/Youtube';
+import Instagram from '../icons/Instagram';
 
-const Footer = () => {
+const LandingFooter = () => {
   const currentDate = new Date();
   const EMAIL = 'furniture@avniverse.com';
 
@@ -146,4 +146,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default LandingFooter;
