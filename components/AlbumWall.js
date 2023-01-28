@@ -12,7 +12,7 @@ import wallImage9 from '../public/assets/pngs/social-album9.png';
 
 const AlbumWall = () => {
   return (
-    <div className='mt-[84px] mx-auto justify-center grid grid-cols-[repeat(3,minmax(0,321px))] gap-x-[17px] gap-y-4'>
+    <div className='mt-[84px] mx-auto justify-center grid grid-cols-[repeat(3,minmax(0,321px))] gap-x-[17px] gap-y-4 laptops:gap-x-3'>
       <Image alt='' priority={true} src={wallImage1} />
       <Image alt='' priority={true} src={wallImage2} />
       <Image alt='' priority={true} src={wallImage3} />

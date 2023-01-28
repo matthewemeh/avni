@@ -27,39 +27,36 @@ const HomeFooter = () => {
 
   return (
     <footer className='bg-wild-sand pt-[100px] pb-[50px] px-[22%] -mx-[21.4%] overflow-hidden dark:bg-woodsmoke'>
-      <Logo />
+      <div className='mb-[67px] laptops:mb-[50px]'>
+        <Logo />
+      </div>
 
-      <FooterDropdown
-        expandedHeight={400}
-        options={serviceOptions}
-        title='Customer Services'
-        extraStyles={{ marginTop: '67px' }}
-      />
+      <FooterDropdown expandedHeight={400} options={serviceOptions} title='Customer Services' />
       <FooterDropdown expandedHeight={330} options={aboutOptions} title='About Avni Furniture' />
 
       <div className='pt-[40px] pb-[45px] border-y-[1px] border-alto-light flex justify-between text-[12px]'>
         <div className='flex gap-x-3'>
           <Link
             href='/'
-            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center'
+            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center laptops:w-[39px] laptops:h-[39px]'
           >
             <span className='w-5 h-5 bg-alto rounded-sm' />
           </Link>
           <Link
             href='/'
-            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center'
+            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center laptops:w-[39px] laptops:h-[39px]'
           >
             <span className='w-5 h-5 bg-alto rounded-sm' />
           </Link>
           <Link
             href='/'
-            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center'
+            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center laptops:w-[39px] laptops:h-[39px]'
           >
             <span className='w-5 h-5 bg-alto rounded-sm' />
           </Link>
           <Link
             href='/'
-            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center'
+            className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center laptops:w-[39px] laptops:h-[39px]'
           >
             <span className='w-5 h-5 bg-alto rounded-sm' />
           </Link>
@@ -67,7 +64,7 @@ const HomeFooter = () => {
 
         <Link
           href='/'
-          className='leading-[15px] inline-block py-[15px] px-5 rounded-[30px] border-[1px] border-alto-light'
+          className='leading-[15px] inline-block py-[15px] px-5 rounded-[30px] border-[1px] border-alto-light laptops:leading-[18px]'
         >
           Flutterwave
         </Link>

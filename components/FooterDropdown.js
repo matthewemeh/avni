@@ -9,11 +9,11 @@ const FooterDropdown = ({ title, options, expandedHeight = 135, extraStyles }) =
   return (
     <div
       style={{ ...extraStyles, height: opened ? `${expandedHeight}px` : '135px' }}
-      className='max-h-max border-t-[1px] overflow-hidden transition-all duration-500 capitalize text-[14px] leading-[18px] text-black border-alto-light dark:text-white'
+      className='max-h-max border-t-[1px] overflow-hidden transition-all duration-500 capitalize text-[14px] leading-[18px] text-black border-alto-light dark:text-white laptops:text-[12px]'
     >
       <div
         onClick={() => setOpened(!opened)}
-        className='flex justify-between cursor-pointer pt-[43px] pb-[70px] h-[135px]'
+        className='flex justify-between cursor-pointer pt-[43px] pb-[70px] h-[135px] laptops:pb-[53px]'
       >
         <p>{title}</p>
 
