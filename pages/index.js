@@ -21,7 +21,7 @@ import testVideo from '../public/assets/test-video.mp4';
 import articleImage from '../public/assets/pngs/news-body.png';
 import newsHeadMedia from '../public/assets/pngs/news-head.png';
 
-import { scrollTop } from '../public/utils';
+import { scrollScreenTo } from '../public/utils';
 
 const SLIDES_DATA = [
   {
@@ -163,7 +163,7 @@ export default function Home({ articles }) {
           <ArticlePreview articles={articles} />
 
           <button
-            onClick={scrollTop}
+            onClick={scrollScreenTo}
             className='bg-outer-space w-10 h-10 relative left-full top-5 rounded-full grid place-items-center text-wild-sand dark:bg-wild-sand dark:text-outer-space phones:left-[90%]'
           >
             <CaretUpFilled />
