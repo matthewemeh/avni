@@ -24,7 +24,7 @@ import productImage1 from '../public/assets/pngs/product1.png';
 import productImage2 from '../public/assets/pngs/product2.png';
 import productImage3 from '../public/assets/pngs/product3.png';
 
-import { scrollScreenTo, toggleClass } from '../public/utils';
+import { addClass, removeClass, scrollScreenTo } from '../public/utils';
 
 const PRODUCTS = [
   {
@@ -180,8 +180,14 @@ const Home = ({ products }) => {
 
       <Navigation
         onMenuOpened={() => {
-          // move previously translated sub nav bar based on menu's opened state
-          toggleClass(headerRef.current, '-translate-x-1/2', '-translate-x-[calc(50%+400px)]');
+          // move previously translated sub nav bar to the left (by 400px)
+          removeClass(headerRef.current, '-translate-x-1/2');
+          addClass(headerRef.current, '-translate-x-[calc(50%+400px)]');
+        }}
+        onMenuClosed={() => {
+          // move previously translated sub nav bar to original position
+          addClass(headerRef.current, '-translate-x-1/2');
+          removeClass(headerRef.current, '-translate-x-[calc(50%+400px)]');
         }}
         extraNavOverlayStyles={{ zIndex: '100' }}
         extraNavStyles={{ top: '35px', height: '170px', alignItems: 'start', paddingTop: '40px' }}
@@ -199,7 +205,7 @@ const Home = ({ products }) => {
         ))}
       </div>
 
-      <main className='font-medium tracking-[0.36px] mx-[15%] mt-[250px] scroll-smooth'>
+      <main className='font-medium tracking-[0.36px] mx-[15%] mt-[290px] scroll-smooth laptops:mt-[281px]'>
         <header
           ref={headerRef}
           className='text-[12px] leading-[15px] w-[65%] left-1/2 -translate-x-1/2 fixed top-16 z-[70] transition-all duration-500'
@@ -227,27 +233,31 @@ const Home = ({ products }) => {
 
             <Link
               href='/'
-              className='flex gap-x-[10px] py-3 px-5 ml-auto rounded-[30px] border-[1px] border-alto-light'
+              className='flex items-center justify-center gap-x-[10px] py-3 px-5 ml-auto rounded-[30px] border-[1px] border-alto-light laptops:w-[39px] laptops:h-[39px] laptops:rounded-full laptops:px-3'
             >
               <User />
-              Sign in or Sign up
+              <p className='laptops:hidden'>Sign in or Sign up</p>
             </Link>
           </div>
         </header>
 
         <section className='mx-[4%]'>
-          <h1 className='text-[24px] leading-[29px] mt-[90px]'>Welcome back!</h1>
+          <h1 className='text-[24px] leading-[29px] mt-[90px] text-black dark:text-wild-sand laptops:text-[22px] laptops:leading-[27px]'>
+            Welcome back!
+          </h1>
 
-          <h2 className='text-[14px] leading-[21px] text-light-dove-gray mt-[17px]'>
+          <h2 className='text-[14px] leading-[21px] text-light-dove-gray mt-[17px] laptops:text-[12px]'>
             We are on a mission to get your perfect piece! Anticipate the smile that comes at your
             items&apos; arrival 😁
           </h2>
 
-          <h3 className='text-[18px] leading-[22px] mt-[50px]'>Award winning products</h3>
+          <h3 className='text-[18px] leading-[22px] mt-[50px] laptops:mt-10 laptops:text-[16px] laptops:leading-5'>
+            Award winning products
+          </h3>
           <LinkBubble extraStyles={{ marginLeft: '0' }} href='/' text='View all' />
         </section>
 
-        <section className='relative mt-[84px]'>
+        <section className='relative mt-[84px] laptops:mt-[75px]'>
           <div className='x-scroll flex gap-x-[5px] overflow-x-scroll pb-[30px]'>
             {products.map(({ name, type, price, image, _id }) => (
               <ProductCard
@@ -268,17 +278,17 @@ const Home = ({ products }) => {
           </button>
         </section>
 
-        <section className='mt-[200px] h-[560px] grid grid-cols-[40%_24%_36%] grid-flow-col grid-rows-[repeat(560,1px)]'>
+        <section className='mt-[200px] h-[560px] grid grid-cols-[40%_24%_36%] grid-flow-col grid-rows-[repeat(560,1px)] laptops:h-[488px]'>
           <div className='bg-alto bg-[url(/assets/pngs/decoration1.png)] bg-cover bg-center bg-no-repeat row-start-1 row-end-[560] flex items-center justify-center flex-col gap-y-[100px]'>
             <div className='ripple' />
             <div className='ripple' />
           </div>
 
-          <div className='bg-zorba row-start-1 row-end-[338] font-bold px-[15%] flex flex-col gap-y-5 items-center justify-center'>
-            <p className='text-[16px] leading-5 text-[rgba(255,255,255,0.5)]'>
+          <div className='bg-zorba row-start-1 row-end-[338] font-bold px-[15%] flex flex-col gap-y-5 items-center justify-center laptops:px-[10%]'>
+            <p className='text-[16px] leading-5 text-[rgba(255,255,255,0.5)] laptops:text-[14px] laptops:leading-[17px]'>
               Trending Product Categories
             </p>
-            <p className='text-[14px] leading-[17px] text-white'>
+            <p className='text-[14px] leading-[17px] text-white laptops:text-[12px] laptops:leading-[15px] laptops:font-semibold'>
               Get inspired with what others are buying...
             </p>
           </div>
@@ -372,7 +382,7 @@ const Home = ({ products }) => {
           </div>
         </section>
 
-        <section className='mt-[200px] grid grid-rows-[repeat(2,150px)] grid-cols-2 grid-flow-row gap-x-[21px] gap-y-[17px]'>
+        <section className='mt-[200px] grid grid-rows-[repeat(2,134px)] grid-cols-2 grid-flow-row gap-x-[21px] gap-y-[17px] laptops:grid-rows-[154px_134px] laptops:gap-[14px]'>
           {SERVICES.map(({ title, href, description }) => (
             <ServiceCard key={title} title={title} description={description} href={href} />
           ))}

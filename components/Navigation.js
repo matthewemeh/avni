@@ -7,7 +7,7 @@ import Logo from './icons/Logo';
 
 import { addClass, removeClass, scrollScreenTo } from '../public/utils';
 
-const Navigation = ({ extraNavStyles, extraNavOverlayStyles, onMenuOpened }) => {
+const Navigation = ({ extraNavStyles, extraNavOverlayStyles, onMenuOpened, onMenuClosed }) => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   const closeMenu = () => setMenuOpened(false);
@@ -19,17 +19,18 @@ const Navigation = ({ extraNavStyles, extraNavOverlayStyles, onMenuOpened }) => 
     if (menuOpened) {
       removeClass(rootContainer, 'right-0');
       addClass(rootContainer, 'right-[400px]');
-
       window.addEventListener('scroll', closeMenu);
+
+      // run onMenuOpened function if it is defined ( or passed to this component )
+      if (onMenuOpened) onMenuOpened();
     } else {
       addClass(rootContainer, 'right-0');
       removeClass(rootContainer, 'right-[400px]');
-
       window.removeEventListener('scroll', closeMenu);
-    }
 
-    // run onMenuOpened function if it is defined ( or passed to this component )
-    if (onMenuOpened) onMenuOpened();
+      // run onMenuOpened function if it is defined ( or passed to this component )
+      if (onMenuClosed) onMenuClosed();
+    }
   }, [menuOpened]);
 
   return (
