@@ -10,7 +10,9 @@ export const removeClass = (el, ...classes) => {
   classes.forEach(className => el.classList.remove(className));
 };
 
-export const scrollTop = () => window.scrollTo({ top: 0 });
+export const scrollScreenTo = (y = 0, x = 0) => window.scrollTo({ top: y, left: x });
+
+export const scrollElementTo = (element, y = 0, x = 0) => element.scrollTo({ top: y, left: x });
 
 const month = {
   0: 'January',
