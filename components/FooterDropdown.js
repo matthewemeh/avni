@@ -3,15 +3,13 @@ import { useState } from 'react';
 
 import CaretDown from './icons/CaretDown';
 
-const FooterDropdown = ({ title, options, extraStyles }) => {
+const FooterDropdown = ({ title, options, expandedHeight = 135, extraStyles }) => {
   const [opened, setOpened] = useState(false);
 
   return (
     <div
-      style={extraStyles}
-      className={`max-h-max border-t-[1px] overflow-hidden transition-all duration-500 capitalize text-[14px] leading-[18px] text-black border-alto-light dark:text-white ${
-        opened ? 'h-[400px]' : 'h-[135px]'
-      }`}
+      style={{ ...extraStyles, height: opened ? `${expandedHeight}px` : '135px' }}
+      className='max-h-max border-t-[1px] overflow-hidden transition-all duration-500 capitalize text-[14px] leading-[18px] text-black border-alto-light dark:text-white'
     >
       <div
         onClick={() => setOpened(!opened)}
