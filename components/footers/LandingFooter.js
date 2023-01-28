@@ -121,24 +121,22 @@ const LandingFooter = () => {
         </div>
       </div>
 
-      <div className='relative my-16 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand laptops:mb-[50px] laptops:mt-[30px] phones:mb-10 phones:flex-wrap phones:gap-x-[25px]'>
-        <span className='whitespace-nowrap'>
-          &copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.
-        </span>
-        <Link href={`mailto:${EMAIL}`} target='_blank' className='w-max whitespace-nowrap'>
+      <div className='relative whitespace-nowrap my-16 flex items-center flex-wrap gap-x-5 gap-y-[25px] font-normal font-arial text-[12px] leading-[18px] text-firefly dark:text-wild-sand laptops:mb-[50px] laptops:mt-[30px] phones:mb-10 phones:flex-wrap phones:gap-x-[25px]'>
+        <span>&copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.</span>
+        <Link href={`mailto:${EMAIL}`} target='_blank' className='w-max'>
           {EMAIL}
         </Link>
-        <Link href='/' className='w-max whitespace-nowrap'>
+        <Link href='/' className='w-max'>
           Privacy Policy
         </Link>
-        <Link href='/' className='w-max whitespace-nowrap'>
+        <Link href='/' className='w-max'>
           Terms
         </Link>
-        <Link href='/' className='w-max whitespace-nowrap'>
+        <Link href='/' className='w-max'>
           Cookie Policy
         </Link>
 
-        <button className='flex items-center justify-center whitespace-nowrap gap-x-[10px] text-outer-space font-montserrat font-semibold leading-4 ml-auto rounded-full px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand dark:text-wild-sand 1105px:ml-0 phones:py-[14px]'>
+        <button className='flex items-center justify-center gap-x-[10px] text-outer-space font-montserrat font-semibold leading-4 ml-auto rounded-[30px] px-5 py-3 border-alto-light border-[1px] dark:border-wild-sand dark:text-wild-sand 1105px:ml-0 phones:py-[14px]'>
           <Globe /> Change country
         </button>
       </div>
