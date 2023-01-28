@@ -5,9 +5,9 @@ import Menu from './Menu';
 import Overlay from './Overlay';
 import Logo from './icons/Logo';
 
-import { scrollTop, addClass, removeClass } from '../public/utils';
+import { addClass, removeClass, scrollScreenTo } from '../public/utils';
 
-const Navigation = ({ extraStyles }) => {
+const Navigation = ({ extraNavStyles, extraNavOverlayStyles, onMenuOpened }) => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   const closeMenu = () => setMenuOpened(false);
@@ -27,20 +27,23 @@ const Navigation = ({ extraStyles }) => {
 
       window.removeEventListener('scroll', closeMenu);
     }
+
+    // run onMenuOpened function if it is defined ( or passed to this component )
+    if (onMenuOpened) onMenuOpened();
   }, [menuOpened]);
 
   return (
     <nav
-      style={extraStyles}
+      style={extraNavStyles}
       className='pt-[30px] pb-[35px] pl-10 pr-[30px] w-full flex items-center justify-between fixed top-0 bg-white outline-0 z-[65] dark:bg-shark phones:pl-[25px] phones:pb-[38px]'
     >
-      <Link onClick={scrollTop} href='/'>
+      <Link onClick={scrollScreenTo} href='/'>
         <Logo />
       </Link>
 
       <button onClick={() => setMenuOpened(!menuOpened)} className='block border-y-2 w-5 h-3' />
 
-      <Overlay onClick={closeMenu} visible={menuOpened} />
+      <Overlay onClick={closeMenu} extraStyles={extraNavOverlayStyles} visible={menuOpened} />
       <Menu menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
     </nav>
   );
