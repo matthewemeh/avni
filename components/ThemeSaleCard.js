@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const ThemeSaleCard = ({ themeTitle, themeDescription, themeImage }) => {
   return (
-    <div className='relative w-1/2 min-w-[400px] h-[530px] flex-shrink-0 text-white text-[16px]'>
+    <div className='relative w-1/2 min-w-[400px] max-w-[500px] h-[530px] flex-shrink-0 text-white text-[16px]'>
       <Image src={themeImage} quality={60} alt={themeTitle} priority={true} fill />
 
       <div className='w-full bg-[rgba(0,0,0,0.5)] backdrop-blur-[10px] absolute top-0 p-[30px] flex items-center justify-between'>
