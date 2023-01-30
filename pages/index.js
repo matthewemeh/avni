@@ -97,7 +97,7 @@ export default function Home({ articles }) {
         <Preloader />
         <Navigation />
 
-        <header className='mt-[174px] phones:mt-[61px]'>
+        <header className='mt-[174px] phones:mt-[145px]'>
           <h1 className='text-[42px] leading-[60px] text-center max-w-[500px] mx-auto laptops:text-[36px] laptops:max-w-[450px] phones:max-w-[calc(380px-12%)] phones:text-[28px] phones:leading-[50px] x-small-phones:text-[24px]'>
             Inspiring creativity for your perfect space
           </h1>

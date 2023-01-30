@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
+
+import { AppContext } from './_app';
 
 import AlbumWall from '../components/AlbumWall';
 import SpaceCard from '../components/SpaceCard';
@@ -10,11 +12,14 @@ import HomeSearch from '../components/HomeSearch';
 import Navigation from '../components/Navigation';
 import ProductCard from '../components/ProductCard';
 import ServiceCard from '../components/ServiceCard';
+import HeaderBanner from '../components/HeaderBanner';
 import CategoryCard from '../components/CategoryCard';
 import ThemeSaleCard from '../components/ThemeSaleCard';
 import HomeFooter from '../components/footers/HomeFooter';
 
+import Cart from '../components/icons/Cart';
 import User from '../components/icons/User';
+import Heart from '../components/icons/Heart';
 import ArrowRight from '../components/icons/ArrowRight';
 import CaretUpFilled from '../components/icons/CaretUpFilled';
 
@@ -153,9 +158,9 @@ const SERVICES = [
 
 const Home = ({ products }) => {
   const headerRef = useRef();
-
+  const [screenWidth, setScreenWidth] = useState(0);
+  const { MOBILE_BREAKPOINT } = useContext(AppContext);
   const [currentSection, setCurrentSection] = useState('home');
-
   const subNavButtons = [
     { text: 'home', top: 0 },
     { text: 'categories', top: 1670 },
@@ -164,12 +169,12 @@ const Home = ({ products }) => {
     { text: 'sales', top: 2300 },
   ];
 
-  const headerTexts = ['Delivery only', 'Customer Service', 'Campaign'];
-
   const onChangeSection = (top, newSection) => {
     scrollScreenTo(top);
     setCurrentSection(newSection);
   };
+
+  useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
   return (
     <>
@@ -190,40 +195,42 @@ const Home = ({ products }) => {
           removeClass(headerRef.current, '-translate-x-[calc(50%+400px)]');
         }}
         extraNavOverlayStyles={{ zIndex: '100' }}
-        extraNavStyles={{ top: '35px', height: '170px', alignItems: 'start', paddingTop: '40px' }}
+        extraNavStyles={{
+          top: '35px',
+          alignItems: 'start',
+          paddingTop: screenWidth > MOBILE_BREAKPOINT ? '40px' : '30px',
+          paddingRight: screenWidth > MOBILE_BREAKPOINT ? '65px' : '25px',
+          height: screenWidth > MOBILE_BREAKPOINT ? '170px' : 'min-content',
+        }}
       />
 
-      <div className='fixed top-0 w-full z-[65] bg-wild-sand text-outer-space text-[12px] leading-[15px] font-medium tracking-[0.36px] h-[35px] flex items-center justify-center gap-[30px]'>
-        {headerTexts.map(text => (
-          <div
-            key={text}
-            className='flex gap-x-[10px] items-center justify-center h-full px-[10px]'
-          >
-            <div className='border-2 w-3 h-3 rounded-full border-azure-radiance' />
-            <p>{text}</p>
-          </div>
-        ))}
-      </div>
+      <HeaderBanner />
 
-      <main className='font-medium tracking-[0.36px] mx-[15%] mt-[290px] scroll-smooth laptops:mt-[281px]'>
+      <main className='font-medium tracking-[0.36px] mx-[15%] mt-[290px] scroll-smooth laptops:mt-[281px] phones:mx-[5%] phones:mt-[137px]'>
         <header
           ref={headerRef}
-          className='text-[12px] leading-[15px] w-[65%] left-1/2 -translate-x-1/2 fixed top-16 z-[70] transition-all duration-500'
+          className='text-[12px] leading-[15px] w-[65%] left-1/2 -translate-x-1/2 fixed top-16 z-[70] transition-all duration-500 phones:static phones:-translate-x-0 phones:w-full phones:border-b-[1px] phones:border-wild-sand'
         >
           <div className='flex gap-x-[25px] items-center justify-between h-[46px] mx-auto'>
             <HomeSearch />
 
-            <button className='bg-[url(/assets/svgs/cart.svg)] bg-center bg-no-repeat bg-wild-sand min-w-[46px] h-full rounded-full' />
+            <button className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:h-[30px] phones:min-w-max phones:w-[30px]'>
+              <Cart />
+              <p className='text-black hidden dark:text-white phones:block'>Cart</p>
+            </button>
 
-            <button className='bg-[url(/assets/svgs/heart.svg)] bg-center bg-no-repeat bg-wild-sand min-w-[46px] h-full rounded-full' />
+            <button className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:left-[72px] phones:h-[30px] phones:min-w-max phones:w-[30px]'>
+              <Heart />
+              <p className='text-black hidden dark:text-white phones:block'>Favourites</p>
+            </button>
           </div>
 
-          <div className='flex gap-5 items-start pt-5 mt-6 whitespace-nowrap border-t-[1px] border-wild-sand mx-auto'>
+          <div className='flex gap-5 items-start pt-5 mt-6 whitespace-nowrap border-t-[1px] border-wild-sand mx-auto phones:border-transparent'>
             {subNavButtons.map(({ text, top }) => (
               <button
                 key={text}
                 onClick={() => onChangeSection(top, text)}
-                className={`capitalize border-[1px] h-[39px] px-[25px] bg-wild-sand rounded-[40px] text-outer-space first:dark:border-woodsmoke ${
+                className={`capitalize border-[1px] h-[39px] px-[25px] bg-wild-sand rounded-[40px] text-outer-space first:dark:border-woodsmoke phones:hidden ${
                   text === currentSection ? 'border-outer-space' : 'border-transparent'
                 }`}
               >
@@ -233,7 +240,7 @@ const Home = ({ products }) => {
 
             <Link
               href='/'
-              className='flex items-center justify-center gap-x-[10px] py-3 px-5 ml-auto rounded-[30px] border-[1px] border-alto-light laptops:w-[39px] laptops:h-[39px] laptops:rounded-full laptops:px-3'
+              className='flex items-center justify-center gap-x-[10px] py-3 px-5 ml-auto rounded-[30px] border-[1px] border-alto-light laptops:w-[39px] laptops:h-[39px] laptops:rounded-full laptops:px-3 phones:w-11 phones:h-11 phones:relative phones:bottom-[90px] phones:bg-wild-sand phones:border-wild-sand phones:dark:bg-woodsmoke'
             >
               <User />
               <p className='laptops:hidden'>Sign in or Sign up</p>
@@ -241,8 +248,8 @@ const Home = ({ products }) => {
           </div>
         </header>
 
-        <section className='mx-[4%]'>
-          <h1 className='text-[24px] leading-[29px] mt-[90px] text-black dark:text-wild-sand laptops:text-[22px] laptops:leading-[27px]'>
+        <section className='mx-[4%] phones:-mt-12 phones:mx-0'>
+          <h1 className='text-[24px] leading-[29px] mt-[90px] text-black dark:text-wild-sand laptops:text-[22px] laptops:leading-[27px] phones:text-[20px] phones:leading-[24px]'>
             Welcome back!
           </h1>
 
@@ -251,7 +258,7 @@ const Home = ({ products }) => {
             items&apos; arrival 😁
           </h2>
 
-          <h3 className='text-[18px] leading-[22px] mt-[50px] laptops:mt-10 laptops:text-[16px] laptops:leading-5'>
+          <h3 className='text-[18px] leading-[22px] mt-[50px] laptops:mt-10 laptops:text-[16px] laptops:leading-5 phones:text-[14px] phones:leading-[17px]'>
             Award winning products
           </h3>
           <LinkBubble extraStyles={{ marginLeft: '0' }} href='/' text='View all' />
@@ -272,19 +279,19 @@ const Home = ({ products }) => {
 
           <button
             onClick={null}
-            className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba'
+            className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba small-phones:hidden'
           >
             <ArrowRight />
           </button>
         </section>
 
-        <section className='mt-[200px] h-[560px] grid grid-cols-[40%_24%_36%] grid-flow-col grid-rows-[repeat(560,1px)] laptops:h-[488px]'>
-          <div className='bg-alto bg-[url(/assets/pngs/decoration1.png)] bg-cover bg-center bg-no-repeat row-start-1 row-end-[560] flex items-center justify-center flex-col gap-y-[100px]'>
+        <section className='mt-[200px] h-[560px] grid grid-cols-[40%_24%_36%] grid-flow-col grid-rows-[repeat(560,1px)] laptops:h-[488px] phones:mt-[84px] phones:grid-cols-none phones:grid-rows-[137px_487px_224px_216px_424px] phones:justify-center phones:h-max phones:gap-y-5'>
+          <div className='bg-alto bg-[url(/assets/pngs/decoration1.png)] bg-cover bg-center bg-no-repeat row-start-1 row-end-[560] flex items-center justify-center flex-col gap-y-[100px] phones:row-start-2 phones:row-end-auto'>
             <div className='ripple' />
             <div className='ripple' />
           </div>
 
-          <div className='bg-zorba row-start-1 row-end-[338] font-bold px-[15%] flex flex-col gap-y-5 items-center justify-center laptops:px-[10%]'>
+          <div className='bg-zorba row-start-1 row-end-[338] font-bold px-[15%] flex flex-col gap-y-5 items-center justify-center laptops:px-[10%] phones:row-start-1 phones:row-end-auto phones:col-end-1 phones:py-10 phones:px-9'>
             <p className='text-[16px] leading-5 text-[rgba(255,255,255,0.5)] laptops:text-[14px] laptops:leading-[17px]'>
               Trending Product Categories
             </p>
@@ -292,23 +299,25 @@ const Home = ({ products }) => {
               Get inspired with what others are buying...
             </p>
           </div>
-          <div className='bg-silver-chalice grid place-items-center row-start-[338] row-end-[560] bg-[url(/assets/pngs/decoration2.png)] bg-no-repeat bg-cover bg-center'>
+
+          <div className='bg-silver-chalice grid place-items-center row-start-[338] row-end-[560] bg-[url(/assets/pngs/decoration2.png)] bg-no-repeat bg-cover bg-center phones:row-start-4 phones:row-end-auto'>
             <div className='ripple' />
           </div>
 
-          <div className='bg-dorado bg-[url(/assets/pngs/decoration3.png)] bg-cover bg-center bg-no-repeat row-start-1 row-end-[196] flex items-center justify-center gap-x-[20%]'>
+          <div className='bg-dorado bg-[url(/assets/pngs/decoration3.png)] bg-cover bg-center bg-no-repeat row-start-1 row-end-[196] flex items-center justify-center gap-x-[20%] phones:row-start-3 phones:col-end-1 phones:row-end-auto'>
             <div className='ripple' />
             <div className='ripple' />
           </div>
-          <div className='bg-boulder bg-[url(/assets/pngs/decoration4.png)] bg-cover bg-center bg-no-repeat row-start-[196] row-end-[560] grid place-items-center'>
+
+          <div className='bg-boulder bg-[url(/assets/pngs/decoration4.png)] bg-cover bg-center bg-no-repeat row-start-[196] row-end-[560] grid place-items-center phones:row-start-5 phones:row-end-auto'>
             <div className='ripple' />
           </div>
         </section>
 
-        <section className='mt-[200px] text-center'>
+        <section className='mt-[200px] text-center phones:text-left phones:mt-[84px]'>
           <h4 className='text-[18px] leading-[22px]'>Categories</h4>
 
-          <div className='relative mt-[84px]'>
+          <div className='relative mt-[84px] phones:mt-[30px]'>
             <div className='x-scroll flex gap-x-[5px] overflow-x-scroll pb-[30px]'>
               {CATEGORIES.map(({ _id, categoryName, bgImage }) => (
                 <CategoryCard key={_id} categoryName={categoryName} bgImage={bgImage} />
@@ -317,17 +326,17 @@ const Home = ({ products }) => {
 
             <button
               onClick={null}
-              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba'
+              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba small-phones:hidden'
             >
               <ArrowRight />
             </button>
           </div>
         </section>
 
-        <section className='mt-[200px] text-center'>
+        <section className='mt-[200px] text-center phones:text-left phones:mt-[84px]'>
           <h5 className='text-[18px] leading-[22px]'>Theme sales</h5>
 
-          <div className='relative mt-[84px]'>
+          <div className='relative mt-[84px] phones:mt-[30px]'>
             <div className='x-scroll flex gap-x-[5px] overflow-x-scroll pb-[30px]'>
               {THEME_SALES.map(({ _id, image, title, description }) => (
                 <ThemeSaleCard
@@ -341,32 +350,32 @@ const Home = ({ products }) => {
 
             <button
               onClick={null}
-              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba'
+              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba small-phones:hidden'
             >
               <ArrowRight />
             </button>
           </div>
         </section>
 
-        <section className='mt-[200px] text-center'>
+        <section className='mt-[200px] text-center phones:text-left phones:mt-[84px]'>
           <h5 className='text-[18px] leading-[22px]'>Rooms</h5>
 
-          <div className='relative mt-[84px]'>
+          <div className='relative mt-[84px] phones:mt-14'>
             <RoomSlider />
 
             <button
               onClick={null}
-              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba'
+              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba small-phones:hidden'
             >
               <ArrowRight />
             </button>
           </div>
         </section>
 
-        <section className='mt-[200px] text-center'>
+        <section className='mt-[200px] text-center phones:text-left phones:mt-[84px]'>
           <h6>Ideas for your space</h6>
 
-          <div className='relative mt-[84px]'>
+          <div className='relative mt-[84px] phones:mt-[30px]'>
             <div className='x-scroll flex gap-x-[5px] overflow-x-scroll pb-[30px]'>
               {SPACE_IDEAS.map(({ _id, bgImage, title }) => (
                 <SpaceCard key={_id} bgImage={bgImage} title={title} />
@@ -375,25 +384,25 @@ const Home = ({ products }) => {
 
             <button
               onClick={null}
-              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba'
+              className='absolute z-50 top-1/2 -translate-y-1/2 -right-[27px] box-content border-[10px] border-white grid place-items-center text-white bg-zorba w-[35px] h-[35px] rounded-full dark:border-shark dark:bg-white dark:text-zorba small-phones:hidden'
             >
               <ArrowRight />
             </button>
           </div>
         </section>
 
-        <section className='mt-[200px] grid grid-rows-[repeat(2,134px)] grid-cols-2 grid-flow-row gap-x-[21px] gap-y-[17px] laptops:grid-rows-[154px_134px] laptops:gap-[14px]'>
+        <section className='mt-[200px] grid grid-rows-[repeat(2,minmax(134px,auto))] grid-cols-2 gap-x-[21px] gap-y-[17px] laptops:grid-rows-[154px_134px] laptops:gap-[14px] phones:mt-[84px] phones:grid-cols-1 phones:gap-y-5 phones:grid-rows-[154px_134px_154px_132px]'>
           {SERVICES.map(({ title, href, description }) => (
             <ServiceCard key={title} title={title} description={description} href={href} />
           ))}
         </section>
 
-        <section className='mt-[200px] text-center pb-[60px]'>
+        <section className='mt-[200px] text-center pb-[60px] phones:text-left phones:mt-[84px] phones:pb-16'>
           <h6 className='text-[18px] leading-[22px]'>Social Reviews</h6>
 
           <p className='mt-[18px] text-light-dove-gray text-[14px] leading-[21px] dark:text-[rgba(255,255,255,0.6)]'>
             Get featured in our social album.
-            <br />
+            <br className='phones:hidden' />
             How does our furniture look in your space? Share your images using the hashtag
             #avnifurniture or tag @furniture.avniverse
           </p>
@@ -402,7 +411,7 @@ const Home = ({ products }) => {
 
           <Link
             href='/'
-            className='inline-block mt-[45px] py-3 px-5 text-[12px] leading-[15px] rounded-[30px] border-[1px] border-alto-light'
+            className='block w-max mx-auto mt-[45px] py-3 px-5 text-[12px] leading-[15px] rounded-[30px] border-[1px] border-alto-light'
           >
             View more
           </Link>

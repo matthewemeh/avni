@@ -13,7 +13,7 @@ const FooterDropdown = ({ title, options, expandedHeight = 135, extraStyles }) =
     >
       <div
         onClick={() => setOpened(!opened)}
-        className='flex justify-between cursor-pointer pt-[43px] pb-[70px] h-[135px] laptops:pb-[53px]'
+        className='flex justify-between cursor-pointer pt-10 pb-[67px] h-[135px] laptops:pb-[50px]'
       >
         <p>{title}</p>
 

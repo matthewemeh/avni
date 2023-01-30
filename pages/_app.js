@@ -10,9 +10,10 @@ export const AppContext = createContext();
 export default function App({ Component, pageProps }) {
   const MOBILE_BREAKPOINT = 600;
   const LAPTOP_BREAKPOINT = 1024;
+  const SMALL_MOBILE_BREAKPOINT = 400;
 
   return (
-    <AppContext.Provider value={{ MOBILE_BREAKPOINT, LAPTOP_BREAKPOINT }}>
+    <AppContext.Provider value={{ MOBILE_BREAKPOINT, LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT }}>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
