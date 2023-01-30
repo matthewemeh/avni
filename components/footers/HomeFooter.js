@@ -26,7 +26,7 @@ const HomeFooter = () => {
   ];
 
   return (
-    <footer className='bg-wild-sand pt-[100px] pb-[50px] px-[22%] -mx-[21.4%] overflow-hidden dark:bg-woodsmoke'>
+    <footer className='bg-wild-sand pt-[100px] pb-[50px] px-[22%] -mx-[21.4%] overflow-hidden dark:bg-woodsmoke phones:pt-[84px]'>
       <div className='mb-[67px] laptops:mb-[50px]'>
         <Logo />
       </div>
@@ -34,8 +34,8 @@ const HomeFooter = () => {
       <FooterDropdown expandedHeight={400} options={serviceOptions} title='Customer Services' />
       <FooterDropdown expandedHeight={330} options={aboutOptions} title='About Avni Furniture' />
 
-      <div className='pt-[40px] pb-[45px] border-y-[1px] border-alto-light flex justify-between text-[12px]'>
-        <div className='flex gap-x-3'>
+      <div className='pt-[40px] pb-[45px] border-y-[1px] border-alto-light flex justify-between flex-wrap gap-y-[30px] gap-x-5 text-[12px] tablets:justify-start'>
+        <div className='flex gap-x-3 tablets:w-full'>
           <Link
             href='/'
             className='w-[45px] h-[45px] border-[1px] border-alto-light rounded-full grid place-items-center laptops:w-[39px] laptops:h-[39px]'
@@ -74,7 +74,7 @@ const HomeFooter = () => {
         </button>
       </div>
 
-      <div className='mt-[30px] flex items-center whitespace-nowrap justify-center gap-x-5 font-arial text-firefly font-normal text-[12px] leading-[18px] dark:text-white'>
+      <div className='mt-[30px] flex items-center whitespace-nowrap justify-center flex-wrap gap-5 font-arial text-firefly font-normal text-[12px] leading-[18px] dark:text-white tablets:justify-start'>
         <p className=''>&copy; {currentDate.getFullYear()}. Avni.meb from Avniverse, Inc.</p>
         <Link href='/'>Privacy Policy</Link>
         <Link href='/'>Cookie Policy</Link>

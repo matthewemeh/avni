@@ -6,7 +6,7 @@ import { AppContext } from '../pages/_app';
 const RoomSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
-  const { LAPTOP_BREAKPOINT } = useContext(AppContext);
+  const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT } = useContext(AppContext);
 
   useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
@@ -65,11 +65,13 @@ const RoomSlider = () => {
           key={index}
           style={{
             width:
-              screenWidth > LAPTOP_BREAKPOINT
-                ? index === slideIndex
-                  ? '360px'
-                  : '100px'
-                : '360px',
+              screenWidth > SMALL_MOBILE_BREAKPOINT
+                ? screenWidth > LAPTOP_BREAKPOINT
+                  ? index === slideIndex
+                    ? '360px'
+                    : '100px'
+                  : '360px'
+                : '100%',
           }}
           className={`${bgImage} bg-cover bg-center bg-no-repeat relative h-[551px] overflow-hidden flex-shrink-0 rounded-[15px] transition-all duration-500`}
         >
