@@ -5,10 +5,7 @@ import { AppContext } from '../pages/_app';
 
 const RoomSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(0);
-  const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT } = useContext(AppContext);
-
-  useEffect(() => setScreenWidth(window.screen.availWidth), []);
+  const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
 
   const rooms = [
     {

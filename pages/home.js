@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useRef, useContext, useEffect } from 'react';
+import { useState, useRef, useContext } from 'react';
 
 import { AppContext } from './_app';
 
@@ -158,8 +158,7 @@ const SERVICES = [
 
 const Home = ({ products }) => {
   const headerRef = useRef();
-  const [screenWidth, setScreenWidth] = useState(0);
-  const { MOBILE_BREAKPOINT } = useContext(AppContext);
+  const { MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
   const [currentSection, setCurrentSection] = useState('home');
   const subNavButtons = [
     { text: 'home', top: 0 },
@@ -173,8 +172,6 @@ const Home = ({ products }) => {
     scrollScreenTo(top);
     setCurrentSection(newSection);
   };
-
-  useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
   return (
     <>
