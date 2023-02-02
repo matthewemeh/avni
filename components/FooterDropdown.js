@@ -16,9 +16,8 @@ const FooterDropdown = ({ title, options, expandedHeight = 135, extraStyles }) =
         className='flex justify-between cursor-pointer pt-10 pb-[67px] h-[135px] laptops:pb-[50px]'
       >
         <p>{title}</p>
-
         <div
-          className={`transition-all duration-500 text-cod-gray dark:text-white ${
+          className={`transition-all duration-[15ms] text-cod-gray dark:text-white ${
             opened && '-rotate-180'
           }`}
         >
