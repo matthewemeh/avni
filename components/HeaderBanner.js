@@ -17,7 +17,7 @@ const HeaderBanner = () => {
   }, [textIndex, screenWidth]);
 
   return (
-    <div className='fixed top-0 w-full z-[65] bg-wild-sand text-outer-space text-[12px] leading-[15px] font-medium tracking-[0.36px] h-[45px] flex items-center justify-center gap-[30px] phones:gap-0 phones:grid phones:grid-cols-1 phones:grid-rows-1'>
+    <div className='fixed top-0 w-full z-[75] bg-wild-sand text-outer-space text-[12px] leading-[15px] font-medium tracking-[0.36px] h-[45px] flex items-center justify-center gap-[30px] phones:gap-0 phones:grid phones:grid-cols-1 phones:grid-rows-1'>
       {headerTexts.map((text, index) => (
         <div
           key={text}
