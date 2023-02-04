@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-const HorizontalScrollBar = ({ extraTrackStyles, extraThumbStyles, linkedContainerID }) => {
+const HorizontalScrollBar = ({
+  onScroll,
+  extraTrackStyles,
+  extraThumbStyles,
+  linkedContainerID,
+}) => {
   const trackRef = useRef();
   const thumbRef = useRef();
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -19,11 +24,20 @@ const HorizontalScrollBar = ({ extraTrackStyles, extraThumbStyles, linkedContain
     thumbRef.current.style.width = `${newWidthPercent}%`;
 
     // ...then add scroll listener to linked container
-    conatiner.addEventListener('scroll', () => {
+    conatiner.onscroll = () => {
       const newScrollLeft = conatiner.scrollLeft || 0;
       thumbRef.current.style.left = `${newScrollLeft * widthScale}px`;
-    });
+
+      if (onScroll) onScroll();
+    };
   }, [linkedContainerID]);
+
+  // componentDidUnmount
+  useEffect(() => {
+    return () => {
+      window.onmouseup = null;
+    };
+  }, []);
 
   const onDrag = e => {
     const { movementX } = e;
@@ -73,11 +87,10 @@ const HorizontalScrollBar = ({ extraTrackStyles, extraThumbStyles, linkedContain
     >
       <div
         ref={thumbRef}
-        onMouseMove={e => console.log(e.clientX)}
         style={extraThumbStyles}
         onMouseUp={onThumbMouseUp}
         onMouseDown={onThumbMouseDown}
-        className='absolute h-full bg-cod-gray transition-all duration-200 ease-linear'
+        className='absolute h-full bg-cod-gray transition-all duration-[1ms] ease-linear'
       />
     </div>
   );
