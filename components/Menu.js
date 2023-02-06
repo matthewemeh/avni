@@ -6,7 +6,7 @@ import ArrowRightCircled from './icons/ArrowRightCircled';
 const Menu = ({ menuOpened, setMenuOpened }) => {
   return (
     <div
-      className={`w-[400px] h-[100vh] font-medium text-[16px] leading-5 bg-white py-[30px] px-[25px] transition-all duration-500 fixed z-20 top-0 dark:bg-shark small-phones:max-w-[100vw] ${
+      className={`w-[400px] h-screen font-medium text-[16px] leading-5 bg-white py-[30px] px-[25px] transition-all duration-500 fixed z-20 top-0 dark:bg-shark small-phones:max-w-[100vw] ${
         menuOpened ? 'right-0' : '-right-[500px]'
       }`}
     >
