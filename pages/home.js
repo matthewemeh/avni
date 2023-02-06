@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState, useRef, useContext, useEffect } from 'react';
 
 import { AppContext } from './_app';
@@ -30,7 +31,8 @@ import productImage1 from '../public/assets/pngs/product1.png';
 import productImage2 from '../public/assets/pngs/product2.png';
 import productImage3 from '../public/assets/pngs/product3.png';
 
-import { addClass, removeClass, scrollScreenTo, showAlert } from '../public/utils';
+import { addClass, removeClass, scrollScreenTo } from '../public/utils';
+import AllCard from '../components/AllCard';
 
 const PRODUCTS = [
   {
@@ -159,10 +161,13 @@ const SERVICES = [
 
 const Home = ({ products }) => {
   const headerRef = useRef();
+  const router = useRouter();
+  const MAX_SLIDER_ITEMS = 9;
   const [scrollPosY, setScrollPosY] = useState(0);
   const [currentSection, setCurrentSection] = useState('home');
   const [scrolledDirection, setScrolledDirection] = useState('up');
-  const { MOBILE_BREAKPOINT, SMALL_MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
+  const { MOBILE_BREAKPOINT, SMALL_MOBILE_BREAKPOINT, screenWidth, menuOpened, setMenuOpened } =
+    useContext(AppContext);
   const subNavButtons = [
     { text: 'home', top: 0 },
     { text: 'categories', top: 1670 },
@@ -210,20 +215,20 @@ const Home = ({ products }) => {
     const targetRightButton = scrollRightButtons[index];
     const targetLeftButton = scrollLeftButtons[index];
 
-    if (reachedEnd) {
-      addClass(targetRightButton, 'right-0', 'opacity-0', 'invisible');
-      removeClass(targetRightButton, '-right-[27px]', 'opacity-100', 'visible');
-    } else {
+    if (!reachedEnd) {
       removeClass(targetRightButton, 'right-0', 'opacity-0', 'invisible');
       addClass(targetRightButton, '-right-[27px]', 'opacity-100', 'visible');
+    } else {
+      addClass(targetRightButton, 'right-0', 'opacity-0', 'invisible');
+      removeClass(targetRightButton, '-right-[27px]', 'opacity-100', 'visible');
     }
 
-    if (reachedStart) {
-      addClass(targetLeftButton, 'left-0', 'opacity-0', 'invisible');
-      removeClass(targetLeftButton, '-left-[27px]', 'opacity-100', 'visible');
-    } else {
+    if (!reachedStart) {
       removeClass(targetLeftButton, 'left-0', 'opacity-0', 'invisible');
       addClass(targetLeftButton, '-left-[27px]', 'opacity-100', 'visible');
+    } else {
+      addClass(targetLeftButton, 'left-0', 'opacity-0', 'invisible');
+      removeClass(targetLeftButton, '-left-[27px]', 'opacity-100', 'visible');
     }
   };
 
@@ -275,14 +280,13 @@ const Home = ({ products }) => {
         onMenuOpened={() => {
           // move previously translated sub nav bar to the left (by 400px)
           removeClass(headerRef.current, '-translate-x-1/2');
-          addClass(headerRef.current, '-translate-x-[calc(50%+400px)]');
+          addClass(headerRef.current, '-translate-x-[calc(50%+400px)]', 'opacity-40');
         }}
         onMenuClosed={() => {
           // move previously translated sub nav bar to original position
           addClass(headerRef.current, '-translate-x-1/2');
-          removeClass(headerRef.current, '-translate-x-[calc(50%+400px)]');
+          removeClass(headerRef.current, '-translate-x-[calc(50%+400px)]', 'opacity-40');
         }}
-        extraNavOverlayStyles={{ zIndex: '100' }}
         extraNavStyles={{
           top: '35px',
           alignItems: 'start',
@@ -302,17 +306,24 @@ const Home = ({ products }) => {
       <main className='font-medium -top tracking-[0.36px] mx-[15%] mt-[250px] scroll-smooth laptops:mt-[281px] phones:mx-[5%] phones:mt-[137px]'>
         <header
           ref={headerRef}
+          onClick={() => setMenuOpened(false)}
           className='text-[12px] leading-[15px] w-[65%] left-1/2 -translate-x-1/2 fixed top-[60px] z-[70] transition-all duration-500 phones:static phones:-translate-x-0 phones:w-full phones:border-b-[1px] phones:border-wild-sand'
         >
           <div className='flex gap-x-[25px] items-center justify-between h-[46px] mx-auto'>
             <HomeSearch />
 
-            <button className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:h-[30px] phones:min-w-max phones:w-[30px]'>
+            <button
+              disabled={menuOpened}
+              className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:h-[30px] phones:min-w-max phones:w-[30px]'
+            >
               <Cart />
               <p className='text-black hidden dark:text-white phones:block'>Cart</p>
             </button>
 
-            <button className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:left-[72px] phones:h-[30px] phones:min-w-max phones:w-[30px]'>
+            <button
+              disabled={menuOpened}
+              className='bg-wild-sand text-[14px] leading-[17px] flex items-center justify-center gap-x-[10px] min-w-[46px] h-full rounded-full text-outer-space phones:dark:text-white phones:absolute phones:bg-transparent phones:top-[80px] phones:left-[72px] phones:h-[30px] phones:min-w-max phones:w-[30px]'
+            >
               <Heart />
               <p className='text-black hidden dark:text-white phones:block'>Favourites</p>
             </button>
@@ -322,6 +333,7 @@ const Home = ({ products }) => {
             {subNavButtons.map(({ text, top }) => (
               <button
                 key={text}
+                disabled={menuOpened}
                 onClick={() => onChangeSection(top, text)}
                 className={`capitalize border-[1px] h-[39px] px-[25px] bg-wild-sand rounded-[40px] text-outer-space first:dark:border-woodsmoke phones:hidden ${
                   text === currentSection ? 'border-outer-space' : 'border-transparent'
@@ -331,13 +343,14 @@ const Home = ({ products }) => {
               </button>
             ))}
 
-            <Link
-              href='/'
+            <button
+              disabled={menuOpened}
+              onClick={() => router.push('/')}
               className='flex items-center justify-center gap-x-[10px] py-3 px-5 ml-auto rounded-[30px] border-[1px] border-alto-light laptops:w-[39px] laptops:h-[39px] laptops:rounded-full laptops:px-3 phones:w-11 phones:h-11 phones:relative phones:bottom-[90px] phones:bg-wild-sand phones:border-wild-sand phones:dark:bg-woodsmoke'
             >
               <User />
               <p className='laptops:hidden'>Sign in or Sign up</p>
-            </Link>
+            </button>
           </div>
         </header>
 
@@ -364,15 +377,22 @@ const Home = ({ products }) => {
             onMouseEnter={() => showButton(0, 'products')}
             className='x-scroll flex gap-x-[5px] overflow-x-scroll scroll-smooth'
           >
-            {[...products, ...products].map(({ name, type, price, image, _id }, index) => (
+            {products.slice(0, MAX_SLIDER_ITEMS).map(({ name, type, price, image, _id }) => (
               <ProductCard
-                key={index}
+                key={_id}
                 productName={name}
                 productType={type}
                 productPrice={price}
                 productImage={image}
               />
             ))}
+            {products.length > MAX_SLIDER_ITEMS && (
+              <AllCard
+                href='/'
+                text='All Products'
+                extraClassnames='w-[330px] h-[370px] flex-shrink-0 laptops:w-[245px] laptops:h-[269px] small-phones:w-full small-phones:h-[370px]'
+              />
+            )}
           </div>
 
           <HorizontalScrollBar
@@ -442,6 +462,13 @@ const Home = ({ products }) => {
               {CATEGORIES.map(({ _id, categoryName, bgImage }) => (
                 <CategoryCard key={_id} categoryName={categoryName} bgImage={bgImage} />
               ))}
+              {CATEGORIES.length > MAX_SLIDER_ITEMS && (
+                <AllCard
+                  href='/'
+                  text='All Categories'
+                  extraClassnames='w-[245px] h-[309px] relative flex-shrink-0'
+                />
+              )}
             </div>
 
             <HorizontalScrollBar
@@ -488,6 +515,13 @@ const Home = ({ products }) => {
                   themeDescription={description}
                 />
               ))}
+              {THEME_SALES.length > MAX_SLIDER_ITEMS && (
+                <AllCard
+                  href='/'
+                  text='All Themes'
+                  extraClassnames='w-1/2 min-w-[400px] max-w-[500px] h-[630px] flex-shrink-0 text-white text-[16px] phones:h-[550px] small-phones:min-w-full small-phones:max-w-[none]'
+                />
+              )}
             </div>
 
             <HorizontalScrollBar
@@ -520,7 +554,11 @@ const Home = ({ products }) => {
           <h5 className='text-[18px] leading-[22px]'>Rooms</h5>
 
           <div className='relative mt-[84px] phones:mt-14'>
-            <RoomSlider showButton={showButton} hideButton={hideButton} />
+            <RoomSlider
+              showButton={showButton}
+              hideButton={hideButton}
+              maxSliderItems={MAX_SLIDER_ITEMS}
+            />
 
             <HorizontalScrollBar
               linkedContainerID='rooms'
@@ -561,6 +599,13 @@ const Home = ({ products }) => {
               {SPACE_IDEAS.map(({ _id, bgImage, title }) => (
                 <SpaceCard key={_id} bgImage={bgImage} title={title} />
               ))}
+              {SPACE_IDEAS.length > MAX_SLIDER_ITEMS && (
+                <AllCard
+                  href='/'
+                  text='All Spaces'
+                  extraClassnames='w-1/2 min-w-[400px] max-w-[500px] h-[385px] flex-shrink-0 flex items-end laptops:h-[356px] small-phones:min-w-full small-phones:max-w-[none]'
+                />
+              )}
             </div>
 
             <HorizontalScrollBar
@@ -589,7 +634,7 @@ const Home = ({ products }) => {
           </div>
         </section>
 
-        <section className='mt-[200px] grid grid-rows-[repeat(2,minmax(134px,auto))] grid-cols-2 gap-x-[21px] gap-y-[17px] laptops:grid-rows-[154px_134px] laptops:gap-[14px] phones:mt-[84px] phones:grid-cols-1 phones:gap-y-5 phones:grid-rows-[154px_134px_154px_132px]'>
+        <section className='mt-[200px] grid grid-rows-[repeat(2,minmax(134px,150px))] grid-cols-2 gap-x-[21px] gap-y-[17px] laptops:grid-rows-[154px_134px] laptops:gap-[14px] phones:mt-[84px] phones:grid-cols-1 phones:gap-y-5 phones:grid-rows-[154px_134px_154px_132px]'>
           {SERVICES.map(({ title, href, description }) => (
             <ServiceCard key={title} title={title} description={description} href={href} />
           ))}
