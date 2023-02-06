@@ -45,10 +45,19 @@ button {
 
 @keyframes ripple {
   0% {
-    box-shadow: 0 0 0 0.7rem rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0.4rem rgba(255, 255, 255, 0.2);
   }
   100% {
     box-shadow: 0 0 0 1.6rem rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes ripple-black {
+  0% {
+    box-shadow: 0 0 0 0.4rem rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 1.6rem rgba(0, 0, 0, 0);
   }
 }
 
