@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
 
+import AllCard from './AllCard';
+
 import { AppContext } from '../pages/_app';
 
-const RoomSlider = ({ showButton, hideButton }) => {
+const RoomSlider = ({ showButton, hideButton, maxSliderItems }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [justHovered, setJustHovered] = useState(false);
   const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
@@ -108,6 +110,13 @@ const RoomSlider = ({ showButton, hideButton }) => {
           </div>
         </div>
       ))}
+      {rooms.length > maxSliderItems && (
+        <AllCard
+          href='/'
+          text='All Rooms'
+          extraClassnames='w-[360px] h-[551px] flex-shrink-0 rounded-[15px]'
+        />
+      )}
     </div>
   );
 };
