@@ -1,14 +1,16 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 
 import Menu from './Menu';
 import Overlay from './Overlay';
 import Logo from './icons/Logo';
 
+import { AppContext } from '../pages/_app';
+
 import { addClass, removeClass, scrollScreenTo } from '../public/utils';
 
 const Navigation = ({ extraNavStyles, extraNavOverlayStyles, onMenuOpened, onMenuClosed }) => {
-  const [menuOpened, setMenuOpened] = useState(false);
+  const { menuOpened, setMenuOpened } = useContext(AppContext);
 
   const closeMenu = () => setMenuOpened(false);
 
