@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 
 import { AppContext } from '../pages/_app';
 
@@ -12,11 +12,7 @@ const SlideMediaIndicator = ({
   setSlideIndex,
   nextSlideIndex,
 }) => {
-  const { MOBILE_BREAKPOINT } = useContext(AppContext);
-  const [screenWidth, setScreenWidth] = useState(0);
-
-  // componentDidMount
-  useEffect(() => setScreenWidth(window.screen.availWidth), []);
+  const { MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
 
   return (
     <div className='absolute bottom-[80px] text-[14px] leading-[17px] grid grid-rows-2 grid-cols-2 w-[498px] h-[120px] grid-flow-row laptops:bottom-[58px] laptops:text-[12px] laptops:leading-[15px] laptops:w-[366px] laptops:h-[88px] phones:w-full'>

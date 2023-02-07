@@ -3,11 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../pages/_app';
 
 const HistorySlider = () => {
-  const { MOBILE_BREAKPOINT } = useContext(AppContext);
-  const [screenWidth, setScreenWidth] = useState(0);
+  const { MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
   const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => setScreenWidth(window.screen.availWidth), []);
 
   const furnitures = [
     {

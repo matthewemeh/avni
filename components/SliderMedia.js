@@ -39,7 +39,7 @@ const SliderMedia = ({
   return (
     <div
       className={`h-4/5 ${
-        imageZoomed ? 'w-[100vw] h-[100vh] fixed z-[70] transition-all duration-500' : 'relative'
+        imageZoomed ? 'w-screen h-screen fixed z-[70] transition-all duration-500' : 'relative'
       }`}
     >
       {slidesData.map((slideData, index) => (

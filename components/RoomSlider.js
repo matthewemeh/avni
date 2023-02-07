@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { useState, useEffect, useContext } from 'react';
 
+import AllCard from './AllCard';
+
 import { AppContext } from '../pages/_app';
 
-const RoomSlider = () => {
+const RoomSlider = ({ showButton, hideButton, maxSliderItems }) => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(0);
-  const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT } = useContext(AppContext);
-
-  useEffect(() => setScreenWidth(window.screen.availWidth), []);
+  const [justHovered, setJustHovered] = useState(false);
+  const { LAPTOP_BREAKPOINT, SMALL_MOBILE_BREAKPOINT, screenWidth } = useContext(AppContext);
 
   const rooms = [
     {
@@ -53,16 +53,30 @@ const RoomSlider = () => {
     },
   ];
 
+  const moveSlide = () => {
+    if (!justHovered) setSlideIndex((slideIndex + 1) % rooms.length);
+  };
+
   useEffect(() => {
-    const timer = setInterval(() => setSlideIndex((slideIndex + 1) % rooms.length), 4000);
+    const timer = setInterval(moveSlide, 4000);
     return () => clearInterval(timer);
-  }, [slideIndex]);
+  }, [slideIndex, justHovered]);
 
   return (
-    <div className='x-scroll flex gap-x-10 overflow-x-scroll pb-[30px] laptops:gap-x-[30px]'>
+    <div
+      id='rooms'
+      onMouseLeave={() => hideButton(3)}
+      onMouseEnter={() => showButton(3, 'rooms')}
+      className='x-scroll flex gap-x-10 overflow-x-scroll scroll-smooth laptops:gap-x-[30px]'
+    >
       {rooms.map(({ text, bgImage, href }, index) => (
         <div
           key={index}
+          onMouseEnter={() => {
+            setSlideIndex(index);
+            setJustHovered(true);
+          }}
+          onMouseLeave={() => setJustHovered(false)}
           style={{
             width:
               screenWidth > SMALL_MOBILE_BREAKPOINT
@@ -96,6 +110,13 @@ const RoomSlider = () => {
           </div>
         </div>
       ))}
+      {rooms.length > maxSliderItems && (
+        <AllCard
+          href='/'
+          text='All Rooms'
+          extraClassnames='w-[360px] h-[551px] flex-shrink-0 rounded-[15px]'
+        />
+      )}
     </div>
   );
 };
