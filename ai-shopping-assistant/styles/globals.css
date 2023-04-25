@@ -6,6 +6,26 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --dove-gray: #717171;
+  --alto-light: #cecece;
+}
+
+html {
+  /* firefox scroll styling */
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--dove-gray) var(--alto-light) !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--alto-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dove-gray);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +38,6 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
