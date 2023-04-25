@@ -3,8 +3,7 @@ import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { createContext, useEffect, useState } from 'react';
 
-// import '../styles/globals.css'; // for development
-import '../styles/main.css'; // for production
+import '../styles/globals.css';
 
 import { AppContextData } from '@/public/interfaces';
 
