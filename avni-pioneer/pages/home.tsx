@@ -5,34 +5,34 @@ import { useState, useRef, useContext, useEffect } from 'react';
 
 import { AppContext } from './_app';
 
-import AllCard from '../components/AllCard';
-import AlbumWall from '../components/AlbumWall';
-import SpaceCard from '../components/SpaceCard';
-import LinkBubble from '../components/LinkBubble';
-import RoomSlider from '../components/RoomSlider';
-import HomeSearch from '../components/HomeSearch';
-import Navigation from '../components/Navigation';
-import ProductCard from '../components/ProductCard';
-import ServiceCard from '../components/ServiceCard';
-import HeaderBanner from '../components/HeaderBanner';
-import CategoryCard from '../components/CategoryCard';
-import ThemeSaleCard from '../components/ThemeSaleCard';
-import HomeFooter from '../components/footers/HomeFooter';
-import HorizontalScrollBar from '../components/HorizontalScrollBar';
+import AllCard from '@/components/AllCard';
+import AlbumWall from '@/components/AlbumWall';
+import SpaceCard from '@/components/SpaceCard';
+import LinkBubble from '@/components/LinkBubble';
+import RoomSlider from '@/components/RoomSlider';
+import HomeSearch from '@/components/HomeSearch';
+import Navigation from '@/components/Navigation';
+import ProductCard from '@/components/ProductCard';
+import ServiceCard from '@/components/ServiceCard';
+import HeaderBanner from '@/components/HeaderBanner';
+import CategoryCard from '@/components/CategoryCard';
+import ThemeSaleCard from '@/components/ThemeSaleCard';
+import HomeFooter from '@/components/footers/HomeFooter';
+import HorizontalScrollBar from '@/components/HorizontalScrollBar';
 
-import Cart from '../components/icons/Cart';
-import User from '../components/icons/User';
-import Heart from '../components/icons/Heart';
-import ArrowRight from '../components/icons/ArrowRight';
-import CaretUpFilled from '../components/icons/CaretUpFilled';
+import Cart from '@/components/icons/Cart';
+import User from '@/components/icons/User';
+import Heart from '@/components/icons/Heart';
+import ArrowRight from '@/components/icons/ArrowRight';
+import CaretUpFilled from '@/components/icons/CaretUpFilled';
 
-import themeRoom1 from '../public/assets/pngs/theme-room1.png';
-import themeRoom2 from '../public/assets/pngs/theme-room2.png';
-import productImage1 from '../public/assets/pngs/product1.png';
-import productImage2 from '../public/assets/pngs/product2.png';
-import productImage3 from '../public/assets/pngs/product3.png';
+import themeRoom1 from '@/public/assets/pngs/theme-room1.png';
+import themeRoom2 from '@/public/assets/pngs/theme-room2.png';
+import productImage1 from '@/public/assets/pngs/product1.png';
+import productImage2 from '@/public/assets/pngs/product2.png';
+import productImage3 from '@/public/assets/pngs/product3.png';
 
-import { addClass, removeClass, scrollScreenTo } from '../public/utils';
+import { addClass, removeClass, scrollScreenTo } from '@/public/utils';
 import {
   Product,
   ProductCategory,
@@ -171,7 +171,7 @@ interface Props {
   products: Product[];
 }
 
-export default function Home({ products }: Props) {
+const Home: React.FC<Props> = ({ products }) => {
   const router = useRouter();
   const MAX_SLIDER_ITEMS = 9;
   const headerRef = useRef<HTMLElement>(null);
@@ -693,7 +693,9 @@ export default function Home({ products }: Props) {
       </main>
     </>
   );
-}
+};
+
+export default Home;
 
 export async function getServerSideProps() {
   // fetch proucts data from API

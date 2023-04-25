@@ -1,7 +1,7 @@
 import { Furniture } from '@/public/interfaces';
 import { useState, useEffect, useContext } from 'react';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 
 const HistorySlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import LinkBubble from './LinkBubble';
 
-import { addClass, removeClass } from '../public/utils';
+import { addClass, removeClass } from '@/public/utils';
 
 interface Props {
   errorCode: number;

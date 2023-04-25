@@ -5,10 +5,10 @@ import TextSlider from './TextSlider';
 import ArticlePoint from './ArticlePoint';
 import CampaignPreview from './CampaignPreview';
 
-import AvniImage from '../public/assets/pngs/avni-white-bg-blue.png';
+import AvniImage from '@/public/assets/pngs/avni-white-bg-blue.png';
 
 import { Article } from '@/public/interfaces';
-import { isInViewport } from '../public/utils';
+import { isInViewport } from '@/public/utils';
 
 interface Props {
   articles: Article[];

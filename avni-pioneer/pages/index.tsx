@@ -1,27 +1,27 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
-import Slider from '../components/Slider';
-import Preloader from '../components/Preloader';
-import Navigation from '../components/Navigation';
-import LinkBubble from '../components/LinkBubble';
-import SpaceSlider from '../components/SpaceSlider';
-import Testimonial from '../components/Testimonial';
-import HistorySlider from '../components/HistorySlider';
-import ArticlePreview from '../components/ArticlePreview';
-import LandingFooter from '../components/footers/LandingFooter';
+import Slider from '@/components/Slider';
+import Preloader from '@/components/Preloader';
+import Navigation from '@/components/Navigation';
+import LinkBubble from '@/components/LinkBubble';
+import SpaceSlider from '@/components/SpaceSlider';
+import Testimonial from '@/components/Testimonial';
+import HistorySlider from '@/components/HistorySlider';
+import ArticlePreview from '@/components/ArticlePreview';
+import LandingFooter from '@/components/footers/LandingFooter';
 
-import CurlyArrow from '../components/icons/CurlyArrow';
-import CaretUpFilled from '../components/icons/CaretUpFilled';
+import CurlyArrow from '@/components/icons/CurlyArrow';
+import CaretUpFilled from '@/components/icons/CaretUpFilled';
 
-import slide1 from '../public/assets/pngs/slide1.png';
-import slide2 from '../public/assets/pngs/slide2.png';
-import slide3 from '../public/assets/pngs/slide3.png';
-import testVideo from '../public/assets/test-video.mp4';
-import articleImage from '../public/assets/pngs/news-body.png';
-import newsHeadMedia from '../public/assets/pngs/news-head.png';
+import slide1 from '@/public/assets/pngs/slide1.png';
+import slide2 from '@/public/assets/pngs/slide2.png';
+import slide3 from '@/public/assets/pngs/slide3.png';
+import testVideo from '@/public/assets/test-video.mp4';
+import articleImage from '@/public/assets/pngs/news-body.png';
+import newsHeadMedia from '@/public/assets/pngs/news-head.png';
 
-import { scrollScreenTo } from '../public/utils';
+import { scrollScreenTo } from '@/public/utils';
 import { Article, SlideData } from '@/public/interfaces';
 
 const SLIDES_DATA: SlideData[] = [
@@ -90,7 +90,7 @@ interface Props {
   articles: Article[];
 }
 
-export default function Home({ articles }: Props) {
+const Home: React.FC<Props> = ({ articles }) => {
   return (
     <>
       <Head>
@@ -179,7 +179,9 @@ export default function Home({ articles }: Props) {
       </main>
     </>
   );
-}
+};
+
+export default Home;
 
 export async function getStaticProps() {
   // fetch data from API

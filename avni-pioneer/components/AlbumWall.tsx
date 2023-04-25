@@ -1,14 +1,14 @@
 import Image from 'next/image';
 
-import wallImage1 from '../public/assets/pngs/social-album1.png';
-import wallImage2 from '../public/assets/pngs/social-album2.png';
-import wallImage3 from '../public/assets/pngs/social-album3.png';
-import wallImage4 from '../public/assets/pngs/social-album4.png';
-import wallImage5 from '../public/assets/pngs/social-album5.png';
-import wallImage6 from '../public/assets/pngs/social-album6.png';
-import wallImage7 from '../public/assets/pngs/social-album7.png';
-import wallImage8 from '../public/assets/pngs/social-album8.png';
-import wallImage9 from '../public/assets/pngs/social-album9.png';
+import wallImage1 from '@/public/assets/pngs/social-album1.png';
+import wallImage2 from '@/public/assets/pngs/social-album2.png';
+import wallImage3 from '@/public/assets/pngs/social-album3.png';
+import wallImage4 from '@/public/assets/pngs/social-album4.png';
+import wallImage5 from '@/public/assets/pngs/social-album5.png';
+import wallImage6 from '@/public/assets/pngs/social-album6.png';
+import wallImage7 from '@/public/assets/pngs/social-album7.png';
+import wallImage8 from '@/public/assets/pngs/social-album8.png';
+import wallImage9 from '@/public/assets/pngs/social-album9.png';
 
 const AlbumWall = () => {
   return (

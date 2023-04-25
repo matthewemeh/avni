@@ -4,9 +4,9 @@ import SliderMedia from './SliderMedia';
 import SliderControls from './SliderControls';
 import SlideMediaIndicator from './SliderMediaIndicator';
 
-import { mod } from '../public/utils';
+import { mod } from '@/public/utils';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 import { SlideData } from '@/public/interfaces';
 
 interface Props {

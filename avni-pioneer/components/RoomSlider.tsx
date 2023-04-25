@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 
 import AllCard from './AllCard';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 import { Room } from '@/public/interfaces';
 
 interface Props {

@@ -3,8 +3,7 @@ import Script from 'next/script';
 import type { AppProps } from 'next/app';
 import { createContext, useEffect, useState } from 'react';
 
-import '../styles/globals.css';
-
+import '@/styles/globals.css';
 import { AppContextData } from '@/public/interfaces';
 
 const MOBILE_BREAKPOINT = 600;

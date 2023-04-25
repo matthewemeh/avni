@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 
 const HomeSearch = () => {
   const { menuOpened } = useContext(AppContext);

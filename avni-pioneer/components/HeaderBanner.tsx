@@ -1,7 +1,7 @@
 import { ExtraStyle } from '@/public/interfaces';
 import { useEffect, useState, useContext } from 'react';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 
 interface Props {
   extraStyles?: ExtraStyle;

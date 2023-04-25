@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useContext } from 'react';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 import { SlideData } from '@/public/interfaces';
 
 interface Props {

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
-import testVideo from '../public/assets/test-video.mp4';
-import customersImage from '../public/assets/pngs/customers.png';
+import testVideo from '@/public/assets/test-video.mp4';
+import customersImage from '@/public/assets/pngs/customers.png';
 
 const Testimonial = () => {
   const [paused, setPaused] = useState(true);

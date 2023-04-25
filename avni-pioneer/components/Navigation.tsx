@@ -6,9 +6,9 @@ import Menu from './Menu';
 import Overlay from './Overlay';
 import Logo from './icons/Logo';
 
-import { AppContext } from '../pages/_app';
+import { AppContext } from '@/pages/_app';
 
-import { addClass, removeClass, scrollScreenTo } from '../public/utils';
+import { addClass, removeClass, scrollScreenTo } from '@/public/utils';
 
 interface Props {
   onMenuOpened?: () => void;

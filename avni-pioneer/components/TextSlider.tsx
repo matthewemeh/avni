@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 
 import ArrowRight from './icons/ArrowRight';
 
-import { getMonthName } from '../public/utils';
+import { getMonthName } from '@/public/utils';
 import { ExtraStyle } from '@/public/interfaces';
 
 interface Props {
