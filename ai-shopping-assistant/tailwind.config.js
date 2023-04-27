@@ -33,6 +33,7 @@ module.exports = {
       large: { max: '1200px' },
       '1105px': { max: '1105px' },
       laptops: { max: '1024px' },
+      '890px': { max: '890px' },
       tablets: { max: '768px' },
       phones: { max: '600px' },
       'small-phones': { max: '430px' },
