@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import FormAside from '@/components/FormAside';
 import FormFooter from '@/components/footers/FormFooter';
+import MainLayout from '@/components/layouts/MainLayout';
 
 import { showAlert } from '@/public/utils';
 
@@ -34,18 +35,18 @@ const ForgotPassword = () => {
   };
 
   return (
-    <main className='h-screen py-[30px] pl-[60px] pr-[50px] bg-[url(/assets/pngs/bg.png)] bg-no-repeat bg-center bg-cover flex justify-between'>
+    <MainLayout>
       <FormAside />
 
       {emailSent ? (
-        <aside className='relative overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[70px] pb-[30px] px-[92px]'>
-          <p className='font-medium text-[14px] leading-[17px] text-right'>
+        <aside className='relative font-medium text-[14px] leading-[17px] overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[70px] pb-[30px] px-[92px] laptops:px-[210px] laptops:w-full laptops:max-w-[90vw]'>
+          <p className='text-right'>
             {Math.floor(timer / 60)} min : {(timer % 60).toString().padStart(2, '0')} sec
           </p>
 
-          <h1 className='font-medium text-[16px] leading-8 mt-[63px]'>Email sent!</h1>
+          <h1 className='text-[16px] leading-8 mt-[63px]'>Email sent!</h1>
 
-          <p className='mt-5 font-medium text-[14px] leading-7 text-[rgba(0,0,0,0.5)]'>
+          <p className='mt-5 leading-7 text-[rgba(0,0,0,0.5)]'>
             We sent an email with a reset link to{' '}
             <span className='font-semibold text-black'>{email}</span>. If you didn't receive the
             email, check your spam folder or tap the resend button.
@@ -54,7 +55,7 @@ const ForgotPassword = () => {
           <button
             onClick={resend}
             disabled={timer > 0}
-            className='mt-10 bg-dove-gray py-[15px] w-full text-white rounded-[30px] font-semibold text-[14px] leading-[17px] disabled:bg-[rgba(0,0,0,0.2)] transition-all duration-500'
+            className='mt-10 bg-dove-gray py-[15px] w-full text-white rounded-[30px] font-semibold disabled:bg-[rgba(0,0,0,0.2)] transition-all duration-500'
           >
             Resend
           </button>
@@ -66,10 +67,10 @@ const ForgotPassword = () => {
             Return to login
           </Link>
 
-          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2' />
+          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2 laptops:static laptops:translate-x-0' />
         </aside>
       ) : (
-        <aside className='relative overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px]'>
+        <aside className='relative overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px] laptops:px-[187px] laptops:w-full laptops:max-w-[90vw]'>
           <header className='max-w-[496px]'>
             <p className='font-semibold text-[26px] leading-8 text-black'>Forgot Password?</p>
             <p className='font-normal text-[14px] leading-[26px] text-[rgba(0,0,0,0.5)] mt-5'>
@@ -108,10 +109,10 @@ const ForgotPassword = () => {
             Return to sign in
           </Link>
 
-          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2' />
+          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2 laptops:static laptops:translate-x-0' />
         </aside>
       )}
-    </main>
+    </MainLayout>
   );
 };
 

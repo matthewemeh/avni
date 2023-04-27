@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 
 import FormAside from '@/components/FormAside';
 import FormFooter from '@/components/footers/FormFooter';
+import MainLayout from '@/components/layouts/MainLayout';
 
 import { showAlert, togglePassword } from '@/public/utils';
 
@@ -15,13 +16,20 @@ const ResetPassword = () => {
   const resetPassword = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // these are the user's input
+    const { password, confirmPassword } = Object.fromEntries(formData.entries());
+    if (password !== confirmPassword) return showAlert({ msg: 'Passwords do not match!' });
+
     // API and backend call to proceed to reset password
-    showAlert({ msg: 'Email reset successfully' });
+    showAlert({ msg: 'Password reset successfully' });
     setEmailReset(true);
   };
 
   return (
-    <main className='h-screen py-[30px] pl-[60px] pr-[50px] bg-[url(/assets/pngs/bg.png)] bg-no-repeat bg-center bg-cover flex justify-between'>
+    <MainLayout>
       <FormAside />
 
       {emailReset ? (
@@ -42,7 +50,7 @@ const ResetPassword = () => {
           <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2' />
         </aside>
       ) : (
-        <aside className='relative overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px]'>
+        <aside className='relative overflow-y-auto w-[690px] text-black bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px] laptops:px-[187px] laptops:w-full laptops:max-w-[90vw]'>
           <header className='max-w-[496px] font-semibold text-[26px] leading-8 text-black'>
             Forgot Password?
           </header>
@@ -93,10 +101,10 @@ const ResetPassword = () => {
             />
           </form>
 
-          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2' />
+          <FormFooter extraClassNames='absolute bottom-[30px] left-1/2 -translate-x-1/2 laptops:static laptops:translate-x-0' />
         </aside>
       )}
-    </main>
+    </MainLayout>
   );
 };
 

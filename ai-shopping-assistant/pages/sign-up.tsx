@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import FormAside from '@/components/FormAside';
 import FormFooter from '@/components/footers/FormFooter';
+import MainLayout from '@/components/layouts/MainLayout';
 
 import { showAlert, togglePassword } from '@/public/utils';
 
@@ -34,15 +35,16 @@ const SignUp = () => {
   };
 
   return (
-    <main className='h-screen py-[30px] pl-[60px] pr-[50px] bg-[url(/assets/pngs/bg.png)] bg-no-repeat bg-center bg-cover flex justify-between'>
+    <MainLayout>
       <FormAside />
 
-      <aside className='overflow-y-auto w-[690px] bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px]'>
+      <aside className='overflow-y-auto w-[690px] bg-white border-[1px] border-[rgba(102,102,102,0.5)] rounded-3xl pt-[79px] pb-[30px] px-[70px] laptops:px-[187px] laptops:w-full laptops:max-w-[90vw]'>
         <header className='grid grid-cols-[minmax(0,1fr)_57px] grid-rows-2 gap-y-5'>
           <p className='font-semibold text-[26px] leading-8 text-black'>Create an account</p>
           <button className='w-[57px] h-[57px] rounded-[30px] border-[1px] border-[rgba(102,102,102,0.35)] row-start-1 row-end-3 col-start-2 self-center ml-auto' />
           <p className='font-normal text-[14px] leading-[17px] text-[rgba(0,0,0,0.5)]'>
-            Let's sign you up to begin your journey in Avniverse
+            Let's sign you up to begin your journey in
+            <span className='font-semibold'> Avniverse</span>
           </p>
         </header>
 
@@ -145,7 +147,7 @@ const SignUp = () => {
 
         <FormFooter />
       </aside>
-    </main>
+    </MainLayout>
   );
 };
 

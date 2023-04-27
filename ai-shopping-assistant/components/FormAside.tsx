@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const FormAside = () => {
   return (
-    <section>
+    <section className='laptops:hidden'>
       <h1 className='text-white font-semibold text-[44px] leading-[68px] max-w-[320px] mt-[90px]'>
         Welcome to Avniverse!
       </h1>
